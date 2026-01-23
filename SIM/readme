@@ -1,0 +1,39 @@
+# Project Setup
+
+
+## Dependencies
+
+raylib has several dependencies that you need in order to work with it.
+
+#### Install required tools
+You need a **GCC** (or alternative C99 compiler), **make** and **git** (to download raylib repo). 
+
+    sudo apt install build-essential git
+
+#### Install required libraries
+You need to install some required libraries; **ALSA** for audio, **Mesa** for OpenGL accelerated graphics and **X11** for windowing system.
+
+##### Ubuntu
+    sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
+
+
+## Instal RayLib with CMake
+
+```
+git clone https://github.com/raysan5/raylib.git raylib
+cd raylib
+mkdir build && cd build
+cmake -DBUILD_SHARED_LIBS=ON ..
+make
+sudo make install
+sudo ldconfig
+```
+In case any dependencies are missing, cmake will tell you.
+
+
+## Build Project and Run
+```
+mkdir build
+cmake build
+./build/MarineSIM
+```

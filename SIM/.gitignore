@@ -1,0 +1,17 @@
+# Build directories
+build/
+*.o
+*.a
+*.so
+
+# IDE files
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Executables
+MarineSIM
