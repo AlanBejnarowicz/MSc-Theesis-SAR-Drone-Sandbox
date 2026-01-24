@@ -14,7 +14,7 @@
 #include "GameObject.h"
 
 
-//#define TEST_CAM_ORBIT
+#define TEST_CAM_ORBIT
 
 
 

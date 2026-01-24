@@ -20,12 +20,12 @@
 #include "Tools/MyVector.h"
 
 
-
-
 // include Objects
 #include "Objects/GameObject.h"
+#include "Objects/MainCamera/main_camera.h"
 
-//#include "Objects/HUD/HUD.h"
+#include "Objects/DroneShip/DroneShip.h"
+#include "Objects/SEA_model/sea.h"
 
 
 // main collection of GameObjects
@@ -41,23 +41,9 @@ int main() {
     const int screenWidth = 2000;
     const int screenHeight = 1200;
 
-    SetConfigFlags(FLAG_MSAA_4X_HINT);      // Enable Multi Sampling Anti Aliasing 4x (if available)
-
-    
-    InitWindow(screenWidth, screenHeight, "RayDroneSim");
-
+    SetConfigFlags(FLAG_MSAA_4X_HINT);      // Enable Multi Sampling Anti Aliasing 4x (if available)    
+    InitWindow(screenWidth, screenHeight, "MarineSIM - SAR Drone Sandbox");
     SetTargetFPS(120);
-
-
-    // ############### GAMEPAD FIX ############### 
-
-    Tools::InputSystem Input_System;
-
-    // Get pointer to GMInputs
-    Tools::GM_Inputs* GMInputs = Input_System.GetGM_Inputs_ptr();
-
-
-    // ############### END GAMEPAD FIX ###############
 
 
 
@@ -65,19 +51,18 @@ int main() {
     // #########################
     //  $$$$$ Init Objects $$$$$
 
-    // gameObjects.push_back(std::make_unique<VGamepad>(GMInputs));
-    // gameObjects.push_back(std::make_unique<Quadcopter>(GMInputs));
-    // gameObjects.push_back(std::make_unique<HUD>(gameObjects[1].get()));
-    //gameObjects.push_back(std::make_unique<GameWorld>());
+    gameObjects.push_back(std::make_unique<DroneShip>());
+    gameObjects.push_back(std::make_unique<SEA>());
 
-    //MainCamera mainCamera(nullptr);
+
+
+
+    MainCamera mainCamera(nullptr);
 
 
     while (!WindowShouldClose()) {
         float dt = GetFrameTime();
 
-        // Handle SDL input for gamepad
-        // Input_System.HandleGamepadInput();
 
         // Parallel update
         #pragma omp parallel for
@@ -121,9 +106,6 @@ int main() {
     }
 
 
-
-
-    //SDL_GameControllerClose(gamepad);
 
     CloseWindow(); // Close window and OpenGL context
     return 0;

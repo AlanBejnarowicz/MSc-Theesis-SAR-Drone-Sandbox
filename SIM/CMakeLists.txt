@@ -13,8 +13,15 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 endif()
 
-# Add include directories
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+# Set source directory root
+set(SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+# Include ALL necessary directories
+include_directories(
+    ${SRC_ROOT}
+    ${SRC_ROOT}/Tools
+    ${SRC_ROOT}/Objects
+)
 
 # Dependencies
 set(RAYLIB_VERSION 5.5)
@@ -29,19 +36,45 @@ if(NOT raylib_FOUND)
     FetchContent_MakeAvailable(raylib)
 endif()
 
-# Add all source files in src directory
-file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.c")
-file(GLOB_RECURSE HEADERS "src/*.h" "src/*.hpp")
-
-# Our Project
-add_executable(${PROJECT_NAME} ${SOURCES})
-
-# Set target properties
-target_include_directories(${PROJECT_NAME} PRIVATE 
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${raylib_INCLUDE_DIRS}
+# Find ALL source files
+file(GLOB_RECURSE SOURCES 
+    "src/*.cpp"
+    "src/*.c"
+    "src/Tools/*.cpp"
+    "src/Tools/*.c"
+    "src/Objects/*.cpp"
+    "src/Objects/*.c"
+    "src/Objects/**/*.cpp"
+    "src/Objects/**/*.c"
 )
 
+# Also find header files (optional, for IDE support)
+file(GLOB_RECURSE HEADERS
+    "src/*.h"
+    "src/*.hpp"
+    "src/Tools/*.h"
+    "src/Tools/*.hpp"
+    "src/Objects/*.h"
+    "src/Objects/*.hpp"
+    "src/Objects/**/*.h"
+    "src/Objects/**/*.hpp"
+)
+
+# Create executable
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
+# Copy resource files to build directory
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/rsc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+
+# Set target properties - FIXED ORDER
+target_include_directories(${PROJECT_NAME} PRIVATE 
+    ${SRC_ROOT}
+    ${SRC_ROOT}/Tools
+    ${SRC_ROOT}/Objects
+)
+
+# Link raylib
 target_link_libraries(${PROJECT_NAME} raylib)
 
 # Post-build message

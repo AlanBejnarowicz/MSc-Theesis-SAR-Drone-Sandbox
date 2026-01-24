@@ -22,6 +22,9 @@ class GameObject {
 
         virtual ~GameObject() {}  // Virtual destructor for proper cleanup
 
+    protected:
+        void DrawVectors(bool local = false);
+
         Tools::Vector3 position;
         Tools::Quaternion rotation;
 

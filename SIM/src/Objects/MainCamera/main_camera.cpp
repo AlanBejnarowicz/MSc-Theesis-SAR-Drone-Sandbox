@@ -61,8 +61,8 @@ void MainCamera::Update(float dt) {
     angle += -0.1f * dt; // Adjust the speed of the orbit here
 
     // Calculate the new camera position
-    camera.position.x = 15.0f * cos(angle);
-    camera.position.z = 15.0f * sin(angle);
+    camera.position.x = 10.0f * cos(angle);
+    camera.position.z = 10.0f * sin(angle);
     camera.position.y = 10;
 
     camera.position += CamObbitPos;
