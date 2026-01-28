@@ -64,7 +64,24 @@ file(GLOB_RECURSE HEADERS
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
 # Copy resource files to build directory
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/rsc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/rsc DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+# Remove the old file(COPY ...) line and use this:
+if(WIN32)
+    # Windows version (creates a junction/link)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E create_symlink 
+        "${CMAKE_CURRENT_SOURCE_DIR}/rsc" 
+        "${CMAKE_CURRENT_BINARY_DIR}/rsc"
+    )
+else()
+    # Linux/Mac version
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E create_symlink 
+        "${CMAKE_CURRENT_SOURCE_DIR}/rsc" 
+        "${CMAKE_CURRENT_BINARY_DIR}/rsc"
+    )
+endif()
 
 
 # Set target properties - FIXED ORDER

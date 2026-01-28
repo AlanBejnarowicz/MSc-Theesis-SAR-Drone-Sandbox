@@ -84,7 +84,7 @@ int main() {
         BeginMode3D(mainCamera.camera);
 
 
-        DrawGrid(5000, 1.25f);
+        //DrawGrid(5000, 1.25f);
 
         for (auto& obj : gameObjects) {
             obj->Draw();

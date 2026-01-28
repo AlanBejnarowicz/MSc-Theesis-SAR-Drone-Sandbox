@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <math.h>
-#include <SDL2/SDL.h>
 #include <raylib.h>
 #include "raymath.h"
 

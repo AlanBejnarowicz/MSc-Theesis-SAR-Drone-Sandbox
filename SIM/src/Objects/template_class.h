@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <math.h>
-#include <SDL2/SDL.h>
+
 
 #include "MyVector.h"
 #include "GameObject.h"

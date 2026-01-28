@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <math.h>
-#include <SDL2/SDL.h>
+
 
 #include "MyVector.h"
 #include "GameObject.h"
@@ -18,7 +18,10 @@ class SEA : public GameObject {
         Mesh mesh;
         Model model;
         Texture2D texture;
-        
+
+        //shaders
+        Shader sea_shader;
+        int secondsLoc;
 
 
     float spacing = 1.0f; // Distance between vertices
