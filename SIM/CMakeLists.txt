@@ -40,6 +40,8 @@ endif()
 file(GLOB_RECURSE SOURCES 
     "src/*.cpp"
     "src/*.c"
+    "src/EngineTools/*.cpp"
+    "src/EngineTools/*.c"
     "src/Tools/*.cpp"
     "src/Tools/*.c"
     "src/Objects/*.cpp"
@@ -52,6 +54,8 @@ file(GLOB_RECURSE SOURCES
 file(GLOB_RECURSE HEADERS
     "src/*.h"
     "src/*.hpp"
+    "src/EngineTools/*.h"
+    "src/EngineTools/*.hpp"
     "src/Tools/*.h"
     "src/Tools/*.hpp"
     "src/Objects/*.h"
@@ -87,8 +91,11 @@ endif()
 # Set target properties - FIXED ORDER
 target_include_directories(${PROJECT_NAME} PRIVATE 
     ${SRC_ROOT}
+    ${SRC_ROOT}/EngineTools
     ${SRC_ROOT}/Tools
     ${SRC_ROOT}/Objects
+    ${SRC_ROOT}/Objects/**/
+    
 )
 
 # Link raylib

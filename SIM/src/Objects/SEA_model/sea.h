@@ -24,11 +24,16 @@ class SEA : public GameObject {
         int secondsLoc;
 
 
-    float spacing = 1.0f; // Distance between vertices
-    int width = 200;     // Number of vertices along width
-    int depth = 200;     // Number of vertices along depth
 
+        float spacing = 1.0f; // Distance between vertices
+        int SEA_vertices_width = 200;     // Number of vertices along width
+        int SEA_vertices_depth = 200;     // Number of vertices along depth
 
+        float timer;
+
+        float calculateWave(Tools::Vector3 pos, float freq, float speed, float amp);
+        
+        void update_wave(void);
 
 
     public:
@@ -36,9 +41,18 @@ class SEA : public GameObject {
         SEA(); // default constructor
         ~SEA();
 
+
+        void Start() override;
         void Update(float dt) override;
         void Draw() override;
         void Draw2D() override;
+
+
+
+        Tools::Vector3 get_wave_normal(Tools::Vector3 pos);
+        float calculate_total_wave_height(Tools::Vector3 pos);
+
+
 
     
 

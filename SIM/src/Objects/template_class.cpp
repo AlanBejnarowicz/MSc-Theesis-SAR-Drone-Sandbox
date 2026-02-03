@@ -13,7 +13,17 @@ TemplateClass::~TemplateClass()
 
 }
 
+
+
 // GameObject methods
+
+void TemplateClass::Start() {
+    
+
+}
+
+
+
 void TemplateClass::Update(float dt) {
 
 

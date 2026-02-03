@@ -21,21 +21,22 @@
 class MainCamera : public GameObject {
 
     private:
-    GameObject* parrent_obj;
-    float true_FPS = 0;
+        float true_FPS = 0;
     
 
     public:
 
-    MainCamera(GameObject* parent); // default constructor
-    ~MainCamera();
+        MainCamera(); // default constructor
+        ~MainCamera();
 
-    Tools::Vector3 CamObbitPos = {0,0,0};
-    Camera3D camera = { 0 };
+        Tools::Vector3 CamObbitPos = {0,0,0};
+        Camera3D camera = { 0 };
 
-    void Update(float dt) override;
-    void Draw() override;
-    void Draw2D() override;
+
+        void Start() override;
+        void Update(float dt) override;
+        void Draw() override;
+        void Draw2D() override;
     
 
 };

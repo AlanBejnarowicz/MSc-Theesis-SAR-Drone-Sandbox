@@ -3,10 +3,9 @@
 
 
 
-MainCamera::MainCamera(GameObject* parent)// Initialize gamepad to 0 or the desired index
+MainCamera::MainCamera()
 {
 
-    parrent_obj = parent;
     
     camera.position = { 0.0f, 5.0f, -10.0f }; // Like Unity (Camera starts behind)
     camera.target = { 0.0f, 2.0f, 0.0f };   // Looking towards +Z
@@ -24,6 +23,14 @@ MainCamera::~MainCamera()
 }
 
 // GameObject methods
+
+void MainCamera::Start(){
+
+
+
+}
+
+
 void MainCamera::Update(float dt) {
 
 
@@ -31,39 +38,21 @@ void MainCamera::Update(float dt) {
     //set camera to possition of drone, as FPV camera
     // Assuming the first game object is the drone
 
-    if (parrent_obj) {
-        Vector3 dronePosition = parrent_obj->position;
-        Tools::Quaternion droneRotation = parrent_obj->rotation;
-
-        // Set camera position to drone's position
-        camera.position = dronePosition;
-
-        // Forward direction for FPV camera is negative Z
-        Tools::Vector3 v = {0,0,1};
-        Tools::Vector3 camforward = v * droneRotation.inverse();
-        // Update camera target
-        camera.target = Vector3Add(camera.position, camforward);
-
-        // up vector (positive Y) rotated by drone quaternion
-        Tools::Vector3 up = Tools::Vector3(0, 1, 0) * droneRotation.inverse();
-        camera.up = up;
-    }
+    UpdateCamera(&camera, CAMERA_FREE);
 
 
-    // Update
-    UpdateCamera(&camera, CAMERA_FIRST_PERSON);
 
     #endif
 
     #ifdef TEST_CAM_ORBIT
 
     static float angle = 0.0f;
-    angle += -0.1f * dt; // Adjust the speed of the orbit here
+    //angle += -0.1f * dt; // Adjust the speed of the orbit here
 
     // Calculate the new camera position
     camera.position.x = 10.0f * cos(angle);
     camera.position.z = 10.0f * sin(angle);
-    camera.position.y = 10;
+    camera.position.y = 5;
 
     camera.position += CamObbitPos;
 

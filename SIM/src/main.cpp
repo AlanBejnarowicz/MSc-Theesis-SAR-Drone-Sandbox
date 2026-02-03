@@ -20,18 +20,24 @@
 #include "Tools/MyVector.h"
 
 
+// include Engine Tools
+#include "GameObjectRegistry.h"
+
+
 // include Objects
-#include "Objects/GameObject.h"
+#include "GameObject.h"
 #include "Objects/MainCamera/main_camera.h"
 
-#include "Objects/DroneShip/DroneShip.h"
-#include "Objects/SEA_model/sea.h"
 
 
-// main collection of GameObjects
-std::vector<std::unique_ptr<GameObject>> gameObjects;
+
+#include "DroneShip/DroneShip.h"
+#include "SEA_model/sea.h"
 
 
+GameObjectManager GO_Manager;
+
+bool grid_enabled = false;
 
 
 int main() {
@@ -51,57 +57,45 @@ int main() {
     // #########################
     //  $$$$$ Init Objects $$$$$
 
-    gameObjects.push_back(std::make_unique<DroneShip>());
-    gameObjects.push_back(std::make_unique<SEA>());
+    // GOregistry.push_back(std::make_unique<DroneShip>());
+    // GOregistry.push_back(std::make_unique<SEA>());
+
+    GO_Manager.Spawn<SEA>("MainSea");
+    GO_Manager.Spawn<DroneShip>("Drone_01");
 
 
 
+    MainCamera mainCamera;
 
-    MainCamera mainCamera(nullptr);
 
 
     while (!WindowShouldClose()) {
         float dt = GetFrameTime();
 
+        GO_Manager.Handle_Game_Objects();
 
-        // Parallel update
-        #pragma omp parallel for
-        for (int i = 0; i < static_cast<int>(gameObjects.size()); i++) {
-            gameObjects[i]->Update(dt);
-        }
 
+        GO_Manager.Update_GameObjects(dt);
         mainCamera.Update(dt);
         
 
-        // Draw
         BeginDrawing();
-
-
-        //ClearBackground(RAYWHITE);
         ClearBackground(GRAY);
-
-        
         BeginMode3D(mainCamera.camera);
 
+            if(grid_enabled) DrawGrid(5000, 1.25f);
 
-        //DrawGrid(5000, 1.25f);
-
-        for (auto& obj : gameObjects) {
-            obj->Draw();
-        }
-
+            GO_Manager.Draw_GameObjects();
 
         EndMode3D();
+            
 
 
-        for (auto& obj : gameObjects) {
-            obj->Draw2D();
-        }
 
-        mainCamera.Draw2D();
+        // 2D UI
+        GO_Manager.Draw2D_GameObjects();
 
         EndDrawing();
-
 
     }
 

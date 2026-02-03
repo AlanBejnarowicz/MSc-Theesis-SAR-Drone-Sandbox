@@ -20,9 +20,12 @@ class TemplateClass : public GameObject {
     TemplateClass(); // default constructor
     ~TemplateClass();
 
+    void Start() override;
     void Update(float dt) override;
     void Draw() override;
     void Draw2D() override;
+
+
     
 
 };
