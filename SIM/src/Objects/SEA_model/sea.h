@@ -23,7 +23,7 @@ class SEA : public GameObject {
         Shader sea_shader;
         int secondsLoc;
 
-
+        float wave_amplitude_scale = 0.5f;
 
         float spacing = 1.0f; // Distance between vertices
         int SEA_vertices_width = 200;     // Number of vertices along width

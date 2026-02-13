@@ -46,7 +46,7 @@ void MainCamera::Update(float dt) {
 
     #ifdef TEST_CAM_ORBIT
 
-    static float angle = 0.0f;
+    static float angle = M_PI/2;
     //angle += -0.1f * dt; // Adjust the speed of the orbit here
 
     // Calculate the new camera position

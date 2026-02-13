@@ -94,7 +94,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     ${SRC_ROOT}/EngineTools
     ${SRC_ROOT}/Tools
     ${SRC_ROOT}/Objects
-    ${SRC_ROOT}/Objects/**/
+
     
 )
 

@@ -22,6 +22,7 @@
 
 // include Engine Tools
 #include "GameObjectRegistry.h"
+#include "ModelRegistry.h"
 
 
 // include Objects
@@ -35,13 +36,13 @@
 #include "SEA_model/sea.h"
 
 
-GameObjectManager GO_Manager;
+
 
 bool grid_enabled = false;
 
 
 int main() {
-    
+    SetTraceLogLevel(LOG_WARNING);
     // Camera and window initialization
 
     const int screenWidth = 2000;
@@ -51,21 +52,29 @@ int main() {
     InitWindow(screenWidth, screenHeight, "MarineSIM - SAR Drone Sandbox");
     SetTargetFPS(120);
 
+    GameObjectManager GO_Manager;
+    ModelManager model_manager;
+    MainCamera mainCamera;
 
 
 
     // #########################
     //  $$$$$ Init Objects $$$$$
 
-    // GOregistry.push_back(std::make_unique<DroneShip>());
-    // GOregistry.push_back(std::make_unique<SEA>());
+    GO_Manager.PreStart();
+    model_manager.LoadImportantModels();
+
+    GO_Manager.model_manager = &model_manager;
 
     GO_Manager.Spawn<SEA>("MainSea");
-    GO_Manager.Spawn<DroneShip>("Drone_01");
+
+    for(int i = 0; i < 10; i++){
+        Tools::Vector3 spawn_pos = {0, 0, i * 2.0};
+        GO_Manager.Spawn<DroneShip>("Drone_01", spawn_pos);
+    }    
 
 
-
-    MainCamera mainCamera;
+    
 
 
 

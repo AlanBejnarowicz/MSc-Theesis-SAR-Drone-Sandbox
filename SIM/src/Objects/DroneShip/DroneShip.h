@@ -12,6 +12,7 @@
 #include "MyVector.h"
 #include "GameObject.h"
 #include "rigidbody.h"
+#include "tracker.h"
 
 
 #include "SEA_model/sea.h"
@@ -41,6 +42,7 @@ class DroneShip : public GameObject {
         Model ship_model;
 
         Rigidbody rb;
+        Tracker tr;
 
 
         float ship_length = 5.0f;
@@ -58,6 +60,7 @@ class DroneShip : public GameObject {
 
 
         DroneShip(); // default constructor
+        DroneShip(Tools::Vector3 pos); // possition constructor
         ~DroneShip();
 
 

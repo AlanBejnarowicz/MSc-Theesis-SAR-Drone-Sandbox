@@ -11,6 +11,7 @@
 
 #include "MyVector.h"
 #include "quaternion.h"
+#include "ModelRegistry.h"
 
 
 
@@ -42,6 +43,8 @@ class GameObject {
         std::string GameObjectName = "NewGameObject";
         int GameObjectID = 0;
 
+        ModelManager *model_manager = nullptr;
+
         // set true if Start() was already called
         bool start_done = false;
         
@@ -53,8 +56,8 @@ class GameObject {
         Tools::Quaternion rotation;
         std::vector<std::unique_ptr<GameObject>>* registry = nullptr;
 
-
         
+
 
 
         template<typename T> 

@@ -117,17 +117,17 @@ float SEA::calculateWave(Tools::Vector3 pos, float freq, float speed, float amp)
 
 float SEA::calculate_total_wave_height(Tools::Vector3 pos) {
     // Large Swells (Low frequency, high amplitude)
-    float w1 = calculateWave(pos, 0.02, 1.2, 0.8); 
-    float w2 = calculateWave(pos, 0.04, 1.5, 0.5);
+    float w1 = calculateWave(pos, 0.02, 1.2, 0.8 * wave_amplitude_scale); 
+    float w2 = calculateWave(pos, 0.04, 1.5, 0.5 * wave_amplitude_scale);
 
     // Mid-level Turbulence (Medium frequency)
-    float w3 = calculateWave(pos, 0.10, 2.2, 0.2);
-    float w4 = calculateWave(pos, 0.18, 1.8, 0.15);
+    float w3 = calculateWave(pos, 0.10, 2.2, 0.2 * wave_amplitude_scale);
+    float w4 = calculateWave(pos, 0.18, 1.8, 0.15 * wave_amplitude_scale);
 
     // Surface Micro-Ripples (High frequency, low amplitude)
     // These give the water that "shimmering" look
-    float w5 = calculateWave(pos, 0.45, 3.0, 0.05);
-    float w6 = calculateWave(pos, 0.80, 4.2, 0.02);
+    float w5 = calculateWave(pos, 0.45, 3.0, 0.05 * wave_amplitude_scale);
+    float w6 = calculateWave(pos, 0.80, 4.2, 0.02 * wave_amplitude_scale);
 
     // Summing with a slight decay or scaling can help
     return w1 + w2 + w3 + w4 + w5 + w6;

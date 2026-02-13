@@ -3,10 +3,18 @@
 
 GameObjectManager::GameObjectManager(){
 
+
+
 }
 
 
 GameObjectManager::~GameObjectManager(){
+
+
+}
+
+void GameObjectManager::PreStart(void){
+
 
 }
 

@@ -1,12 +1,20 @@
-
 #include "DroneShip.h"
 
 
 
 DroneShip::DroneShip()
 {
-
+    position.y = 4.0;
+    //rotation = Tools::Quaternion(0,0,0.5);
   
+}
+
+
+DroneShip::DroneShip(Tools::Vector3 pos){
+
+    position = pos;
+    position.y = 2.0;
+
 }
 
 DroneShip::~DroneShip()
@@ -27,6 +35,8 @@ void DroneShip::Start(){
     rb.mass = ship_mass;
     //rb.isKinematic = false;
 
+    tr.BindTransform(position,rotation);
+
     Ship_CG = {0.0, ship_CG_possition, 0.0};
     rb.COR = {0, 0, 0};
 
@@ -38,15 +48,10 @@ void DroneShip::Start(){
     buoyancy_points.push_back({ 0, 0,  ship_width / 2.0f}); // Left
     buoyancy_points.push_back({ 0, 0, -ship_width / 2.0f}); // Right
 
-    position.y = 2.0;
     
     
-    ship_model = LoadModel("rsc/ONR_SHIP/ONR_TUMBLEHOME.obj");
-    if (ship_model.meshCount > 0) {
-        std::cout << "DroneShip model loaded successfully!" << std::endl;
-    } else {
-        std::cerr << "Failed to load DroneShip model!" << std::endl;
-    }
+
+    ship_model = model_manager->LoadModelFromReg("ONR_TUMBLEHOME");
 
 
     // Load reference to SEA model
@@ -55,6 +60,7 @@ void DroneShip::Start(){
 
     if (_sea_model != nullptr) {
         std::cout << "Sea obj name: " << _sea_model->GameObjectName << " ! \r\n";
+        tr.BindSea(*_sea_model);
     } else {
         std::cout << "Warning: DroneShip could not find 'MainSea' during Start()!" << std::endl;
     }
@@ -68,6 +74,7 @@ void DroneShip::Start(){
 void DroneShip::Update(float dt) {
 
     rb.Update(dt);
+    tr.Update(dt);
 
     FloatPhysics(dt);
 
@@ -92,11 +99,11 @@ void DroneShip::Update(float dt) {
 
 
     // Tools::Vector3 CG_2 (0.0, 0.0, 0.0);
-    // Tools::Vector3 FG_2 (0.1, 0.0, 0.0);
+    // Tools::Vector3 FG_2 (2.1, 0.0, 0.0);
     // rb.AddForce(CG_2, FG_2);
 
-    // Tools::Vector3 CG_3 (-5.0, 0.5, 0.0);
-    // Tools::Vector3 FG_3 (-0.10, 0.0, 0.0);
+    // Tools::Vector3 CG_3 (-5.0, 2.5, 0.0);
+    // Tools::Vector3 FG_3 (-2.10, 0.0, 0.0);
     // rb.AddForce(CG_3, FG_3);
 
 
@@ -109,6 +116,9 @@ void DroneShip::Draw() {
     
     DrawVectors();
     rb.Draw();
+    tr.Draw();
+
+
 
     for(int i = 0; i < buoyancy_points.size(); i++){
         Tools::Vector3 sp = buoyancy_points[i];
@@ -122,6 +132,8 @@ void DroneShip::Draw() {
     sg = sg * rotation.inverse();
     sg = sg + position;
     DrawSphere(sg, 0.15f, RED);
+
+    
 }
 
 void DroneShip::Draw2D() {
@@ -152,8 +164,12 @@ void DroneShip::FloatPhysics(float dt) {
         if(immersion <= 0 ){
             // point under water
             immersion = abs(immersion);
-            Tools::Vector3 B = normal * immersion * immersion * (ship_mass * 10.0f)  ;
+            Tools::Vector3 B = normal * immersion * immersion * (ship_mass * 1.0f)  ;
             rb.AddForce(buoyancy_points[i], B);
+
+            Tools::Vector3 A = {0, immersion * immersion * (ship_mass * 10.0f)  ,0 };
+            A = A * rotation;
+            rb.AddForce(buoyancy_points[i], A);
         }
 
 
