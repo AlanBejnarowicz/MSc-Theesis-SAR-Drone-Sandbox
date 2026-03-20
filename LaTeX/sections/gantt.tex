@@ -1,0 +1,83 @@
+\begin{center}
+\textsc{Work schedule / Gantt chart}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+
+\scalebox{0.8}{%
+\begin{ganttchart}[
+        hgrid,
+        vgrid,
+        x unit=1.1cm,
+        y unit chart=0.9cm,
+        title height=1,
+        bar height=0.55,
+        group height=0.7,
+        bar/.append style={fill=blue!50},
+        group/.append style={fill=gray!50},
+        milestone/.append style={fill=red!70},
+        % Make labels readable: use dark text for left labels
+        bar label font=\small\color{black},
+        bar label node/.append style={align=center, text=black},
+        group label font=\small\color{black},
+        group label node/.append style={text=black},
+        milestone label font=\small,
+        milestone label node/.append style={right=2mm}
+]{1}{9}
+
+% Titles
+\gantttitle{MSc Thesis Work Plan}{9} \\
+\gantttitle{2025}{3}
+\gantttitle{2026}{6} \\
+\gantttitle{Oct}{1}
+\gantttitle{Nov}{1}
+\gantttitle{Dec}{1}
+\gantttitle{Jan}{1}
+\gantttitle{Feb}{1}
+\gantttitle{Mar}{1}
+\gantttitle{Apr}{1}
+\gantttitle{May}{1}
+\gantttitle{Jun}{1} \\
+
+% Tasks
+\ganttgroup{Literature Review \& Background \& Initial work}{1}{3} \\
+
+\ganttbar[
+        bar/.append style={fill=green!60}
+]{Problem Definition \& Requirements}{2}{4} \\
+
+\ganttbar{System Design}{4}{5} \\
+
+\ganttbar[
+        bar/.append style={fill=orange!70}
+]{Implementation (Simulator / Prototype)}{4}{8} \\
+
+\ganttbar[
+        bar/.append style={fill=orange!70}
+]{Implementation of HIL and STIL}{6}{8} \\
+
+\ganttbar[
+        bar/.append style={fill=violet!60}
+]{Collection of AIS data}{7}{8} \\
+
+
+\ganttbar{Implementation of swarm algorithm}{6}{8} \\
+
+\ganttbar{Experiments \& Evaluation}{7}{9} \\
+
+\ganttbar[
+        bar/.append style={fill=violet!60}
+]{Thesis Writing}{5}{9} \\
+
+\ganttmilestone{Thesis Submission}{9}
+
+\end{ganttchart}%
+} % end resizebox
+
+\end{center}
+
+\noindent\rule{\linewidth}{0.4pt}\par
+
+\cleardoublepage
