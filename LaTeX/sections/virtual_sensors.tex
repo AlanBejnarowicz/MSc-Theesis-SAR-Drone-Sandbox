@@ -1,0 +1,92 @@
+\subsection{Introduction to Sensor Simulation}
+
+To bridge the gap between a high-fidelity physics environment and autonomous control logic, the simulation must provide synthetic data that replicates the characteristics of physical hardware. In a real-world marine deployment, the vessel’s State Estimation is derived from a suite of diverse sensors, each with its own coordinate frame, sampling rate, and error profile.The virtual sensor suite developed for this simulator focuses on three primary components:
+
+\begin{enumerate}
+    
+    \item \textbf{Global Positioning System (GPS):} Provides low-frequency absolute positioning and Ground Speed.
+    
+    \item \textbf{Inertial Measurement Unit (IMU):} A high-frequency 6-axis sensor measuring proper linear acceleration ($\mathbf{a}$) and angular velocity ($\mathbf{\omega}$).
+    
+    \item \textbf{Digital Compass/Magnetometer:} Provides a heading reference ($\psi$) relative to the magnetic North.
+
+\end{enumerate}
+
+The following sections detail the mathematical transformation of "Ground Truth" data—the perfect state vectors provided by the physics engine—into noisy, biased, and discretized signals. This approach ensures that control algorithms, such as PID loops or Extended Kalman Filters (EKF), are tested against the same signal degradation they would encounter at sea.
+
+
+
+
+
+\subsection{Global Positioning System (GPS) Simulation}
+
+The GPS module simulates a receiver providing absolute geographic coordinates $(\phi, \lambda)$. Because the simulation environment utilizes a flat Cartesian grid, a conversion between Euclidean distance and Geodetic displacement is required.A reference origin, $\text{GPS}_{ref}$, is defined with a known Latitude $\phi_0$ and Longitude $\lambda_0$. The current position is derived by projecting the ship's relative displacement $(\Delta x, \Delta z)$ onto the Earth's ellipsoidal surface (WGS84).The change in latitude $\Delta \phi$ is calculated as:
+
+\begin{equation}
+    \Delta \phi = \frac{\Delta z}{R_M}
+\end{equation}
+
+where $R_M$ is the meridian radius of curvature ($\approx 111,111$ m per degree).The change in longitude $\Delta \lambda$ depends on the current latitude, as the meridians converge toward the poles:
+
+\begin{equation}
+    \Delta \lambda = \frac{\Delta x}{R_E \cos(\phi_0)}
+\end{equation}
+
+where $R_E$ is the Earth's equatorial radius.The final simulated coordinates incorporate a lower sampling frequency ($f_s = 5-10$ Hz) and horizontal dilution of precision (HDOP) modeled as Gaussian noise $\eta_{gps}$:
+
+\begin{align}
+    \phi_{sim} &= \phi_0 + \Delta \phi + \eta_{\phi} \\lambda_{sim} &= \lambda_0 + \Delta \lambda + \eta_{\lambda}
+\end{align}
+
+
+
+
+
+
+\subsubsection{Inertial Measurement Unit (IMU) Simulation }
+
+The virtual IMU (Inertial Measurement Unit) is implemented to provide 
+high-frequency kinematic data, replicating a 6-axis MEMS (Micro-Electro-Mechanical Systems) sensor. 
+To maintain high fidelity for industrial control applications, the sensor is sampled at a frequency of $f_s = 200$~Hz within the physics integration loop. 
+
+\begin{equation}
+    \mathbf{a}_{sf, world} = \frac{\mathbf{v}t - \mathbf{v}{t-\Delta t}}{\Delta t} - \mathbf{g}
+\end{equation}
+
+where $\mathbf{g} = [0, -9.81, 0]^T$ represents the gravity vector. The world-space specific force is then transformed into the sensor's local coordinate system $\mathcal{B}$ using the inverse rotation transformation:
+
+\begin{equation}
+    \mathbf{a}{local} = \mathbf{R}^{-1} \cdot \mathbf{a}{sf, world}
+\end{equation}
+The gyroscope readings are derived directly from the rigid body's angular velocity vector $\mathbf{\omega}$. To align with the physical sensor orientation, the world-space angular velocity is projected onto the local axes of the sensor mount:
+
+\begin{equation}
+    \mathbf{\omega}{local} = \mathbf{R}^{-1} \cdot \mathbf{\omega}{world}
+\end{equation}
+
+To simulate electronic interference and mechanical vibrations, the raw signals are augmented with White Gaussian Noise. The noise is generated using the Box-Muller transform, which converts uniformly distributed random variables $u_1, u_2 \sim \mathcal{U}(0,1)$ into a normal distribution $\mathcal{N}(\mu, \sigma^2)$:
+
+\begin{equation}
+    z_0 = \sqrt{-2\ln(u_1)} \cos(2\pi u_2)
+\end{equation}
+
+The final simulated readings for acceleration $\mathbf{y}_a$ and rotation $\mathbf{y}_\omega$ are:\begin{align}\mathbf{y}a &= \mathbf{a}{local} + \mathbf{\eta}a, \quad \mathbf{\eta}a \sim \mathcal{N}(0, \sigma_a^2) \
+\mathbf{y}\omega &= \mathbf{\omega}{local} + \mathbf{\eta}\omega, \quad \mathbf{\eta}\omega \sim \mathcal{N}(0, \sigma_\omega^2)\end{align}where $\sigma_a$ and $\sigma_\omega$ are the standard deviation parameters defined in the sensor configuration.
+
+
+
+
+
+
+\subsubsection{Digital Compass (Magnetometer)}
+The heading $\psi$ is derived from the projection of the vessel's longitudinal unit vector $\mathbf{\hat{z}}_{body}$ onto the global horizontal $XZ$-plane. Assuming the magnetic North aligns with the global $+Z$ axis, the raw heading is given by:
+
+\begin{equation}
+    \psi_{raw} = \operatorname{atan2}(z_{body, x}, z_{body, z})
+\end{equation}
+
+To account for sensor imperfections in a marine environment, the simulated reading $\psi_{sim}$ incorporates additive white Gaussian noise $\eta_{m}$ to represent electromagnetic interference from the ship's motors:
+
+\begin{equation}
+    \psi_{sim} = (\psi_{raw} + \eta_{m}) \pmod{360^{\circ}}
+\end{equation}

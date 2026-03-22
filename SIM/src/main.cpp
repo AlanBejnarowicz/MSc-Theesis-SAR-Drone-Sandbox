@@ -38,7 +38,7 @@
 
 
 
-bool grid_enabled = false;
+bool grid_enabled = true;
 
 
 int main() {
@@ -68,10 +68,16 @@ int main() {
 
     GO_Manager.Spawn<SEA>("MainSea");
 
-    for(int i = 0; i < 10; i++){
-        Tools::Vector3 spawn_pos = {0, 0, i * 2.0};
-        GO_Manager.Spawn<DroneShip>("Drone_01", spawn_pos);
-    }    
+    float spacing = 10.0;
+
+    for(int k = 0; k < 30; k++){
+
+        for(int i = 0; i < 30; i++){
+            Tools::Vector3 spawn_pos = {k * spacing, 0, i * spacing};
+            GO_Manager.Spawn<DroneShip>("Drone_01", spawn_pos);
+        }  
+        
+    }
 
 
     
@@ -92,7 +98,7 @@ int main() {
         ClearBackground(GRAY);
         BeginMode3D(mainCamera.camera);
 
-            if(grid_enabled) DrawGrid(5000, 1.25f);
+        if(grid_enabled) DrawGrid(50000, 5.0f);
 
             GO_Manager.Draw_GameObjects();
 
@@ -103,6 +109,13 @@ int main() {
 
         // 2D UI
         GO_Manager.Draw2D_GameObjects();
+
+
+        // draw FPS number
+        if (dt != 0)
+        {
+            DrawText(TextFormat("FPS: %i", (int)(1.0f/dt)), GetScreenWidth() - 220, 40, 20, GREEN);
+        }
 
         EndDrawing();
 

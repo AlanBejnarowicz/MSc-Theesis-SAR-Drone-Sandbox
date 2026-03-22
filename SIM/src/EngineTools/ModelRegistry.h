@@ -42,7 +42,7 @@ class ModelManager  {
         void LoadImportantModels(void);
         void Update_ModelManager(float dt);
 
-        Model LoadModelFromReg(const std::string& name);
+        Model* LoadModelFromReg(const std::string& name);
         void RegisterModel(const std::string& path, const std::string& name);
 
 

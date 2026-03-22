@@ -4,6 +4,7 @@
 
 
 #include <vector>
+#include <map>
 #include <memory>
 #include <raylib.h>
 #include <string>
@@ -39,6 +40,10 @@ class GameObject {
             registry = globalList;
         }
 
+        void SetRenderQueue(std::map<Model*, std::vector<Matrix>>* globalList) {
+            renderQueue = globalList;
+        }
+
 
         std::string GameObjectName = "NewGameObject";
         int GameObjectID = 0;
@@ -55,6 +60,8 @@ class GameObject {
         Tools::Vector3 position;
         Tools::Quaternion rotation;
         std::vector<std::unique_ptr<GameObject>>* registry = nullptr;
+        std::map<Model*, std::vector<Matrix>>* renderQueue = nullptr;
+
 
         
 

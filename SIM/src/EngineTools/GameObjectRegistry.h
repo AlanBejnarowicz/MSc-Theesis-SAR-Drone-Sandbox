@@ -4,12 +4,16 @@
 #include <iostream>
 #include <math.h>
 
+#include <raylib.h>
+#include "raymath.h"
+
 
 #include <thread>
 #include <atomic>
 #include <chrono>
 #include <mutex>
 #include <vector>
+#include <map>
 #include <memory>
 #include <iostream>
 
@@ -30,8 +34,12 @@ class GameObjectManager  {
 
     private:
 
+    // default sharder
+    Shader lightingInstanced;
+
     // main collection of GameObjects
     std::vector<std::unique_ptr<GameObject>> objects_registry;    
+    std::map<Model*, std::vector<Matrix>> renderQueue;
 
     
     public:

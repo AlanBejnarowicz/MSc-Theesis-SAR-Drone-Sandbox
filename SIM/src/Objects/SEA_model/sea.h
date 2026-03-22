@@ -23,11 +23,14 @@ class SEA : public GameObject {
         Shader sea_shader;
         int secondsLoc;
 
-        float wave_amplitude_scale = 0.5f;
+        float wave_amplitude_scale = 3.0f;
 
-        float spacing = 1.0f; // Distance between vertices
-        int SEA_vertices_width = 200;     // Number of vertices along width
-        int SEA_vertices_depth = 200;     // Number of vertices along depth
+        float spacing = 10.0f; // Distance between vertices
+        int SEA_vertices_width = 50;     // Number of vertices along width
+        int SEA_vertices_depth = 50;     // Number of vertices along depth
+
+        //camera possition
+        Tools::Vector3 cam_possition;
 
         float timer;
 

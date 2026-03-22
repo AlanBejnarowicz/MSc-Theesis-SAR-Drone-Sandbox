@@ -35,15 +35,16 @@ void ModelManager::Update_ModelManager(float dt){
 
 
 
-Model ModelManager::LoadModelFromReg(const std::string& name){
+Model* ModelManager::LoadModelFromReg(const std::string& name){
 
-    for (const auto& md : loaded_models) {
+    for (auto& md : loaded_models) {
 
         if(md.name == name){
-            return md.model;
+            return &md.model;
         }
 
     }
+    return nullptr;
 
 }
 

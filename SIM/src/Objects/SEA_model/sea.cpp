@@ -77,7 +77,7 @@ void SEA::Update(float dt) {
 
 void SEA::Draw() {
     
-    DrawModel(model, Vector3{0, 0, 0}, 1.0f, WHITE);
+    //DrawModel(model, Vector3{0, 0, 0}, 1.0f, WHITE);
 
 
     // // draw debug vector for wave
@@ -93,6 +93,8 @@ void SEA::Draw() {
 
     // DrawLine3D(start, end, RED);
     // DrawSphere(start, 0.1f, RED); // Small dot at the base of the normal
+
+    DrawModelWires(model, Vector3{0, 0, 0}, 1.0f, RED);
 
 
 
@@ -141,8 +143,8 @@ float SEA::calculate_total_wave_height(Tools::Vector3 pos) {
 void SEA::update_wave(void){
 
     for (int i = 0; i < SEA_vertices_width * SEA_vertices_depth; i++) {
-        float x = mesh.vertices[i * 3];
-        float z = mesh.vertices[i * 3 + 2];
+        double x = mesh.vertices[i * 3];
+        double z = mesh.vertices[i * 3 + 2];
 
         Tools::Vector3 pos(x,0,z);
 

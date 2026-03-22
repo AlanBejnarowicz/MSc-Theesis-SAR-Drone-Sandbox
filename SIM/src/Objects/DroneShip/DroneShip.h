@@ -28,6 +28,7 @@ class DroneShip : public GameObject {
 
         // Rotate model to align with forward direction
         Tools::Quaternion model_correction = Tools::Quaternion(M_PI, 0.0f, M_PI/2); 
+        Matrix static_base_transform;
 
         SEA* _sea_model = nullptr;
 
@@ -39,7 +40,7 @@ class DroneShip : public GameObject {
 
 
     public:
-        Model ship_model;
+        Model* ship_model = nullptr;
 
         Rigidbody rb;
         Tracker tr;
