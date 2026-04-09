@@ -1,0 +1,3 @@
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/build/CMakeFiles/drone_controller.dir
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/build/CMakeFiles/edit_cache.dir
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/build/CMakeFiles/rebuild_cache.dir
