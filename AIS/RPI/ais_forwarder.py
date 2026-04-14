@@ -5,7 +5,7 @@ import time
 
 AIS_PORT   = "/dev/ttyACM0"   # or /dev/ttyUSB0 — check with: ls /dev/tty*
 AIS_BAUD   = 38400
-PC_HOST    = "localhost"  # your PC's local IP
+PC_HOST    = "192.168.1.197"  # your PC's local IP
 PC_PORT    = 5001
 
 def connect_tcp():
