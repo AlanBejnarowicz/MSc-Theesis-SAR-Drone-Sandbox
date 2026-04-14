@@ -1,24 +1,4 @@
 # ninja log v5
-1	2051	1775767437539972885	CMakeFiles/drone_controller.dir/src/main.cpp.o	f5e8475e7455f338
-2052	2124	1775767437616973236	drone_controller	7081d53c45abc6fe
-2	393	1775768196056859738	CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o	3c50a314154b96c7
-2	2142	1775768197799616981	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2142	2243	1775768197904618399	drone_controller	db33ef5775b8b8ce
-1	2150	1775768290121803390	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2150	2228	1775768290203804393	drone_controller	db33ef5775b8b8ce
-2	2152	1775769369027008254	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2152	2231	1775769369109008799	drone_controller	db33ef5775b8b8ce
-2	2101	1775769523035016882	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2101	2189	1775769523126017470	drone_controller	db33ef5775b8b8ce
-2	2171	1775769749989456730	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2171	2251	1775769750073457255	drone_controller	db33ef5775b8b8ce
-1	2202	1775769824361919626	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2202	2289	1775769824453920197	drone_controller	db33ef5775b8b8ce
-2	2148	1775769874792231525	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2148	2231	1775769874879232062	drone_controller	db33ef5775b8b8ce
-2	402	1775769980045170440	CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o	3c50a314154b96c7
-2	2043	1775769981680888052	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2043	2116	1775769981756888517	drone_controller	db33ef5775b8b8ce
-1	391	1775770159511261365	CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o	3c50a314154b96c7
 1	2152	1775770161267942119	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
 2152	2229	1775770161347942509	drone_controller	db33ef5775b8b8ce
+1	391	1775770159511261365	CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o	3c50a314154b96c7

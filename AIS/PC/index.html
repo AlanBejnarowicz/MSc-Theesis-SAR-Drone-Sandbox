@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AIS Live Tracker</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #0a0f1a; color: #cdd; }
+    #map { width: 100vw; height: 100vh; }
+    #hud { position: fixed; top: 10px; left: 10px; z-index: 999;
+           background: rgba(10,20,40,0.85); padding: 10px 16px;
+           border-radius: 8px; font-size: 13px; min-width: 180px; }
+    #hud h3 { margin: 0 0 6px; font-size: 14px; color: #7df; }
+    .ship-count { font-size: 22px; font-weight: bold; color: #7df; }
+  </style>
+</head>
+<body>
+<div id="hud">
+  <h3>AIS Live Tracker</h3>
+  Ships visible: <span class="ship-count" id="count">0</span>
+  <br><small id="status" style="color:#888">Connecting...</small>
+</div>
+<div id="map"></div>
+<script>
+  const map = L.map('map').setView([54.5, 18.5], 9); // adjust to your area
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18, attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  // Nautical chart tiles (OpenSeaMap overlay)
+  L.tileLayer('https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png', {
+    maxZoom: 18, opacity: 0.7, attribution: '© OpenSeaMap'
+  }).addTo(map);
+
+  const ships = {};   // mmsi -> {marker, trail}
+  const trails = {};  // mmsi -> array of [lat,lon]
+
+  function getColor(type) {
+    if (type >= 60 && type <= 69) return '#f90';  // passenger
+    if (type >= 70 && type <= 79) return '#0af';  // cargo
+    if (type >= 80 && type <= 89) return '#f44';  // tanker
+    return '#7df';
+  }
+
+  function shipIcon(course, color) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="-11 -11 22 22">
+      <polygon points="0,-9 5,7 0,4 -5,7" fill="${color}" stroke="#000" stroke-width="0.8"
+        transform="rotate(${course || 0})"/>
+    </svg>`;
+    return L.divIcon({ html: svg, className: '', iconSize: [22,22], iconAnchor: [11,11] });
+  }
+
+  function update(d) {
+    if (!d.lat || !d.lon) return;
+    const color = getColor(d.type);
+    const key = d.mmsi;
+
+    if (!trails[key]) trails[key] = [];
+    trails[key].push([d.lat, d.lon]);
+    if (trails[key].length > 60) trails[key].shift();
+
+    if (ships[key]) {
+      ships[key].marker.setLatLng([d.lat, d.lon]);
+      ships[key].marker.setIcon(shipIcon(d.course, color));
+      ships[key].polyline.setLatLngs(trails[key]);
+    } else {
+      const marker = L.marker([d.lat, d.lon], { icon: shipIcon(d.course, color) })
+        .bindPopup(`<b>${d.name || 'MMSI ' + d.mmsi}</b><br>
+          MMSI: ${d.mmsi}<br>Speed: ${d.speed?.toFixed(1)} kn<br>
+          Course: ${d.course?.toFixed(0)}°<br>Type: ${d.type}`)
+        .addTo(map);
+      const polyline = L.polyline(trails[key], { color, weight: 1.5, opacity: 0.5 }).addTo(map);
+      ships[key] = { marker, polyline };
+    }
+    document.getElementById('count').textContent = Object.keys(ships).length;
+  }
+
+  function connect() {
+    const ws = new WebSocket(`ws://${location.hostname}:8080`);
+    ws.onopen = () => document.getElementById('status').textContent = 'Connected ✓';
+    ws.onclose = () => {
+      document.getElementById('status').textContent = 'Reconnecting...';
+      setTimeout(connect, 3000);
+    };
+    ws.onmessage = e => update(JSON.parse(e.data));
+  }
+  connect();
+</script>
+</body>
+</html>
