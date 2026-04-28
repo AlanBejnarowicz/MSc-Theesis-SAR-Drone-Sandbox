@@ -38,33 +38,23 @@
       display: flex; flex-direction: column;
     }
 
-    #sidebar-header {
-      padding: 14px 16px 10px;
-      border-bottom: 1px solid var(--border);
-    }
+    #sidebar-header { padding: 14px 16px 10px; border-bottom: 1px solid var(--border); }
     #sidebar-header h1 {
-      font-family: var(--font-ui);
-      font-size: 15px; font-weight: 700;
-      color: var(--accent); letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-family: var(--font-ui); font-size: 15px; font-weight: 700;
+      color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase;
     }
     #ws-status { font-size: 10px; color: var(--muted); margin-top: 3px; display: block; }
     #ws-status.ok { color: var(--accent2); }
 
     #export-panel {
-      padding: 10px 16px;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg3);
+      padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--bg3);
     }
     #export-panel h2, #recorder h2 {
-      font-family: var(--font-ui);
-      font-size: 10px; font-weight: 700;
+      font-family: var(--font-ui); font-size: 10px; font-weight: 700;
       color: var(--muted); letter-spacing: 0.12em;
       text-transform: uppercase; margin-bottom: 8px;
     }
-    .export-row {
-      display: flex; gap: 6px; align-items: center; margin-bottom: 6px;
-    }
+    .export-row { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; }
     .export-row label { font-size: 10px; color: var(--muted); min-width: 42px; }
     select, input[type=number] {
       background: var(--bg); border: 1px solid var(--border);
@@ -76,11 +66,9 @@
 
     .btn-row { display: flex; gap: 6px; margin-top: 6px; }
     .btn {
-      flex: 1; padding: 6px 8px;
-      border: 1px solid var(--border); border-radius: 4px;
-      background: var(--bg); color: var(--text);
-      font-family: var(--font-mono); font-size: 11px;
-      cursor: pointer; transition: all 0.15s; text-align: center;
+      flex: 1; padding: 6px 8px; border: 1px solid var(--border); border-radius: 4px;
+      background: var(--bg); color: var(--text); font-family: var(--font-mono);
+      font-size: 11px; cursor: pointer; transition: all 0.15s; text-align: center;
     }
     .btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,212,255,0.05); }
     .btn.primary { border-color: var(--accent2); color: var(--accent2); }
@@ -90,11 +78,9 @@
 
     #recorder { padding: 10px 16px; border-bottom: 1px solid var(--border); }
     #rec-btn {
-      width: 100%; padding: 7px;
-      border: 1px solid var(--accent2); border-radius: 4px;
+      width: 100%; padding: 7px; border: 1px solid var(--accent2); border-radius: 4px;
       background: rgba(0,255,157,0.06); color: var(--accent2);
-      font-family: var(--font-mono); font-size: 11px;
-      cursor: pointer; transition: all 0.2s;
+      font-family: var(--font-mono); font-size: 11px; cursor: pointer; transition: all 0.2s;
     }
     #rec-btn.recording {
       border-color: var(--danger); color: var(--danger);
@@ -114,14 +100,13 @@
     #ship-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
     .ship-item {
-      padding: 8px 16px;
-      border-bottom: 1px solid var(--border);
-      cursor: pointer; transition: background 0.1s;
-      border-left: 2px solid transparent;
+      padding: 8px 16px; border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: background 0.1s; border-left: 2px solid transparent;
     }
     .ship-item:hover { background: var(--bg3); }
     .ship-item.active { background: var(--bg3); border-left-color: var(--accent); }
     .ship-item.tracking { border-left-color: var(--accent2); }
+    .ship-item.timed-out { opacity: 0.45; }
 
     .ship-name {
       font-family: var(--font-ui); font-size: 12px; font-weight: 700;
@@ -144,9 +129,8 @@
     #track-info {
       position: fixed; bottom: 20px; right: 20px;
       background: var(--bg2); border: 1px solid var(--accent);
-      border-radius: 6px; padding: 12px 16px;
-      font-size: 11px; z-index: 1000;
-      min-width: 220px; display: none;
+      border-radius: 6px; padding: 12px 16px; font-size: 11px;
+      z-index: 1000; min-width: 220px; display: none;
       box-shadow: 0 0 20px rgba(0,212,255,0.15);
     }
     #track-info h3 { font-family: var(--font-ui); font-size: 13px; color: var(--accent); margin-bottom: 6px; }
@@ -157,12 +141,9 @@
     #map { flex: 1; height: 100vh; }
 
     .leaflet-popup-content-wrapper {
-      background: var(--bg2) !important;
-      border: 1px solid var(--border) !important;
-      color: var(--text) !important;
-      font-family: var(--font-mono) !important;
-      font-size: 11px !important;
-      border-radius: 6px !important;
+      background: var(--bg2) !important; border: 1px solid var(--border) !important;
+      color: var(--text) !important; font-family: var(--font-mono) !important;
+      font-size: 11px !important; border-radius: 6px !important;
       box-shadow: 0 0 16px rgba(0,212,255,0.1) !important;
     }
     .leaflet-popup-content { margin: 12px 14px !important; }
@@ -173,6 +154,7 @@
     .popup-val { color: var(--text); }
     .popup-lastseen { color: var(--accent2); }
     .popup-lastseen.stale { color: var(--warn); }
+    .popup-lastseen.timedout { color: var(--danger); }
     .popup-track-btn {
       margin-top: 10px; width: 100%; padding: 6px;
       border: 1px solid var(--accent2); border-radius: 3px;
@@ -237,7 +219,7 @@
   <div id="ship-list"></div>
 
   <div id="status-bar">
-    <span id="count">0</span> ships &nbsp;|&nbsp; <span id="track-count">0</span> with position
+    <span id="count">0</span> visible &nbsp;|&nbsp; <span id="total-count">0</span> total
   </div>
 </div>
 
@@ -252,12 +234,12 @@
 <div id="map"></div>
 
 <script>
-  const map = L.map('map').setView([54.36, 18.66], 12);
+  const TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes
 
+  const map = L.map('map').setView([54.36, 18.66], 12);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18, attribution: '© OpenStreetMap'
   }).addTo(map);
-
   L.tileLayer('https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png', {
     maxZoom: 18, opacity: 0.7, attribution: '© OpenSeaMap'
   }).addTo(map);
@@ -298,6 +280,11 @@
     return `${Math.floor(sec / 3600)}h ago`;
   }
 
+  function isTimedOut(s) {
+    // timed out = has a real lastSeen AND it's older than 10min
+    return s.lastSeen && (Date.now() - s.lastSeen) > TIMEOUT_MS;
+  }
+
   function isStale(ms) {
     return ms && (Date.now() - ms) > 60000;
   }
@@ -305,6 +292,9 @@
   function buildPopup(mmsi) {
     const s = ships[mmsi];
     if (!s) return '';
+    const timedOut = isTimedOut(s);
+    const stale    = isStale(s.lastSeen);
+    const cls      = timedOut ? 'timedout' : stale ? 'stale' : '';
     return `
       <div class="popup-name">${s.name || 'Unknown vessel'}</div>
       <div class="popup-row"><span class="popup-label">MMSI</span><span class="popup-val">${mmsi}</span></div>
@@ -313,13 +303,27 @@
       <div class="popup-row"><span class="popup-label">Type</span><span class="popup-val">${s.type || '—'}</span></div>
       <div class="popup-row">
         <span class="popup-label">Last rx</span>
-        <span class="popup-val popup-lastseen ${isStale(s.lastSeen) ? 'stale' : ''}" id="lastseen-${mmsi}">
+        <span class="popup-val popup-lastseen ${cls}" id="lastseen-${mmsi}">
           ${timeSince(s.lastSeen)}
         </span>
       </div>
+      ${timedOut ? '<div style="color:var(--danger);font-size:10px;margin-top:6px">⚠ Off map — no signal >10min</div>' : ''}
       <button class="popup-track-btn" onclick="loadTrack('${mmsi}','${(s.name||'').replace(/'/g,"\\'")}')">
         ◉ Show full track (24h)
       </button>`;
+  }
+
+  // Hide or show marker based on timeout
+  function syncMarkerVisibility(mmsi) {
+    const s = ships[mmsi];
+    if (!s || !s.marker) return;
+    if (isTimedOut(s)) {
+      if (map.hasLayer(s.marker))    map.removeLayer(s.marker);
+      if (map.hasLayer(s.polyline))  map.removeLayer(s.polyline);
+    } else {
+      if (!map.hasLayer(s.marker))   s.marker.addTo(map);
+      if (!map.hasLayer(s.polyline)) s.polyline.addTo(map);
+    }
   }
 
   async function loadTrack(mmsi, name) {
@@ -335,19 +339,16 @@
       if (data.length < 2) {
         document.getElementById('track-points').textContent = `${data.length} position(s) — not enough for track`;
         document.getElementById('track-range').textContent = '';
-        renderList();
-        return;
+        renderList(); return;
       }
 
       const latlngs = data.map(p => [p.lat, p.lon]);
       const color   = getColor(ships[mmsi]?.type || 0);
       const segs    = [];
-
       for (let i = 1; i < latlngs.length; i++) {
         const alpha = 0.15 + 0.85 * (i / latlngs.length);
         segs.push(L.polyline([latlngs[i-1], latlngs[i]], { color, weight: 2.5, opacity: alpha }));
       }
-
       const mkStart = L.divIcon({
         html: `<div style="width:8px;height:8px;border-radius:50%;background:#4a6070;border:1px solid #080f1a"></div>`,
         className: '', iconSize: [8,8], iconAnchor: [4,4]
@@ -356,7 +357,6 @@
         html: `<div style="width:10px;height:10px;border-radius:50%;background:${color};border:2px solid #080f1a"></div>`,
         className: '', iconSize: [10,10], iconAnchor: [5,5]
       });
-
       trackLayer = L.layerGroup([
         ...segs,
         L.marker(latlngs[0], { icon: mkStart }),
@@ -381,24 +381,38 @@
 
   function renderList() {
     const entries = Object.values(ships).sort((a, b) => {
+      // timed-out ships go to bottom
+      const aOut = isTimedOut(a), bOut = isTimedOut(b);
+      if (aOut && !bOut) return 1;
+      if (!aOut && bOut) return -1;
       if (a.name && !b.name) return -1;
       if (!a.name && b.name) return 1;
       return (a.name || '').localeCompare(b.name || '');
     });
 
+    const visible = entries.filter(s => !isTimedOut(s));
+    document.getElementById('count').textContent = visible.length;
+    document.getElementById('total-count').textContent = entries.length;
+
     document.getElementById('ship-list').innerHTML = entries.map(s => {
-      const color  = getColor(s.type);
-      const hasPos = s.lat != null && s.lon != null;
-      const stale  = isStale(s.lastSeen);
-      return `<div class="ship-item ${s.mmsi === selectedMmsi ? 'active' : ''} ${s.mmsi === trackMmsi ? 'tracking' : ''}"
-                   onclick="selectShip('${s.mmsi}')">
+      const color    = getColor(s.type);
+      const hasPos   = s.lat != null && s.lon != null;
+      const timedOut = isTimedOut(s);
+      const stale    = isStale(s.lastSeen);
+      const timeColor = timedOut ? 'var(--danger)' : stale ? 'var(--warn)' : 'var(--accent2)';
+      return `<div class="ship-item
+                ${s.mmsi === selectedMmsi ? 'active' : ''}
+                ${s.mmsi === trackMmsi ? 'tracking' : ''}
+                ${timedOut ? 'timed-out' : ''}"
+                onclick="selectShip('${s.mmsi}')">
         <div class="ship-name ${s.name ? '' : 'unknown'}">
-          <span class="ship-dot" style="background:${color};opacity:${stale ? 0.4 : 1}"></span>
+          <span class="ship-dot" style="background:${color};opacity:${timedOut ? 0.3 : stale ? 0.6 : 1}"></span>
           ${s.name || 'Unknown'}
           ${s.mmsi === trackMmsi ? '<span style="color:var(--accent2);font-size:9px;margin-left:4px">◉ TRACK</span>' : ''}
+          ${timedOut ? '<span style="color:var(--danger);font-size:9px;margin-left:4px">LOST</span>' : ''}
         </div>
         <div class="ship-mmsi">MMSI: ${s.mmsi} &nbsp;·&nbsp;
-          <span style="color:${stale ? 'var(--warn)' : 'var(--accent2)'}">${timeSince(s.lastSeen)}</span>
+          <span style="color:${timeColor}">${timeSince(s.lastSeen)}</span>
         </div>
         <div class="ship-coords ${hasPos ? '' : 'no-pos'}">
           ${hasPos ? `${formatCoord(s.lat,'N','S')} ${formatCoord(s.lon,'E','W')}` : 'No position fix'}
@@ -406,15 +420,12 @@
         ${s.speed != null ? `<div class="ship-speed">${s.speed.toFixed(1)} kn · ${(s.course||0).toFixed(0)}°</div>` : ''}
       </div>`;
     }).join('');
-
-    document.getElementById('count').textContent = entries.length;
-    document.getElementById('track-count').textContent = entries.filter(s => s.lat).length;
   }
 
   function selectShip(mmsi) {
     selectedMmsi = mmsi;
     const s = ships[mmsi];
-    if (s && s.lat && s.lon) {
+    if (s && s.lat && s.lon && !isTimedOut(s)) {
       map.setView([s.lat, s.lon], 15);
       if (s.marker) s.marker.openPopup();
     }
@@ -432,13 +443,22 @@
     if (d.type)           ships[key].type   = d.type;
     if (d.speed  != null) ships[key].speed  = d.speed;
     if (d.course != null) ships[key].course = d.course;
-    if (!d.historic)      ships[key].lastSeen = Date.now();
+
+    // historic ships get lastSeen from DB timestamp, live ships get now
+    if (d.historic && d.ts) {
+      const dbTime = new Date(d.ts).getTime();
+      if (!isNaN(dbTime)) ships[key].lastSeen = dbTime;
+    } else if (!d.historic) {
+      ships[key].lastSeen = Date.now();
+    }
 
     if (d.lat && d.lon) {
       ships[key].lat = d.lat;
       ships[key].lon = d.lon;
-      const color = getColor(d.type);
-      const isSel = key === selectedMmsi;
+
+      const color    = getColor(d.type);
+      const isSel    = key === selectedMmsi;
+      const timedOut = isTimedOut(ships[key]);
 
       if (!trails[key]) trails[key] = [];
       if (!d.historic) {
@@ -455,10 +475,8 @@
         if (!d.historic) ships[key].polyline.setLatLngs(trails[key]);
       } else {
         ships[key].marker = L.marker([d.lat, d.lon], { icon: shipIcon(d.course, color, isSel) })
-          .bindPopup(buildPopup(key), { maxWidth: 230 })
-          .addTo(map);
-        ships[key].polyline = L.polyline(trails[key],
-          { color, weight: 1, opacity: 0.3 }).addTo(map);
+          .bindPopup(buildPopup(key), { maxWidth: 230 });
+        ships[key].polyline = L.polyline(trails[key], { color, weight: 1, opacity: 0.3 });
         ships[key].marker.on('click', () => {
           selectedMmsi = key;
           document.getElementById('exp-sel-btn').disabled = false;
@@ -466,6 +484,9 @@
           renderList();
         });
       }
+
+      // add/remove from map based on timeout
+      syncMarkerVisibility(key);
     }
 
     if (recording && !d.historic) {
@@ -478,8 +499,10 @@
     renderList();
   }
 
+  // WebSocket — auto wss:// on https (Cloudflare), ws:// on http (local)
   function connect() {
-    const ws = new WebSocket(`ws://${location.hostname}:8080`);
+    const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const ws = new WebSocket(`${proto}//${location.host}/ws`);
     ws.onopen = () => {
       document.getElementById('ws-status').textContent = 'Connected ✓';
       document.getElementById('ws-status').className = 'ok';
@@ -493,14 +516,27 @@
   }
   connect();
 
-  // refresh last-seen every second in open popups
+  // Tick every 10s — update timers and sync marker visibility
+  setInterval(() => {
+    Object.keys(ships).forEach(mmsi => {
+      syncMarkerVisibility(mmsi);
+      const el = document.getElementById(`lastseen-${mmsi}`);
+      if (el) {
+        const s   = ships[mmsi];
+        const out = isTimedOut(s);
+        const stl = isStale(s.lastSeen);
+        el.textContent = timeSince(s.lastSeen);
+        el.className = `popup-val popup-lastseen ${out ? 'timedout' : stl ? 'stale' : ''}`;
+      }
+    });
+    renderList();
+  }, 10000);
+
+  // Fast tick — update last-seen text in open popups
   setInterval(() => {
     Object.keys(ships).forEach(mmsi => {
       const el = document.getElementById(`lastseen-${mmsi}`);
-      if (el) {
-        el.textContent = timeSince(ships[mmsi].lastSeen);
-        el.className = `popup-val popup-lastseen ${isStale(ships[mmsi].lastSeen) ? 'stale' : ''}`;
-      }
+      if (el) el.textContent = timeSince(ships[mmsi].lastSeen);
     });
   }, 1000);
 

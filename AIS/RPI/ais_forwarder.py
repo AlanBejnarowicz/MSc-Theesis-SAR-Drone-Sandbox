@@ -1,12 +1,12 @@
-# ais_forwarder.py  — runs on RPi Zero
+# ais_forwarder.py  — runs on RPi Zero / Orange Pi
 import serial
 import socket
 import time
 
-AIS_PORT   = "/dev/ttyACM0"   # or /dev/ttyUSB0 — check with: ls /dev/tty*
-AIS_BAUD   = 38400
-PC_HOST    = "192.168.1.197"  # your PC's local IP
-PC_PORT    = 5001
+AIS_PORT = "/dev/ais"
+AIS_BAUD = 38400
+PC_HOST  = "localhost"
+PC_PORT  = 5001
 
 def connect_tcp():
     while True:
@@ -19,17 +19,39 @@ def connect_tcp():
             print(f"TCP connect failed: {e}, retrying in 5s...")
             time.sleep(5)
 
+def connect_serial():
+    while True:
+        try:
+            ser = serial.Serial(AIS_PORT, AIS_BAUD, timeout=2)
+            print(f"Serial opened: {AIS_PORT}")
+            return ser
+        except serial.SerialException as e:
+            print(f"Serial connect failed: {e}, retrying in 5s...")
+            time.sleep(5)
+
 def main():
     sock = connect_tcp()
-    with serial.Serial(AIS_PORT, AIS_BAUD, timeout=2) as ser:
-        while True:
+    ser  = connect_serial()
+
+    while True:
+        try:
+            line = ser.readline().decode("ascii", errors="ignore").strip()
+            if line.startswith("!AIVDM") or line.startswith("!AIVDO"):
+                sock.sendall((line + "\n").encode())
+
+        except serial.SerialException as e:
+            print(f"Serial error: {e} — reconnecting in 5s...")
+            time.sleep(5)
             try:
-                line = ser.readline().decode("ascii", errors="ignore").strip()
-                if line.startswith("!AIVDM") or line.startswith("!AIVDO"):
-                    sock.sendall((line + "\n").encode())
-            except (socket.error, serial.SerialException) as e:
-                print(f"Error: {e} — reconnecting...")
-                sock = connect_tcp()
+                ser.close()
+            except:
+                pass
+            ser = connect_serial()
+
+        except socket.error as e:
+            print(f"TCP error: {e} — reconnecting in 5s...")
+            time.sleep(5)
+            sock = connect_tcp()
 
 if __name__ == "__main__":
     main()

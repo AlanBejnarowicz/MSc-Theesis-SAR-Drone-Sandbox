@@ -41,17 +41,64 @@
 \@writefile{toc}{\contentsline {subsection}{Introduction to Sensor Simulation}{9}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{Global Positioning System (GPS) Simulation}{10}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Inertial Measurement Unit (IMU) Simulation }{10}{}\protected@file@percent }
-\citation{W2025_ONRT}
 \@writefile{toc}{\contentsline {subsubsection}{Digital Compass (Magnetometer)}{11}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {0.4}Default drone parameters}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.4}Software in the Loop and Hardware in the Loop Communication Architecture}{11}{}\protected@file@percent }
+\newlabel{sec:sitl_hitl}{{0.4}{11}{Software in the Loop and Hardware in the Loop Communication Architecture}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Simulation <-> Controller Communication Protocol}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Packet Structure}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{State Packet (Simulator $\rightarrow $ Controller)}{12}{}\protected@file@percent }
+\newlabel{lst:state_packet}{{1}{12}{State packet JSON schema}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}State packet JSON schema.}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Command Packet (Controller $\rightarrow $ Simulator)}{12}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.3}{\ignorespaces State packet sensor blocks.}}{13}{}\protected@file@percent }
+\newlabel{tab:sensor_blocks}{{0.3}{13}{State packet sensor blocks}{}{}}
+\newlabel{lst:cmd_packet}{{2}{13}{Command packet JSON schema}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}Command packet JSON schema.}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{System Block Diagram}{13}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.7}{\ignorespaces Software-in-the-Loop and Hardware-in-the-Loop communication architecture.}}{13}{}\protected@file@percent }
+\newlabel{fig:sitl_hitl}{{0.7}{13}{Software-in-the-Loop and Hardware-in-the-Loop communication architecture}{}{}}
+\@writefile{toc}{\contentsline {subsection}{SITL Operation}{13}{}\protected@file@percent }
+\citation{W2025_ONRT}
+\@writefile{toc}{\contentsline {subsection}{HITL Migration Path}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.5}Default drone parameters}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.6}AIS - Automatic Identification System}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Transmission Mechanism}{15}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.4}{\ignorespaces AIS Reporting Intervals for Shipborne Mobile Equipment (ITU-R M.1371-5)}}{15}{}\protected@file@percent }
+\newlabel{tab:ais_reporting_rates}{{0.4}{15}{AIS Reporting Intervals for Shipborne Mobile Equipment (ITU-R M.1371-5)}{}{}}
+\gdef \LT@i {\LT@entry 
+    {1}{40.30476pt}\LT@entry 
+    {5}{134.08163pt}\LT@entry 
+    {5}{58.5459pt}\LT@entry 
+    {5}{215.55333pt}}
+\@writefile{toc}{\contentsline {subsection}{Data Transmitted}{16}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Vessel Type Classification}{16}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.5}{AIS Vessel Type Codes (ITU-R M.1371)}}{16}{}\protected@file@percent }
+\newlabel{tab:ais-vessel-types}{{0.5}{16}{AIS Vessel Type Codes (ITU-R M.1371)}{}{}}
+\@writefile{toc}{\contentsline {subsection}{AIS Vulnerability: GPS Integration and Spoofing}{17}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.8}{\ignorespaces GPS spoofing attack on a vessel, showing the compromised GPS signal.}}{18}{}\protected@file@percent }
+\newlabel{fig:spoofed_GPS}{{0.8}{18}{GPS spoofing attack on a vessel, showing the compromised GPS signal}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Synthetic and Virtual AIS Aids to Navigation (AtoNs)}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.7}AIS data collection}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{AIS Data Sources}{19}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.9}{\ignorespaces My homemade AIS receiver system diagram.}}{19}{}\protected@file@percent }
+\newlabel{fig:AIS_RX_system}{{0.9}{19}{My homemade AIS receiver system diagram}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {0.10}{\ignorespaces My AIS data visualization web interface showing nearby vessels in real-time.}}{20}{}\protected@file@percent }
+\newlabel{fig:AIS_website}{{0.10}{20}{My AIS data visualization web interface showing nearby vessels in real-time}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Antenna and range}{20}{}\protected@file@percent }
 \bibstyle{plain}
 \bibdata{mybibliography}
+\newlabel{lst:ais_csv_export}{{3}{21}{Subsection of exported AIS telemetry for Oceania}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}Subsection of exported AIS telemetry for Oceania.}{21}{}\protected@file@percent }
 \bibcite{aishub2025}{1}
 \bibcite{alves2003revisiting}{2}
-\bibcite{openseamap2025}{3}
-\bibcite{YARA}{4}
-\bibcite{W2025_ONRT}{5}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{13}{}\protected@file@percent }
-\memsetcounter{lastsheet}{16}
-\memsetcounter{lastpage}{13}
-\gdef \@abspage@last{16}
+\bibcite{armbian_os}{3}
+\bibcite{emtrak_b100_manual}{4}
+\bibcite{openseamap2025}{5}
+\bibcite{OpenStreetMap}{6}
+\bibcite{orangepi_pc_manual}{7}
+\bibcite{YARA}{8}
+\bibcite{W2025_ONRT}{9}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{22}{}\protected@file@percent }
+\memsetcounter{lastsheet}{25}
+\memsetcounter{lastpage}{22}
+\gdef \@abspage@last{25}

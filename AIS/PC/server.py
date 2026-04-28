@@ -1,12 +1,12 @@
-# server.py — runs on your PC
+# server.py — runs on your PC / Orange Pi
 import os
-import asyncio, json, sqlite3, websockets, socket
+import asyncio, json, sqlite3, socket
 from datetime import datetime, timezone, timedelta
 from pyais import decode
 from aiohttp import web
+import aiohttp
 
 TCP_PORT  = 5001
-WS_PORT   = 8080
 HTTP_PORT = 8000
 
 connected_browsers = set()
@@ -74,33 +74,42 @@ async def load_known_ships():
 
 
 async def broadcast(msg):
-    global connected_browsers
+    print(f"[BROADCAST] {len(connected_browsers)} browsers")
     dead = set()
     for ws in connected_browsers:
         try:
-            await ws.send(msg)
-        except:
+            await ws.send_str(msg)
+        except Exception as e:
+            print(f"[BROADCAST ERROR] {e}")
             dead.add(ws)
     connected_browsers -= dead
 
 
-async def ws_handler(websocket):
-    connected_browsers.add(websocket)
+
+
+async def ws_handler(request):
+    ws = web.WebSocketResponse()
+    await ws.prepare(request)
+    connected_browsers.add(ws)
     try:
         rows = db.execute("""
-            SELECT mmsi, name, ship_type, last_lat, last_lon, last_speed, last_course
+            SELECT mmsi, name, ship_type, last_lat, last_lon, last_speed, last_course, last_seen
             FROM ship_registry
         """).fetchall()
         for r in rows:
             payload = {
                 "mmsi": r[0], "name": r[1] or "", "type": r[2] or 0,
                 "lat": r[3], "lon": r[4], "speed": r[5], "course": r[6],
-                "ts": "", "historic": True
+                "ts": r[7] or "", "historic": True
             }
-            await websocket.send(json.dumps(payload))
-        await websocket.wait_closed()
+            await ws.send_str(json.dumps(payload))
+
+        async for msg in ws:
+            if msg.type == aiohttp.WSMsgType.ERROR:
+                break
     finally:
-        connected_browsers.discard(websocket)
+        connected_browsers.discard(ws)
+    return ws
 
 
 async def tcp_server():
@@ -113,11 +122,11 @@ async def tcp_server():
     print(f"TCP listening on :{TCP_PORT}")
     while True:
         conn, addr = await loop.sock_accept(srv)
-        print(f"RPi connected from {addr}")
-        asyncio.create_task(handle_rpi(conn))
+        print(f"AIS device connected from {addr}")
+        asyncio.create_task(handle_device(conn))
 
 
-async def handle_rpi(conn):
+async def handle_device(conn):
     loop = asyncio.get_event_loop()
     buf = b""
     while True:
@@ -268,7 +277,7 @@ async def handle_export(request):
             body=body,
             content_type='text/csv',
             headers={
-                'Content-Disposition':        f'attachment; filename="{filename}"',
+                'Content-Disposition':         f'attachment; filename="{filename}"',
                 'Access-Control-Allow-Origin': '*'
             }
         )
@@ -314,6 +323,7 @@ async def main():
     app.router.add_route('OPTIONS', '/{path_info:.*}', handle_options)
     app.router.add_get('/',             handle_index)
     app.router.add_get('/index.html',   handle_index)
+    app.router.add_get('/ws',           ws_handler)
     app.router.add_get('/export',       handle_export)
     app.router.add_get('/track/{mmsi}', handle_track)
 
@@ -321,11 +331,10 @@ async def main():
     await runner.setup()
     site = web.TCPSite(runner, '0.0.0.0', HTTP_PORT)
     await site.start()
-    print(f"HTTP listening on :{HTTP_PORT}")
+    print(f"HTTP + WebSocket listening on :{HTTP_PORT}")
 
     await asyncio.gather(
         tcp_server(),
-        websockets.serve(ws_handler, "0.0.0.0", WS_PORT),
         daily_cleanup()
     )
 

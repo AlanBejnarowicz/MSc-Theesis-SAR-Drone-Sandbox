@@ -9,6 +9,14 @@
 \usepackage{textcomp} %for upquote
 \usepackage{xcolor} % nice colors (for source code)
 \usepackage{pgfgantt}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+
+% Graphics and diagrams
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds, shadows}
+ 
 
 
 \renewcommand{\ttdefault}{pcr} % nicer font for source code
@@ -24,6 +32,80 @@
 }
 
 \chapterstyle{tandh} % configuration of the 'memoir' class
+
+
+% ── Listing style ────────────────────────────────────────────────
+\lstdefinestyle{jsonStyle}{
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    rulecolor=\color{gray!40},
+    breaklines=true,
+    captionpos=b,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    stringstyle=\color{orange!70!black},
+    commentstyle=\color{green!50!black}
+}
+
+
+% Custom style for CSV data listings
+\lstdefinestyle{csvStyle}{
+    backgroundcolor=\color{gray!5},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{gray},
+    frame=single,
+    frameround=tttt,
+    framesep=5pt,
+    keepspaces=true,
+    keywordstyle=\color{blue!70!black}\bfseries,
+    morekeywords={timestamp,mmsi,name,ship_type,lat,lon,speed_kn,course_deg},
+    numbers=left,
+    numbersep=10pt,
+    numberstyle=\tiny\color{gray},
+    rulecolor=\color{gray!40},
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=2,
+    xleftmargin=20pt
+}
+ 
+% ── TikZ styles ──────────────────────────────────────────────────
+\tikzset{
+    block/.style={
+        rectangle, draw, fill=blue!10,
+        text width=3.2cm, align=center,
+        minimum height=1.0cm, rounded corners=3pt,
+        drop shadow
+    },
+    blockRed/.style={
+        rectangle, draw, fill=red!10,
+        text width=3.2cm, align=center,
+        minimum height=1.0cm, rounded corners=3pt,
+        drop shadow
+    },
+    blockGreen/.style={
+        rectangle, draw, fill=green!10,
+        text width=3.2cm, align=center,
+        minimum height=1.0cm, rounded corners=3pt,
+        drop shadow
+    },
+    blockGray/.style={
+        rectangle, draw, fill=gray!10,
+        text width=3.2cm, align=center,
+        minimum height=1.0cm, rounded corners=3pt,
+        drop shadow
+    },
+    arrow/.style={-{Stealth[length=2mm]}, thick},
+    dasharrow/.style={-{Stealth[length=2mm]}, thick, dashed},
+    label/.style={font=\footnotesize\ttfamily, align=center}
+}
+ 
+% ================================================================
 
 %
 % The actual document starts here
@@ -60,6 +142,7 @@
 
 % ...
 
+
 \input{sections/differences.tex}
 
 \input{sections/ship_model_dynamics.tex}
@@ -68,7 +151,12 @@
 
 \input{sections/virtual_sensors.tex}
 
+\input{sections/sim_comm.tex}
+
 \input{sections/default_drone.tex}
+
+\input{sections/ais.tex}
+\input{sections/ais_RX.tex}
 
 % Analysis and Design chapter in 'chap-analysis-and-design.tex'
 %\input{chap-analysis-and-design}
