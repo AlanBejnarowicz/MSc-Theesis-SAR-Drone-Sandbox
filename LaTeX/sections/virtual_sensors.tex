@@ -20,7 +20,7 @@ The following sections detail the mathematical transformation of "Ground Truth" 
 
 \subsection{Global Positioning System (GPS) Simulation}
 
-The GPS module simulates a receiver providing absolute geographic coordinates $(\phi, \lambda)$. Because the simulation environment utilizes a flat Cartesian grid, a conversion between Euclidean distance and Geodetic displacement is required.A reference origin, $\text{GPS}_{ref}$, is defined with a known Latitude $\phi_0$ and Longitude $\lambda_0$. The current position is derived by projecting the ship's relative displacement $(\Delta x, \Delta z)$ onto the Earth's ellipsoidal surface (WGS84).The change in latitude $\Delta \phi$ is calculated as:
+The GPS module simulates a receiver providing absolute geographic coordinates $(\phi, \lambda)$. Because the simulation environment utilizes a flat Cartesian grid, a conversion between Euclidean distance and Geodetic displacement is required. A reference origin, $\text{GPS}_{ref}$, is defined with a known Latitude $\phi_0$ and Longitude $\lambda_0$. The current position is derived by projecting the ship's relative displacement $(\Delta x, \Delta z)$ onto the Earth's ellipsoidal surface (WGS84).The change in latitude $\Delta \phi$ is calculated as:
 
 \begin{equation}
     \Delta \phi = \frac{\Delta z}{R_M}

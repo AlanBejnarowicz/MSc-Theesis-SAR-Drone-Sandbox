@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.14)  26 APR 2026 10:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.20)  28 APR 2026 18:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -899,27 +899,27 @@ Overfull \hbox (18.60654pt too wide) in paragraph at lines 26--39
  []
 
 [15]
-Overfull \hbox (79.48563pt too wide) in alignment at lines 59--65
+Overfull \hbox (79.48563pt too wide) in alignment at lines 60--66
  [] [] [] [] 
  []
 
 
-Overfull \hbox (79.48563pt too wide) in alignment at lines 65--70
+Overfull \hbox (79.48563pt too wide) in alignment at lines 66--71
  [] [] [] [] 
  []
 
 
-Overfull \hbox (79.48563pt too wide) in alignment at lines 70--73
+Overfull \hbox (79.48563pt too wide) in alignment at lines 71--74
  [] [] [] [] 
  []
 
 
-Overfull \hbox (79.48563pt too wide) in alignment at lines 73--75
+Overfull \hbox (79.48563pt too wide) in alignment at lines 74--76
  [] [] [] [] 
  []
 
 
-Overfull \hbox (79.48563pt too wide) in alignment at lines 75--132
+Overfull \hbox (79.48563pt too wide) in alignment at lines 76--133
  [] [] [] [] 
  []
 
@@ -927,7 +927,7 @@ Overfull \hbox (79.48563pt too wide) in alignment at lines 75--132
 <images/AIS_GPS_SPOOF.png, id=135, 1342.01375pt x 901.3675pt>
 File: images/AIS_GPS_SPOOF.png Graphic file (type png)
 <use images/AIS_GPS_SPOOF.png>
-Package pdftex.def Info: images/AIS_GPS_SPOOF.png  used on input line 151.
+Package pdftex.def Info: images/AIS_GPS_SPOOF.png  used on input line 152.
 (pdftex.def)             Requested size: 221.40225pt x 148.70546pt.
  [17]) (./sections/ais_RX.tex [18 <./images/AIS_GPS_SPOOF.png>]
 <images/AIS_RX_subsystems.png, id=143, 1342.01375pt x 901.3675pt>
@@ -941,29 +941,29 @@ File: images/AIS_website.png Graphic file (type png)
 <use images/AIS_website.png>
 Package pdftex.def Info: images/AIS_website.png  used on input line 41.
 (pdftex.def)             Requested size: 369.0pt x 200.50484pt.
- [20 <./images/AIS_website.png>]) (./main.bbl [21]
+ [20 <./images/AIS_website.png>]) (./sections/ais_replay.tex
+Overfull \hbox (2.47884pt too wide) in paragraph at lines 11--12
+\T1/cmr/m/n/10.95 Given an ori-gin point $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 '[]; ^^U[]\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 cor-re-spond-ing to the scene's \T1/pcr/m/n/10.95 GPS_CORD_ORIGIN
+ []
+
+[21] [22]) (./main.bbl [23]
 bibitemlist
 
-Underfull \hbox (badness 2368) in paragraph at lines 14--18
+Underfull \hbox (badness 1701) in paragraph at lines 14--18
 []\T1/cmr/m/n/10.95 Armbian Team.  Arm-bian linux: Op-ti-mized de-bian and ubuntu
  []
 
 
-Underfull \hbox (badness 5622) in paragraph at lines 14--18
+Underfull \hbox (badness 3690) in paragraph at lines 14--18
 \T1/cmr/m/n/10.95 based dis-tri-bu-tion for arm/risc-v/amd64 sin-gle board com-put-ers.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--34
+Underfull \hbox (badness 10000) in paragraph at lines 36--39
 []\T1/cmr/m/n/10.95 OpenStreetMap con-trib-u-tors.  Planet dump re-trieved from
  []
 
-
-Underfull \hbox (badness 1097) in paragraph at lines 31--34
-\T1/cmr/m/n/10.95 https://planet.openstreetmap.org , 2026.  Li-censed un-der the Open
- []
-
-) [22
+) [24
 
 ] (./main.aux)
  ***********
@@ -972,18 +972,18 @@ L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 22768 strings out of 474222
- 440253 string characters out of 5748733
+ 22782 strings out of 474222
+ 440554 string characters out of 5748733
  2098975 words of memory out of 5000000
- 44593 multiletter control sequences out of 15000+600000
- 584469 words of font info for 97 fonts, out of 8000000 for 9000
+ 44603 multiletter control sequences out of 15000+600000
+ 585090 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,101p,834b,1792s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc2074.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (25 pages, 4729241 bytes).
+Output written on main.pdf (27 pages, 4741652 bytes).
 PDF statistics:
- 276 PDF objects out of 1000 (max. 8388607)
- 154 compressed objects within 2 object streams
+ 282 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  169 words of extra memory for PDF output out of 10000 (max. 10000000)
 

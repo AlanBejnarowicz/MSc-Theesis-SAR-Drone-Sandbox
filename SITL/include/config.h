@@ -6,7 +6,7 @@
 // ================================================================
 
 // ── Fleet ────────────────────────────────────────────────────────
-#define DRONE_COUNT         3           // Number of drones to manage
+#define DRONE_COUNT         12           // Number of drones to manage
 
 // ── Network (SITL) ───────────────────────────────────────────────
 #define UNITY_HOST          "127.0.0.1"

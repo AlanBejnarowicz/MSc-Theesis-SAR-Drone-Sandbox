@@ -28,6 +28,11 @@ void DroneController::updateLostStatus()
     }
 }
 
+
+
+
+
+
 DroneCommandPacket DroneController::tick()
 {
     DroneCommandPacket cmd;
@@ -47,6 +52,18 @@ DroneCommandPacket DroneController::tick()
     return cmd;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 // ── Speed: P controller on speed error ───────────────────────────
 float DroneController::computeThrottle()
 {
@@ -54,39 +71,39 @@ float DroneController::computeThrottle()
     return speedError * KP_SPEED;
 }
 
-// ── Heading: PD controller with AIS avoidance override ───────────
 float DroneController::computeSteer()
 {
-    float avoidance = computeAvoidance();
-    if (std::abs(avoidance) > 0.01f)
-        return avoidance;
+    float error = deltaAngle(state.compass.heading, targetHeading);
 
-    float error  = deltaAngle(state.compass.heading, targetHeading);
-    float dError = error - _lastHeadingError;
+    // Raw derivative
+    float rawDError = error - _lastHeadingError;
     _lastHeadingError = error;
 
-    return (error * KP_HEADING) + (dError * KD_HEADING);
+    // Low-pass filter on derivative — kills noise spikes
+    // Alpha: 0.1 = heavy filtering, 0.5 = light filtering
+    float alpha       = 0.1f;
+    _filteredDError   = alpha * rawDError + (1.0f - alpha) * _filteredDError;
+
+    // Integral with anti-windup
+    _integralError   += error * 0.02f;
+    _integralError    = std::clamp(_integralError, -30.0f, 30.0f);
+
+    float output = (error          * KP_HEADING)
+                 + (_integralError * KI_HEADING)
+                 + (_filteredDError * KD_HEADING);
+
+    return output;
 }
 
-// ── Steer away from nearest contact inside safety radius ─────────
-float DroneController::computeAvoidance()
-{
-    for (const auto& contact : state.ais.contacts)
-    {
-        if (contact.distance < MIN_AIS_DISTANCE)
-        {
-            float direction = (contact.bearing > 0.0f) ? -1.0f : 1.0f;
-            float strength  = 1.0f - (contact.distance / MIN_AIS_DISTANCE);
-            return direction * strength;
-        }
-    }
-    return 0.0f;
-}
 
-// ── Shortest angular difference (-180 to 180) ────────────────────
+
 float DroneController::deltaAngle(float from, float to)
 {
-    return std::fmod(to - from + 540.0f, 360.0f) - 180.0f;
+    float diff = to - from;
+    // Wrap to -180 to 180
+    while (diff >  180.0f) diff -= 360.0f;
+    while (diff < -180.0f) diff += 360.0f;
+    return diff;
 }
 
 long long DroneController::nowMs()

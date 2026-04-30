@@ -9,6 +9,8 @@
 #include "json_parser.h"
 #include "DroneController.h"
 
+
+
 // ================================================================
 // MAIN.CPP
 // ================================================================
@@ -67,7 +69,7 @@ void send(DroneAgent& agent)
 // ================================================================
 int main()
 {
-    std::cout << "=== SAR Drone Fleet Controller ===\n"
+    std::cout << "=== SAR Drone Fleet Controller 2.0 ===\n"
               << "Drones: " << DRONE_COUNT << "\n\n";
 
     // ── Init agents ──────────────────────────────────────────────
@@ -76,8 +78,6 @@ int main()
     for (int i = 0; i < DRONE_COUNT; i++)
     {
         agents[i].controller.init(i);
-        agents[i].controller.targetHeading = 0.0f;
-        agents[i].controller.targetSpeed   = 3.0f;
 
         int rxPort = RECV_BASE_PORT + i;
         int txPort = SEND_BASE_PORT + i;

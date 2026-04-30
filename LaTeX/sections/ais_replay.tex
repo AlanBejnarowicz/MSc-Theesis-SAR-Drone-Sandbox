@@ -1,0 +1,92 @@
+\section{AIS Data Replay}
+
+\subsection{Overview}
+
+
+Each AIS record in the dataset contains the fields listed in section \textbf{Data Transmitted}. The replay system parses these records, groups them by MMSI (Maritime Mobile Service Identity), and reconstructs the trajectory of every unique vessel present in the recording.
+
+
+\subsection{Coordinate System}
+
+Geodetic coordinates are converted to simulator world-space using the same flat-Earth approximation employed by the onboard virtual GPS component. Given an origin point $(\varphi_0, \lambda_0)$ corresponding to the scene's \texttt{GPS\_CORD\_ORIGIN} object, the world-space offsets are:
+
+\begin{align}
+    x &= (\lambda - \lambda_0) \cdot 111111 \cdot \cos\!\left(\varphi_0 \cdot \frac{\pi}{180}\right) \\
+    z &= (\varphi - \varphi_0) \cdot 111111
+\end{align}
+
+\noindent where $\varphi$ and $\lambda$ are the vessel's latitude and longitude respectively, and the constant $111111$~m/degree corresponds to the WGS84 major semi-axis approximation for meridional arc length.
+
+\subsection{Trajectory Interpolation}
+
+AIS broadcasts arrive at irregular intervals, typically every 2--10 seconds for vessels underway and up to 3 minutes for vessels at anchor. Direct linear interpolation between waypoints produces heading discontinuities at each recorded position. To achieve smooth, physically plausible motion the module employs a \textbf{Catmull-Rom spline}~\cite{catmullrom1974}.
+
+For a vessel currently between waypoints $\mathbf{p}_1$ and $\mathbf{p}_2$, with neighbouring control points $\mathbf{p}_0$ and $\mathbf{p}_3$, the interpolated world position at parameter $t \in [0,1]$ is:
+
+\begin{equation}
+    \mathbf{s}(t) = \frac{1}{2}
+    \begin{bmatrix}
+        1 & t & t^2 & t^3
+    \end{bmatrix}
+    \begin{bmatrix}
+         0 &  2 &  0 &  0 \\
+        -1 &  0 &  1 &  0 \\
+         2 & -5 &  4 & -1 \\
+        -1 &  3 & -3 &  1
+    \end{bmatrix}
+    \begin{bmatrix}
+        \mathbf{p}_0 \\ \mathbf{p}_1 \\ \mathbf{p}_2 \\ \mathbf{p}_3
+    \end{bmatrix}
+\end{equation}
+
+The instantaneous heading is derived from the analytical tangent $\mathbf{s}'(t)$, ensuring the vessel bow always points along the curve:
+
+\begin{equation}
+    \psi(t) = \arctan_2\!\left(s'_x(t),\; s'_z(t)\right)
+\end{equation}
+
+At the endpoints of a track, the missing control point is replaced by a duplicate of the nearest recorded waypoint, which forces the spline to begin and end tangent to the first and last segment respectively.
+
+\subsection{GPS Spoofing Detection}
+
+A known vulnerability of AIS is susceptibility to GPS spoofing, whereby a vessel's transponder broadcasts a falsified position. Spoofed signals typically manifest as instantaneous position jumps of tens to hundreds of kilometres — physically impossible for any surface vessel. The replay module applies a pre-processing filter that computes the Haversine great-circle distance between every pair of consecutive position reports for each MMSI:
+
+\begin{equation}
+    d = 2R \arcsin\!\sqrt{\sin^2\!\frac{\Delta\varphi}{2} + \cos\varphi_1\cos\varphi_2\sin^2\!\frac{\Delta\lambda}{2}}
+\end{equation}
+
+\noindent where $R = 6371$~km is the mean Earth radius. If any consecutive jump exceeds a configurable threshold (default $d_{\max} = 20$~km), the entire MMSI track is flagged as spoofed and excluded from the simulation. This threshold was chosen to be above the maximum plausible displacement between two AIS broadcasts at the highest recorded vessel speed (${\sim}30$~kn $\approx 55.6$~km/h) while remaining well below the multi-hundred-kilometre jumps characteristic of GPS spoofing attacks observed in the Baltic Sea region.
+
+\subsection{Vessel Type and Scale}
+
+Each vessel is visualized using a ONR Tumblehome \cite{W2025_ONRT} ship prefab (scale 1~unit~$=$~1~m) whose \texttt{Model} is scaled uniformly to match the vessel's real-world length. Since the AIS dataset does not carry dimensional data, representative lengths are assigned per ITU-R ship type code as shown in Table~\ref{tab:ship_types}.
+
+\begin{table}[h]
+\centering
+\caption{AIS ship type codes, descriptions, and representative lengths used for prefab scaling.}
+\label{tab:ship_types}
+\begin{tabular}{llc}
+\hline
+\textbf{Type code} & \textbf{\texttt{AisShipType}} & \textbf{Length (m)} \\
+\hline
+0   & \texttt{Unknown}         & 50  \\
+30  & \texttt{Fishing}         & 25  \\
+36  & \texttt{Sailing}         & 10  \\
+37  & \texttt{PleasureCraft}   & 10  \\
+40  & \texttt{HighSpeedCraft}  & 40  \\
+50  & \texttt{PilotVessel}     & 20  \\
+51  & \texttt{SearchAndRescue} & 15  \\
+52  & \texttt{Tug}             & 30  \\
+60  & \texttt{Passenger}       & 200 \\
+70  & \texttt{Cargo}           & 180 \\
+80  & \texttt{Tanker}          & 250 \\
+99  & \texttt{AtoN}            & 5   \\
+\hline
+\end{tabular}
+\end{table}
+
+\noindent The \texttt{Unknown} length of 50~m serves as a configurable inspector fallback and applies to the majority of vessels in the Baltic Sea dataset used for development, Ship Type is broadcast as~0.
+
+\subsection{Simulated AIS Broadcast}
+
+Once spawned and moving, each replayed vessel operates a AIS Transponder script identical to that carried by drone vessels. The transponder broadcasts vessel identity, interpolated position, speed, and heading every 2~seconds into the simulator's internal AIS network, making replayed traffic indistinguishable from actively simulated vessels from the perspective of any sensor or display system consuming AIS data.

@@ -7,18 +7,19 @@
 
 // ================================================================
 // DroneController  —  One instance per drone
-// Replace computeThrottle() and computeSteer() with your INDI logic
 // ================================================================
 
 // ── Controller gains (simple heading+speed PID for now) ──────────
-#define KP_HEADING          0.15f
-#define KD_HEADING          0.05f
-#define KP_SPEED            0.5f
+#define KP_HEADING   0.15f
+#define KI_HEADING   0.001f
+#define KD_HEADING   0.001f  
+
+#define KP_SPEED            0.8f
 
 // ── Safety ───────────────────────────────────────────────────────
 #define MAX_THROTTLE        1.0f
 #define MAX_STEER           1.0f
-#define MIN_AIS_DISTANCE    20.0f       // Metres — trigger avoidance below this
+
 
 
 class DroneController
@@ -33,8 +34,8 @@ public:
     bool isLost          = false;
 
     // ── Mission target ───────────────────────────────────────────
-    float targetHeading  = 90.0f;    // Degrees 0-360
-    float targetSpeed    = 8.0f;    // m/s
+    float targetHeading  = 30.0f;    // Degrees 0-360
+    float targetSpeed    = 3.0f;    // m/s
 
     // ── Public interface ─────────────────────────────────────────
     void init(int id);
@@ -44,8 +45,13 @@ public:
 
 private:
     int       _cmdSeq             = 0;
-    float     _lastHeadingError   = 0.0f;
     long long _lastReceiveTime    = 0;
+
+
+    float _integralError  = 0.0f;
+    float _lastHeadingError = 0.0f;
+    float _filteredDError = 0.0f;
+
 
     float computeThrottle();
     float computeSteer();

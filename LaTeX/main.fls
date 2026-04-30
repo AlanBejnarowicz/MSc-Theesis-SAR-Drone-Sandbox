@@ -420,6 +420,12 @@ INPUT ./images/AIS_website.png
 INPUT ./images/AIS_website.png
 INPUT ./images/AIS_website.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrb8t.tfm
+INPUT ./sections/ais_replay.tex
+INPUT ./sections/ais_replay.tex
+INPUT sections/ais_replay.tex
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/courier/pcrb8t.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrb8r.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrb8t.tfm
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl

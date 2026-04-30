@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{aishub2025}
 {AISHub}.
@@ -15,6 +15,11 @@ J.~Henrique G.~M. Alves, Michael~L. Banner, and Ian~R. Young.
 \newblock Armbian linux: Optimized debian and ubuntu based distribution for arm/risc-v/amd64 single board computers.
 \newblock https://www.armbian.com/, 2026.
 \newblock Accessed: 2026-04-26.
+
+\bibitem{catmullrom1974}
+Edwin Catmull and Raphael Rom.
+\newblock A class of local interpolating splines.
+\newblock In Robert~E. Barnhill and Richard~F. Riesenfeld, editors, {\em Computer Aided Geometric Design}, pages 317--326. Academic Press, 1974.
 
 \bibitem{emtrak_b100_manual}
 {em-trak Marine Electronics}.
@@ -47,5 +52,10 @@ Eduardo~Charles Vasconcellos, {Álvaro Pinto Fernandes} Negreiros, {André Paulo
 {W2025 Organizing Committee}.
 \newblock {ONR Tumblehome (ONRT) – Course Keeping in Waves – Instructions}, 2025.
 \newblock Accessed: 2026-03-24.
+
+\bibitem{wiki:catmullrom}
+{Wikipedia contributors}.
+\newblock Centripetal {Catmull--Rom} spline, 2024.
+\newblock Accessed: 2026-04-28.
 
 \end{thebibliography}
