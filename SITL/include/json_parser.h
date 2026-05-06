@@ -84,6 +84,24 @@ inline bool parseStatePacket(const std::string& raw, DroneStatePacket& out)
             }
         }
 
+
+        if (j.contains("lora")) {
+            out.lora.neighbourCount = j["lora"].value("neighbourCount", 0);
+            out.lora.neighbours.clear();
+            if (j["lora"].contains("neighbours")) {
+                for (auto& n : j["lora"]["neighbours"]) {
+                    LoRa_Neighbour nb;
+                    nb.nodeId         = n.value("nodeId",         0);
+                    nb.distanceMetres = n.value("distanceMetres", 0.0f);
+                    nb.rssi           = n.value("rssi",           0.0f);
+                    nb.snr            = n.value("snr",            0.0f);
+                    nb.lastSeenAge    = n.value("lastSeenAge",    0.0f);
+                    nb.lastPayload    = n.value("lastPayload",    "");
+                    out.lora.neighbours.push_back(nb);
+                }
+        }
+}
+
         return out.droneId >= 0;
     }
     catch (...) {
@@ -99,6 +117,9 @@ inline std::string serializeCommand(const DroneCommandPacket& cmd)
     j["packetSeq"] = cmd.packetSeq;
     j["throttle"]  = cmd.throttle;
     j["steer"]     = cmd.steer;
+
+    j["loraBroadcast"] = cmd.loraBroadcast;
+
     return j.dump();
 }
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.20)  28 APR 2026 18:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.3.20)  6 MAY 2026 17:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -879,26 +879,25 @@ Overfull \hbox (7.25008pt too wide) in paragraph at lines 48--51
 \T1/cmr/m/n/10.95 frequency kine-matic data, repli-cat-ing a 6-axis MEMS (Micro-Electro-Mechanical
  []
 
-[10]) (./sections/sim_comm.tex [11]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 39.
+[10]) (./sections/lora.tex [11] [12]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 117.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[12{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-<images/SITL-HITL-diagram.png, id=118, 1580.90625pt x 754.82pt>
+) [13{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [14{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]) (./sections/sim_comm.tex [15]
+<images/SITL-HITL-diagram.png, id=132, 1580.90625pt x 754.82pt>
 File: images/SITL-HITL-diagram.png Graphic file (type png)
 <use images/SITL-HITL-diagram.png>
 Package pdftex.def Info: images/SITL-HITL-diagram.png  used on input line 110.
 (pdftex.def)             Requested size: 295.20113pt x 140.94101pt.
- [13{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./images/SITL-HITL-diagram.png>]) (./sections/default_drone.tex) (./sections/ais.tex [14]
+ [16]) (./sections/default_drone.tex [17 <./images/SITL-HITL-diagram.png>]) (./sections/ais.tex
 Overfull \hbox (18.60654pt too wide) in paragraph at lines 26--39
  [][] 
  []
 
-[15]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[18]
 Overfull \hbox (79.48563pt too wide) in alignment at lines 60--66
  [] [] [] [] 
  []
@@ -923,30 +922,34 @@ Overfull \hbox (79.48563pt too wide) in alignment at lines 76--133
  [] [] [] [] 
  []
 
-[16]
-<images/AIS_GPS_SPOOF.png, id=135, 1342.01375pt x 901.3675pt>
+[19] [20]
+<images/AIS_GPS_SPOOF.png, id=151, 1342.01375pt x 901.3675pt>
 File: images/AIS_GPS_SPOOF.png Graphic file (type png)
 <use images/AIS_GPS_SPOOF.png>
 Package pdftex.def Info: images/AIS_GPS_SPOOF.png  used on input line 152.
 (pdftex.def)             Requested size: 221.40225pt x 148.70546pt.
- [17]) (./sections/ais_RX.tex [18 <./images/AIS_GPS_SPOOF.png>]
-<images/AIS_RX_subsystems.png, id=143, 1342.01375pt x 901.3675pt>
+ [21 <./images/AIS_GPS_SPOOF.png>]) (./sections/ais_RX.tex
+<images/AIS_RX_subsystems.png, id=156, 1342.01375pt x 901.3675pt>
 File: images/AIS_RX_subsystems.png Graphic file (type png)
 <use images/AIS_RX_subsystems.png>
 Package pdftex.def Info: images/AIS_RX_subsystems.png  used on input line 17.
 (pdftex.def)             Requested size: 221.40225pt x 148.70546pt.
- [19 <./images/AIS_RX_subsystems.png>]
-<images/AIS_website.png, id=148, 2890.8pt x 1570.86874pt>
+ [22]
+<images/AIS_website.png, id=161, 2890.8pt x 1570.86874pt>
 File: images/AIS_website.png Graphic file (type png)
 <use images/AIS_website.png>
 Package pdftex.def Info: images/AIS_website.png  used on input line 41.
 (pdftex.def)             Requested size: 369.0pt x 200.50484pt.
- [20 <./images/AIS_website.png>]) (./sections/ais_replay.tex
+ [23 <./images/AIS_RX_subsystems.png>]) (./sections/ais_replay.tex [24 <./images/AIS_website.png>]
 Overfull \hbox (2.47884pt too wide) in paragraph at lines 11--12
 \T1/cmr/m/n/10.95 Given an ori-gin point $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 '[]; ^^U[]\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 cor-re-spond-ing to the scene's \T1/pcr/m/n/10.95 GPS_CORD_ORIGIN
  []
 
-[21] [22]) (./main.bbl [23]
+[25]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./main.bbl [26] [27]
 bibitemlist
 
 Underfull \hbox (badness 1701) in paragraph at lines 14--18
@@ -959,31 +962,31 @@ Underfull \hbox (badness 3690) in paragraph at lines 14--18
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--39
+Underfull \hbox (badness 10000) in paragraph at lines 41--44
 []\T1/cmr/m/n/10.95 OpenStreetMap con-trib-u-tors.  Planet dump re-trieved from
  []
 
-) [24
+[28
 
-] (./main.aux)
+]) [29] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 22782 strings out of 474222
- 440554 string characters out of 5748733
- 2098975 words of memory out of 5000000
- 44603 multiletter control sequences out of 15000+600000
- 585090 words of font info for 99 fonts, out of 8000000 for 9000
+ 22807 strings out of 474222
+ 440967 string characters out of 5748733
+ 2042975 words of memory out of 5000000
+ 44624 multiletter control sequences out of 15000+600000
+ 585427 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,101p,834b,1792s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc2074.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on main.pdf (27 pages, 4741652 bytes).
+ 99i,12n,101p,834b,1793s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc2074.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on main.pdf (32 pages, 4796621 bytes).
 PDF statistics:
- 282 PDF objects out of 1000 (max. 8388607)
- 158 compressed objects within 2 object streams
+ 321 PDF objects out of 1000 (max. 8388607)
+ 183 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  169 words of extra memory for PDF output out of 10000 (max. 10000000)
 

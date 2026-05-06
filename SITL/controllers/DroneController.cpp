@@ -16,6 +16,18 @@ void DroneController::onStateReceived(const DroneStatePacket& newState)
     hasState         = true;
     isLost           = false;
     _lastReceiveTime = nowMs();
+
+
+
+
+    std::cout << "[Drone " << state.droneId << "] "
+            << "LoRa neighbours: " << state.lora.neighbourCount << "\n";
+
+    for (auto& n : state.lora.neighbours)
+        std::cout << "  node=" << n.nodeId
+                << " dist=" << n.distanceMetres << "m"
+                << " rssi=" << n.rssi << "dBm"
+                << " payload='" << n.lastPayload << "'\n";
 }
 
 void DroneController::updateLostStatus()

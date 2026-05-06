@@ -1,0 +1,175 @@
+
+
+\section{LoRa Communication Simulation}
+\label{sec:lora_simulation}
+
+A key component of this simulator is how the drone swarm communicates. Maritime 
+environments are notoriously hostile for radio signals, packed with interference from 
+onboard radar, VHF, satellite links, NAVTEX, and military operations. Any of these 
+systems can easily crowd the spectrum and disrupt swarm operations. 
+Because of this, I selected LoRa as the primary communication protocol, leveraging its exceptional range 
+and noise resistance to keep the swarm connected.
+
+
+\subsection{Why LoRa}
+
+LoRa is a natural fit for drone swarms because it focuses on what matters most in the field: reliability and range. Unlike Wi-Fi, which provides high speeds but dies out after a few hundred meters, LoRa is designed to keep a signal alive over several kilometers. This is crucial for maritime swarms that need to spread out over large areas without losing touch with the "hive."
+
+The standout feature is its interference resistance. Because LoRa uses Chirp Spread Spectrum (CSS) modulation, it can effectively "hide" its signal inside the noise of a crowded maritime environment. Even when radars or other high-power systems are active nearby, LoRa can decode messages that are technically weaker than the surrounding background noise.
+
+Additionally, LoRa is incredibly lightweight—both in terms of physical hardware and power consumption. Drones are always fighting for every minute of battery life; using a protocol that sips power for telemetry rather than gulping it for high-bandwidth data allows for longer mission times.
+
+
+\subsection{ToF ranging}
+
+
+A standout feature of the Semtech SX1280 (2.4 GHz) is its hardware-integrated Time-of-Flight (ToF) ranging. This allows drones to measure the physical distance between nodes based on signal travel time, providing a decentralized way to maintain swarm geometry without relying solely on GPS. In a GPS-denied or spoofed maritime environment, this ranging capability acts as a vital fail-safe for localized positioning.
+However, the choice between 2.4 GHz and the 868 MHz band involves a significant trade-off. While 868 MHz offers much better signal penetration and nearly double the effective range due to its lower frequency, it currently lacks the specialized ranging engine found in the SX1280. For a simulator focused on tight coordination and relative positioning, I will use the 2.4 GHz variant for this extra spatial awareness, even if it means sacrificing some of the raw distance and obstacle penetration offered by 868 MHz.
+
+
+The estimated distance between two nodes is modeled by adding zero-mean Gaussian noise to the true Euclidean distance. This accounts for the hardware's inherent measurement jitter:
+
+\begin{equation}
+    \hat{d} = \max(0, \, d_{true} + \epsilon)
+     \label{eq:ToF}
+\end{equation}
+
+
+where:
+
+$\hat{d}$ is the measured distance (clamped at zero to avoid physical impossibility).
+
+$d_{true}$ is the ground-truth distance between the drones.
+
+$\epsilon$ is the ranging noise, sampled from a normal distribution: $\epsilon \sim \mathcal{N}(0, \sigma^2)$.
+$\sigma$ represents the ranging accuracy (e.g., 2m at a distance of 1km).
+
+% ----------------------------------------------------------------
+\subsection{Hardware Basis — Semtech SX1280}
+\label{sec:lora_hardware}
+
+The simulation targets the Semtech SX1280 transceiver, a 2.4~GHz
+LoRa\textsuperscript{\textregistered} chip selected for its combination
+of long-range capability and integrated time-of-flight ranging. Its
+principal parameters are reproduced in Table~\ref{tab:sx1280_params}.
+
+\begin{table}[ht]
+\centering
+\caption{SX1280 parameters used in the simulation}
+\label{tab:sx1280_params}
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter}        & \textbf{Value}          \\
+\midrule
+Carrier frequency         & 2.4~GHz                 \\
+Transmit power            & -18 to +13 ~dBm  \\
+Receiver sensitivity      & $-100$ to $-105$~dBm    \\
+Spreading factor          & SF5–SF12                \\
+Bandwidth                 & 203 / 406 / 812 / 1625~kHz  \\
+Coding rate               & 4/5 – 4/8               \\
+Ranging accuracy          & $\sim$2~m at 1~km       \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ----------------------------------------------------------------
+\subsection{Propagation Model}
+\label{sec:lora_propagation}
+
+Radio propagation is modelled as the simulated RF medium shared by all nodes. The received signal strength indicator (RSSI) at distance $d$ is computed
+using a modified Friis free-space path-loss formula:
+
+\begin{equation}
+    \mathrm{RSSI}(d) = P_\mathrm{tx}
+        - \underbrace{20 \log_{10}\!\left(\frac{4\pi d}{\lambda}\right)}_{\text{free-space loss}}
+        \cdot \frac{\eta}{2}
+    \label{eq:rssi}
+\end{equation}
+
+\noindent where $P_\mathrm{tx}$ is the transmit power in dBm,
+$\lambda = c/f \approx 0.125$~m is the wavelength at 2.4~GHz, $d$ is
+the Euclidean separation between transmitter and receiver in metres,
+and $\eta$ is the path-loss exponent. For ideal free-space propagation
+$\eta = 2.0$; the simulation defaults to $\eta = 2.5$, representative
+of a maritime surface environment with moderate multipath
+\cite{rappaport2002wireless}.
+
+A zero-mean additive Gaussian noise term $\mathcal{N}(0,\,\sigma_r^2)$
+with $\sigma_r = 3$~dB is added to the delivered RSSI to approximate
+small-scale fading and measurement uncertainty. Packets whose computed
+RSSI falls below the receiver sensitivity threshold $S = -100$~dBm are
+discarded, modelling the minimum detectable signal condition.
+
+The maximum communication range $d_\mathrm{max}$ is derived analytically
+by inverting Equation~\ref{eq:rssi}:
+
+\begin{equation}
+    d_\mathrm{max} = \frac{\lambda}{4\pi}
+        \cdot 10^{\,\frac{(P_\mathrm{tx} - S)}{20} \cdot \frac{2}{\eta}}
+    \label{eq:dmax}
+\end{equation}
+
+
+% ----------------------------------------------------------------
+\subsection{Packet Lifecycle and Air-Time Model}
+\label{sec:lora_airtime}
+
+When a node calls \texttt{Broadcast()}, the medium computes the LoRa time-on-air using a simplified version of
+the standard Semtech formula \cite{semtech_sx1280ds}:
+
+\begin{equation}
+    T_\mathrm{air} = \left(20 + \frac{8\,N_\mathrm{bytes}}{\mathrm{SF}}\right)
+                     \cdot T_\mathrm{sym}
+    \label{eq:toa}
+\end{equation}
+
+\noindent where $N_\mathrm{bytes}$ is the payload length in bytes,
+$\mathrm{SF}$ is the spreading factor, and the symbol duration is
+
+\begin{equation}
+    T_\mathrm{sym} = \frac{2^{\mathrm{SF}}}{\mathrm{BW}}
+    \label{eq:tsym}
+\end{equation}
+
+\noindent with bandwidth BW in Hz. The constant term of 20 symbols
+accounts for the physical-layer header and CRC overhead. The packet is
+held in an \emph{in-flight queue} and delivered to all eligible
+receivers only after $T_\mathrm{air}$ has elapsed, preserving causal
+ordering with respect to the simulation time-step.
+
+% ----------------------------------------------------------------
+\subsection{Half-Duplex Enforcement}
+\label{sec:lora_halfduplex}
+
+The SX1280 operates in half-duplex mode; a node cannot receive while
+transmitting. This constraint is enforced by an
+\texttt{isTranmitting} flag that is set at the start of every
+transmission and cleared after exactly $T_\mathrm{air}$
+seconds (Equation~\ref{eq:toa}). 
+% ----------------------------------------------------------------
+\subsection{Collision Model}
+\label{sec:lora_collision}
+
+Simultaneous transmissions from two or more nodes on the same channel
+produce a collision. The medium checks whether any other in-flight
+packet was transmitted within a 10~ms window of the current packet's
+\texttt{txTime}. If such overlap is detected, the packet is discarded
+with probability $p_c = 0.3$, reflecting the partial-capture effect
+observed in LoRa networks where the stronger signal can survive a
+collision \cite{bor2016lora}. Aggregate packet-loss statistics are
+accumulated in \texttt{totalPacketsSent} and \texttt{totalPacketsLost}
+counters, accessible at runtime for performance logging.
+
+
+
+% ----------------------------------------------------------------
+\subsection{Model Limitations}
+\label{sec:lora_limitations}
+
+The propagation model in Section~\ref{sec:lora_propagation} uses a few 
+simplifications to keep the simulation manageable. First, we assume the path-loss exponent $\eta$ is the same everywhere; in reality, sea waves and ship hulls create complex reflections that vary by location. Second, we haven't included Doppler shift. 
+While this matters for fast drones, it’s a non-issue at the speeds our USVs move. Third, instead of a complex signal-to-interference ratio (SIR), we use a fixed capture probability $p_c$ to handle packet collisions. Finally, we don't account for 
+interference from other 2.4 GHz tech like Wi-Fi or Bluetooth. For fleet 
+coordination, these trade-offs work well because we’re more focused on overall 
+connectivity and range than perfectly mimicking every radio wave.
+

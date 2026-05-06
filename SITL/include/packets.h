@@ -48,6 +48,23 @@ struct AIS_Block {
     std::vector<AIS_Contact> contacts;
 };
 
+
+struct LoRa_Neighbour {
+    int         nodeId         = 0;
+    float       distanceMetres = 0.0f;
+    float       rssi           = 0.0f;
+    float       snr            = 0.0f;
+    float       lastSeenAge    = 0.0f;
+    std::string lastPayload;   // Base64 from C++ — untouched
+};
+
+struct LoRa_Block {
+    int                        neighbourCount = 0;
+    std::vector<LoRa_Neighbour> neighbours;
+};
+
+
+
 struct DroneStatePacket {
     int   droneId   = -1;
     int   mmsi      = 0;
@@ -61,6 +78,7 @@ struct DroneStatePacket {
     IMU_Block      imu;
     Velocity_Block velocity;
     AIS_Block      ais;
+    LoRa_Block lora;
 };
 
 // ── Outgoing to Unity ────────────────────────────────────────────
@@ -70,4 +88,7 @@ struct DroneCommandPacket {
     int   packetSeq = 0;
     float throttle  = 0.0f;
     float steer     = 0.0f;
+
+    std::string loraBroadcast;  // Base64 payload — empty = no broadcast
+
 };
