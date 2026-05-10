@@ -1,14 +1,20 @@
 [
 {
   "directory": "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/build",
-  "command": "/usr/bin/g++ -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/include -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/controllers -g -std=gnu++17 -o CMakeFiles/drone_controller.dir/src/main.cpp.o -c /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/src/main.cpp",
+  "command": "/usr/bin/g++ -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/include -g -std=gnu++17 -Wall -O2 -o CMakeFiles/drone_controller.dir/src/main.cpp.o -c /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/src/main.cpp",
   "file": "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/src/main.cpp",
   "output": "CMakeFiles/drone_controller.dir/src/main.cpp.o"
 },
 {
   "directory": "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/build",
-  "command": "/usr/bin/g++ -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/include -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/controllers -g -std=gnu++17 -o CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o -c /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/controllers/DroneController.cpp",
+  "command": "/usr/bin/g++ -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/include -g -std=gnu++17 -Wall -O2 -o CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o -c /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/controllers/DroneController.cpp",
   "file": "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/controllers/DroneController.cpp",
   "output": "CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o"
+},
+{
+  "directory": "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/build",
+  "command": "/usr/bin/g++ -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL -I/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/include -g -std=gnu++17 -Wall -O2 -o CMakeFiles/swarm_controller.dir/src/swarm_main.cpp.o -c /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/src/swarm_main.cpp",
+  "file": "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITL/src/swarm_main.cpp",
+  "output": "CMakeFiles/swarm_controller.dir/src/swarm_main.cpp.o"
 }
 ]
