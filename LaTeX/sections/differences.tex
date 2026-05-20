@@ -1,7 +1,65 @@
-\section{From YARA Sim to High-Performance Swarm Environments}
+\section{Road to High-Performance Swarm Environments for Maritime Robotics}
 
-Projects like YARA (Yet Another Robotic Actuator/Sailing Simulator) have laid the groundwork using Gazebo to model sailing dynamics, the shift toward autonomous drone swarms requires a leap in both scale and technical sophistication.
-This work explores the transition from general-purpose sailing simulators to a specialized, high-performance sandbox designed for decentralized control.
+In this section, I will describe the current state of the art maritime robotics simulation environments. Then I will describe the differences between my simulator and the existing ones, and explain why I decided to create my own simulator instead of using an existing one. Finally, I will describe the main features of my simulator and how it can be used for testing and validating control algorithms and systems for maritime robotics.
+
+\subsection{Argo}
+First of all, I want to begin with project called \textbf{Argo Autonomous Sailboat
+Simulator} \cite{Argo2024}. It is a really nice project containing both simulated drone and a real drone, which is a small autonomous sailboat. The project is open source and available on GitHub. The simulator is built using Gazebo and ROS2. The simulator also contains a realistic sensor suite, including an IMU, GPS, magnetometer, and AIS receiver. The simulator is designed to be used for testing and validating control algorithms and systems for autonomous sailboats. What I have found really interesting in this project is that it contains a real drone. This project was a big inspiration for my project especially in terms of used sensors and used hardware. 
+
+\vspace{0.5cm}
+Argo project uses exact set of sensors / hardware:
+\begin{itemize}
+    \item Orange Pi Zero 2W as main computer
+    \item GPS: u-blox NEO-M9N
+    \item Wind Sensor
+    \item IMU 9DOF sensor (accelerometer, gyroscope, magnetometer)
+    \item LoRa long range radio
+\end{itemize}
+
+The only feature that I have found missing in Argo project is AIS transponder and AIS receiver. AIS is a really important sensor for maritime robotics. It allows them to detect and track other vessels in medium range (~20km), which is useful for collision avoidance. Therefore, I decided to add AIS transponder and AIS receiver to my simulator, which allows me to test and validate control algorithms and systems that use AIS data.
 
 
-The most significant departure from the YARA framework is the inclusion of SITL (Software-in-the-Loop) and HITL (Hardware-in-the-Loop) capabilities. This ensures that the decentralized algorithms developed in the sandbox aren't just theoretically sound—they are ready for deployment on physical hardware. By bridging the gap between a high-fidelity marine physics engine and real-world flight/sailing controllers, this project moves autonomous maritime robotics from the lab to the ocean.
+\vspace{0.5cm}
+\subsection{YARA}
+Another project that I have found really interesting is the \textbf{YARA Ocean Virtual Environment} ~\cite{YARA}. This project is just a simulator. It is based on Gazebo and ROS. It is designed to be used for testing and validating control algorithms and systems for sailing maritime robots. Simulator is ment to simulate a single drone, which is a small autonomous surface vehicle powered by a sail and propeler. In this case the simulator contains an expanded set of sensors. Researchers included wind speed, direction sensor and boom angle sensors. These sensors are necessary for sailing drones, but no for electric / fuel powered one. In my project I will purely focus on a propeler powered vessels. Nevertheless these features could be easy added to my project if needed.
+
+
+
+\vspace{0.5cm}
+\subsection{What makes my project different}
+It this section I want to describe all differencies between current state of the art project and my project. First of all my simulator is ment to simulate swarms not single vessels (but it is still capable of simulating single drones), none of the mentioned projects are both ment and capable to simulate multiple drones at a same time. My project is specifically designed to be used for such a purpose. Another important feature of my simulator is capability of replaying real AIS data. Previously mentioned simulators are designed just to validate control algorithms and systems in an empty environment, but they do not allow to test them in a realistic ship traffic. This is crucial for future reaserchers, because their drones will have to operate in such an areas, especialy when close to big harbours or cities. 
+
+About software stack of my project I have decided to use Unity3D ~\cite{Unity3D} as a engine. I find this tool very useful for broad field of robotics projects, such as flying drones, underwater drones, autonomous cars and many others. Unity3D is a really powerful tool for engineers, especially because of Nvidia PhysX engine ~\cite{NvidiaPhysX}. This make Unity3D as powerfull as Nvidia Isaac Sim ~\cite{NvidiaIsaacSim}, beeing computationaly lighter than fully raycasted rendering engine (witch Unity3D is capable of it too) and having much better documentation and community support. Aditionaly I have added a feature of web based 2D map, which allows to easily visualize the position of drones and other vessels in the environment. Usualy this is much more useful for maritime robotics than 3D visualization. 
+
+All scripts used in my simulator are written in C\#, which is the main programming language used in Unity3D. This allows me to achieve much better performance and scalability, than usualy used Python in ROS/ROS2. Python is a great programming language for simple, protorype applications, but it is not designed to be used for high computational demands. C\# is a compiled language, which means that it can be optimized for performance. This allows me to simulate a large number of drones and other vessels in the environment without sacrificing performance.
+
+Code for swarm control algorithms is written fully in C++. Controller code then talks to Unity engine simulator using a UDP sockets and JSON messages. This will be described in more details in section \ref{sec:sitl_hitl}.
+
+In a practice nothing stands in way to sacriface capability of 3D visualization and open possibility to simulate swarms of thousands of drones at a same time. That feature would be crucial for testing drones with control systems based on Reinforcement Learning or big genetic algorithms, which require a lot of data to train. In this configuration, using the 3D visualization, system is capable to simulate in real time ~75 drones, on a laptop with AMD Ryzen™ 5 7530U with build in Radeon™ Graphics. 
+
+A some standard that all robotics researchers adopted is ROS/ROS2 (Robot Operating System) ~\cite{ROS}. It is a really nice tool for robotics prototypes, but it is not designed to be used for high performance simulations. Personaly I think that ROS is a bit overhyped and overcomplicated tool, which is not really necessary for most of robotics projects. Therefore, I have decided to use a custom communication protocol based on UDP sockets, and simple JSON messages. This allows me to achieve much better performance and scalability, while still providing a simple and easy to use interface for testing and validating control algorithms and systems for maritime robotics. Not using a ROS is very big advatange when using simulator in a HITL (Hardware in the Loop) configuration. Usualy low power microcontrollers, such as the one used in Argo project, are not equipped with a lot of memory and processing power so it is crucial to have a lightweight and efficient communication protocol.
+
+
+
+\subsection{Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Comparison of maritime robotics simulation environments}
+\label{tab:comparison}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Feature} & \textbf{Argo} & \textbf{YARA} & \textbf{This Sim} \\
+\hline
+Engine / Framework      & Gazebo + ROS2    & Gazebo + ROS     & Unity3D + JSON \\
+Multi-drone / Swarm     & \ding{55}        & \ding{55}        & \ding{51} \\
+Real AIS data replay    & \ding{55}        & \ding{55}        & \ding{51} \\
+AIS transponder         & \ding{55}        & \ding{55}        & \ding{51} \\
+GPS                     & \ding{51}        & \ding{51}        & \ding{51} \\
+IMU                     & \ding{51}        & \ding{51}        & \ding{51} \\
+Wind sensor             & \ding{51}        & \ding{51}        & \ding{55} \\
+2D web map view         & \ding{55}        & \ding{55}        & \ding{51} \\
+Control language        & Python / ROS2    & Python / ROS     & C++ / UDP \\
+\hline
+\end{tabular}
+\end{table}

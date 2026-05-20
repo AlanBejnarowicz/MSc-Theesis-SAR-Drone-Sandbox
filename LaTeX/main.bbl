@@ -32,6 +32,28 @@ Edwin Catmull and Raphael Rom.
 \newblock SRT Marine Systems plc, Bath, UK, 2024.
 \newblock Available via em-trak Product Support portal.
 
+\bibitem{merriam_webster_drone}
+{Merriam-Webster}.
+\newblock Drone --- {M}erriam-{W}ebster.com dictionary.
+\newblock [Online; accessed 15-May-2026].
+
+\bibitem{newton1687principia}
+Isaac Newton.
+\newblock {\em Philosophiae Naturalis Principia Mathematica}.
+\newblock Joseph Streater, 1687.
+
+\bibitem{NvidiaIsaacSim}
+{NVIDIA Corporation}.
+\newblock {NVIDIA Isaac Sim}: Omniverse-powered robotics simulation platform.
+\newblock https://developer.nvidia.com/isaac/sim, 2026.
+\newblock Accessed: \today.
+
+\bibitem{NvidiaPhysX}
+{NVIDIA Corporation}.
+\newblock {NVIDIA PhysX} sdk.
+\newblock https://github.com/NVIDIA-Omniverse/PhysX, 2026.
+\newblock Multi-platform physics simulation engine, Version 5.x.
+
 \bibitem{openseamap2025}
 {OpenSeaMap}.
 \newblock Openseamap — free nautical chart and community project, 2025.
@@ -52,11 +74,22 @@ Theodore~S. Rappaport.
 \newblock {SX1280/SX1281} data sheet: Long range, low power, 2.4~ghz transceiver.
 \newblock Technical report, Semtech, 2019.
 
+\bibitem{Argo2024}
+Institute of~Neuroinformatics Sensors~Group.
+\newblock Argo: Code for autonomous sail boat, 2024.
+\newblock Autonomous sailboat system based on ROS2 and Dragonforce 65 hull.
+
 \bibitem{orangepi_pc_manual}
 {Shenzhen Xunlong Software Co., Ltd.}
 \newblock {\em Orange Pi PC User Manual v2.1}.
 \newblock Orange Pi, Shenzhen, China, 2024.
 \newblock Technical documentation for Allwinner H3 based single-board computers.
+
+\bibitem{Unity3D}
+{Unity Technologies}.
+\newblock {Unity Game Engine}.
+\newblock https://unity.com/, 2026.
+\newblock Cross-platform game development and real-time 3D simulation platform.
 
 \bibitem{YARA}
 Eduardo~Charles Vasconcellos, {Álvaro Pinto Fernandes} Negreiros, {André Paulo Dantas} de~Araújo, Raphael Guerra, Philippe Preux, {Davi Henrique} dos Santos, {Luiz Marcos Garcia} Gonçalves, and {Esteban Walter Gonzalez} Clua.
@@ -67,6 +100,16 @@ Eduardo~Charles Vasconcellos, {Álvaro Pinto Fernandes} Negreiros, {André Paulo
 {W2025 Organizing Committee}.
 \newblock {ONR Tumblehome (ONRT) – Course Keeping in Waves – Instructions}, 2025.
 \newblock Accessed: 2026-03-24.
+
+\bibitem{wiki:adrc}
+{Wikipedia contributors}.
+\newblock Active disturbance rejection control --- {W}ikipedia{,} the free encyclopedia, 2024.
+\newblock [Online; accessed 14-May-2024].
+
+\bibitem{wiki:boids}
+{Wikipedia contributors}.
+\newblock Boids --- {W}ikipedia{,} the free encyclopedia, 2024.
+\newblock [Online; accessed 14-May-2024].
 
 \bibitem{wiki:catmullrom}
 {Wikipedia contributors}.

@@ -27,20 +27,22 @@ class TrajectoryController
 {
 public:
     // ── Tuning ────────────────────────────────────────────────────
-    static constexpr float CRUISE_SPEED_MS      = 3.0f;   // normal patrol
-    static constexpr float APPROACH_SPEED_MS    = 1.5f;   // near cell centre
+    // 10-12 kn vessels: 1 kn = 0.5144 m/s → 10kn = 5.1 m/s
+    static constexpr float CRUISE_SPEED_MS      = 5.0f;   // normal patrol
+    static constexpr float APPROACH_SPEED_MS    = 2.5f;   // near cell centre
     static constexpr float APPROACH_DIST_M      = 120.0f; // slow down radius
 
     // AIS avoidance
-    static constexpr float AIS_ALERT_M         = 300.0f;  // start avoiding
-    static constexpr float AIS_DANGER_M        = 80.0f;   // hard stop
-    static constexpr float AIS_AVOID_STEER_DEG = 45.0f;   // how hard we turn
+    static constexpr float AIS_ALERT_M         = 200.0f;  // start avoiding
+    static constexpr float AIS_DANGER_M        = 60.0f;   // hard stop
+    static constexpr float AIS_AVOID_STEER_DEG = 35.0f;   // how hard we turn
     static constexpr float AIS_AVOID_HALF_ANG  = 90.0f;   // front cone width/2
 
-    // Drone avoidance
-    static constexpr float DRONE_ALERT_M       = 150.0f;
-    static constexpr float DRONE_DANGER_M      = 40.0f;
-    static constexpr float DRONE_AVOID_DEG     = 60.0f;
+    // Drone avoidance — only engage when drones are truly close
+    // Wide alert range causes deadlock when all drones start clustered
+    static constexpr float DRONE_ALERT_M       = 30.0f;   // was 150 — too wide
+    static constexpr float DRONE_DANGER_M      = 10.0f;   // was 40
+    static constexpr float DRONE_AVOID_DEG     = 45.0f;
 
     // ── Set patrol target ─────────────────────────────────────────
     void setTarget(double lat, double lon)

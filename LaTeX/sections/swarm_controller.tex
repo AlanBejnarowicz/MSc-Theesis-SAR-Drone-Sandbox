@@ -1,0 +1,210 @@
+\section{Swarm Controller Design}
+
+As a sample swarm controller design I had choosen to implement a standard determinist swarm controller. That type of controller is following a given set of rules witch are always predicable in a term of behaviour and trajectory of a drone. Good exaple of such a controller, one of the first ever described, is a Boids algorithm created by Craig Reynolds in 1986~\cite{wiki:boids}. The main idea of this algorithm is to create a swarm behaviour based on three simple rules: separation, alignment and cohesion. Separation rule is responsible for avoiding collisions between drones, alignment rule is responsible for keeping the same direction of movement as the other drones in the swarm and cohesion rule is responsible for keeping the swarm together.
+ This is opossite of controller based on a neural network or genetic algorithm where set of rules is beeing created in a training process. Nevertheless neural network controller or any other different kind could be tested in this simulator as well. 
+
+
+
+
+ \subsection{Data Fusion}
+    In order to create a swarm controller that is able to control multiple drones at the same time, it is necessary to have a precise localization of drones in both global frame and local, drones, frame. For that purpose I have used Extended Kalman Filter (EKF) to fuse data from GPS, IMU, compass and LoRa ToF. EKF is a non-linear version of Kalman Filter that is able to estimate the state of a system based on a set of measurements and a model of the system. In this case, the state of the system is the position  of the drone. 
+
+    One major achivement of this system is that even if one of the drones in the swarm is not able to receive GPS signal, it is still able to localize itself based on the data from other drones in the swarm. This is possible thanks to the fact that each drone is equipped with a LoRa ToF sensor that is able to measure the distance to other drones in the swarm. By fusing data it is possible to create a precise localization of each drone in the swarm even if one of them is not able to receive GPS signal. Or a GPS signal is beeing jammed or spoofed.
+
+
+\subsection{Course and Speed Controller}
+
+    As a course and speed controller I have implemented a simple PID controller that is able to keep the drone based on the desired course and speed. That kind of controller is not the most advanced one, but it is simple and effective for the purpose of this project. It is also possible to implement more advanced nonlinear controllers, such as INDI or ADRC ~\cite{wiki:adrc}, but that is out of the scope of this project. The main goal of this project is to create a simulator that is able to test swarm controllers, not to create the most advanced swarm controller. Nevertheless, the implemented PID controller is able to keep the drone on the desired course and speed with a good accuracy. 
+
+    On a figure \ref{fig:PID_course_controller} is shown the response of the PID controller to a change in the desired course. As we can see, the drones are reaching a waypoint in a given distance and then changing the course to the next one.
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\textwidth]{images/PID_course_controller.png}
+        \caption{PID controller keeping a course of a drone on the desired course. [UAV anti collision system not enabled!]}
+        \label{fig:PID_course_controller}
+    \end{figure}
+
+
+\subsection{UAV Anti Collision System}
+
+    In a drone swarms it is necessary to have an anti collison system. One avoiding collisons between drones in the swarm and a second one avoiding collisons with other vessels in the area. For now I will focus on the first one, avoiding collisons between drones in the swarm. 
+
+    The system I have implemented is inspired by Newton's law of universal gravitation~\cite{newton1687principia}, which describes the electrostatic force between two charged particles. In this case, we can treat each drone as a charged particle and the force between them as a repulsive force that is proportional to the square of the distance between them. This means that the closer the drones are to each other, the stronger the repulsive force will be, which will help to avoid collisions between them.
+
+
+
+    Whole system can be described by the following equation:
+
+
+\begin{equation}
+    \mathbf{F}_{ij} = 
+    \begin{cases} 
+        \frac{K}{d^2} \cdot \left( 1 - \frac{d}{d_{cut}} \right)^2 \cdot \frac{\mathbf{r}_{ij}}{d} & \text{for } d < d_{cut} \\ 
+        0 & \text{for } d \geq d_{cut} 
+    \end{cases}
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $K$ -- coefficient of repulsion (80000.f),
+    \item $d_{cut}$ -- cutoff distance (200.f),
+    \item $\frac{\mathbf{r}_{ij}}{d}$ -- unit vector of the force direction.
+\end{itemize}
+
+
+The total repulsive force acting on a drone $i$ is the vector sum of the forces from all other drones in the swarm:
+
+\begin{equation}
+\mathbf{F}_{total} = \sum_{j \neq i} \mathbf{F}_{ij} = \begin{bmatrix} F_x \\ F_z 
+\end{bmatrix}
+\end{equation}
+
+In the end this force is used to alter the desired course of the drone to steer it away from the other drones in the swarm. The course alteration is calculated as follows:
+
+\begin{equation}
+    \psi_{rep} = \operatorname{atan2}(F_x, F_z)
+\end{equation}
+
+\begin{equation}
+    \Delta\psi_{raw} = \operatorname{wrap}(\psi_{rep} - \psi_{curr})
+\end{equation}
+
+
+The final correction $\Delta\psi$ is scaled by the force magnitude and clamped to a predefined maximum range:
+\begin{equation}
+    \Delta\psi = \operatorname{clamp}\left( \Delta\psi_{raw} \cdot \frac{|\mathbf{F}{total}|}{100}, -\psi{max}, \psi_{max} \right)
+\end{equation}
+
+
+The speed reduction factor $v_{factor}$ depends linearly on the magnitude of the applied heading correction. This mechanism allows the unit to automatically decelerate while performing sharp evasive maneuvers:
+
+\begin{equation}
+    v_{factor} = 1 - \cdot \frac{|\Delta\psi|}{\psi_{max}}
+\end{equation}
+
+
+Theoretical way of operation is shown on the figure \ref{fig:collision_avoidance}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/anti_collison_graph_2.png}
+    \caption{Collision avoidance system for a drone swarm. Star represents a drones goal possition, red arrows represent the repulsive forces from other drones in the swarm, red dashed circle represents the effective repulsion force distance.}
+    \label{fig:collision_avoidance}
+\end{figure}
+
+
+Algorithm tested in a simulator is able to keep the drones in the swarm away from each other and avoid collisions between them. It is very effective in preventing collisions.
+On a figure \ref{fig:PID_course_controller} anti collision system is not active, so the drones are colliding with each other, on a way to waypoint.
+
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/UAV_collision_avoidance_test.png}
+    \caption{Simulation of the collision avoidance system in action. System is especially effective when drones are in a close proximity to a waypoint. Yellow drone even have a circle manouver to avoid collison with other drones. The repulsive force is very well visible in the begining of drone path, when drones are in a close proximity to each other.}
+    \label{fig:collision_avoidance_simulation}
+\end{figure}
+
+
+
+
+
+\subsection{AIS Vessels Avoidance System}
+
+    The second part of the anti collison system is avoiding collisons with other vessels in the area, witch are transmitting AIS signals. For that purpose I have implemented a simple system that is able to keep the drones away from the vessels in the area. The system is based on the same principle as the one for avoiding collisons between drones. The only difference is a reppeling force is not equal in all directions, but the shape of the force field is eliptical. This is because the drones are more likely to crash to big ship while beeing on its course rather than beeing on its side. 
+
+
+
+
+
+\vspace{1cm}
+\subsubsection{Elliptical Safety Zone (Mahalanobis Distance)}
+Instead of a simple circle, the system defines a safety buffer around each ship. This buffer is stretched along the ship's heading to account for its momentum and restricted maneuverability. While creating this system I was inspired by Mahalanobis Distance, which is a measure of distance that accounts for the correlation between variables. In this case, eliptical safety zone is defined by ship lenght and speed. If the ship is stationary, the safety zone is a circle with a radius equal to the base radius determined by the vessel type. 
+
+
+To determine the level of threat, the system calculates a normalized distance $d_{Maha}$. A value of $d_{Maha} < 1$ indicates that the drone has penetrated the safety buffer. The buffer is stretched along the ship's longitudinal axis to account for the vessel's momentum and limited maneuverability.
+
+\begin{equation}
+    d_{Maha} = \sqrt{ \left( \frac{x_{along}}{s_{along}} \right)^2 + \left( \frac{x_{perp}}{s_{perp}} \right)^2 }
+\end{equation}
+
+The scaling factors $s_{along}$ and $s_{perp}$ define the boundary of the ellipse:
+
+\begin{itemize}
+    \item $s_{perp} = R_{base}$ (The base radius determined by the vessel type).\item $s_{along} = 
+    \begin{cases} R_{base} \cdot (1 + \sigma \cdot v_{ship}) & \text{if drone is ahead} \\ R_{base} \cdot \beta & \text{if drone is behind} \end{cases}$
+\end{itemize}
+
+Where:
+\begin{itemize}
+    \item $\sigma$ -- Speed stretch factor = 0.2.
+    \item $\beta$ -- Behind factor = 0.4.
+    \item $v_{ship}$ -- Velocity of the vessel in m/s.
+\end{itemize}
+
+
+
+\vspace{1cm}
+If the drone enters the safety zone, the system calculates an Escape Bearing $\psi_{esc}$. The strategy commands the drone to steer perpendicular to the ship's track, choosing the side that minimizes the time spent within the danger area:
+
+\begin{equation}
+    \psi_{esc} = 
+    \begin{cases} 
+        \psi_{ship} - 90^\circ & \text{if } x_{perp} \geq 0 \\ 
+        \psi_{ship} + 90^\circ & \text{if } x_{perp} < 0 
+    \end{cases}
+\end{equation}
+
+
+The final control output is determined by the severity of the intrusion. In the DANGER zone, the navigation logic is entirely bypassed in favor of maximum evasive maneuvers:
+
+\begin{equation}
+\text{Final Command} =
+\begin{cases}
+    \text{Steer}_{\max}, \text{Thr}_{\min} & \text{if } d_{Maha} < Z_{\text{danger}} \\
+    \text{Interpolated Transition} & \text{if } Z_{\text{danger}} \leq d_{Maha} < Z_{\text{warning}} \\
+    \text{Standard Navigation} & \text{if } d_{Maha} \geq 1
+\end{cases}
+\end{equation}
+
+
+\vspace{0.5cm}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/safety_zone2.png}
+    \caption{Elliptical safety zone around a large vessel. Blue arrows represents UAVS, puprle arrow represents a big ship. The safety zone is stretched and shifted along the ship's heading to account for its momentum.}
+    \label{fig:big_ship_safe_zone}
+\end{figure}
+
+
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/ais_avoidance_test_01.png}
+        \caption{Initial approach: The vessel (yellow) approaches at 35\,kts. Drones are initially on a collision course. Drones immediately detect the vessel and begin evasive maneuvers to steer clear of the safety zone.}
+        \label{fig:big_ship_avoidance_simulation_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/ais_avoidance_test_02.png}
+        \caption{Continous avoidance: Yellow ship makes sharp U turn going back into drones trajectory. UAVs deviate from the ship's trajectory to minimize time in the danger zone, and tries to achieve a waypoint at a same time.}
+        \label{fig:big_ship_avoidance_simulation_2}
+    \end{subfigure}
+
+    \caption{Simulation of the AIS vessel avoidance system. The drones successfully detect and maneuver around the high-speed commercial vessel to maintain the safety buffer, while still progressing towards their waypoint. The elliptical safety zone is clearly visible as the drones adjust their paths to minimize time spent within it.}
+    \label{fig:big_ship_avoidance_simulation}
+\end{figure}
+
+
+
+
+\vspace{1cm}
+\subsubsection{Potential Problems}
+    The major problem of this system is assumption that all vessels in the area are transmitting AIS signals. In reality, there are many vessels that are not, either because they are not required to do so or because they are intentionally trying to avoid detection. Other issue is a possition of the vessel is taken from onboard GPS, which can be easily spoofed or jammed. In that case, the system will not be able to detect the vessel and avoid collison with it. That is why it is important to have a backup system that is able to detect vessels in the area even if they are not transmitting AIS signals. One possible solution is to use radar or camera to detect vessels in the area and avoid collison with them. That is out of the scope of this project, but it is something that could be implemented in the future.
+

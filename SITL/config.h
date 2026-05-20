@@ -15,7 +15,7 @@
 
 // ── Timing ───────────────────────────────────────────────────────
 #define CONTROL_LOOP_HZ     50          // Main control loop rate
-#define STATE_TIMEOUT_MS    500         // Mark drone lost if no packet for this long
+#define STATE_TIMEOUT_MS    3000        // Mark drone lost if no packet for this long
 
 // ── Patrol grid ──────────────────────────────────────────────────
 // Cell size is defined in GridPatrol.h: CELL_SIZE_M = 300m

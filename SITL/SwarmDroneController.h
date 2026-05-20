@@ -23,12 +23,16 @@
 #include <cmath>
 #include <algorithm>
 #include <iostream>
+#include <iomanip>
 
 // ── PID gains — same as your original DroneController ────────────
-#define SC_KP_HEADING   0.15f
-#define SC_KI_HEADING   0.001f
-#define SC_KD_HEADING   0.08f    // increased from 0.001 for less overshoot
-#define SC_KP_SPEED     0.8f
+// Heading PID — steer output is -1..1
+// Kp=0.15 saturates at 6.6° error. Lowered so output is proportional
+// across the full turn range (180° error → steer=0.9, not clipped at 1.0)
+#define SC_KP_HEADING   0.005f   // 180° error → 0.9 steer (not saturated)
+#define SC_KI_HEADING   0.0001f
+#define SC_KD_HEADING   0.002f
+#define SC_KP_SPEED     0.5f
 #define SC_MAX_THROTTLE 1.0f
 #define SC_MAX_STEER    1.0f
 
@@ -62,13 +66,16 @@ public:
         state    = newState;
         hasState = true;
         isLost   = false;
-        _lastRxMs = nowMs();
+        long long now = nowMs();
+        _lastRxMs = now;
 
-        float dt = (float)(nowMs() - _lastKalmanMs) / 1000.0f;
-        _lastKalmanMs = nowMs();
+        // FIX: first tick _lastKalmanMs==0 -> dt would be ms-since-epoch
+        if (_lastKalmanMs == 0) _lastKalmanMs = now;
+        float dt = (float)(now - _lastKalmanMs) / 1000.0f;
+        _lastKalmanMs = now;
 
-        // ── Kalman: predict with IMU ──────────────────────────────
-        if (!_kalmanInited && state.gps.lat != 0.0)
+        // ── Kalman: init on first valid GPS fix ───────────────────
+        if (!_kalmanInited && std::abs(state.gps.lat) > 0.001)
         {
             kalman.init(state.gps.lat, state.gps.lon, state.compass.heading);
             _kalmanInited = true;
@@ -76,16 +83,17 @@ public:
 
         if (_kalmanInited)
         {
+            // dt clamped to 0.2s max inside KalmanFilter::predict
             kalman.predict(state.imu.accel_x, state.imu.accel_z, dt);
 
-            // GPS update
-            if (state.gps.lat != 0.0)
+            // GPS — only when fix is valid
+            if (std::abs(state.gps.lat) > 0.001)
                 kalman.updateGPS(state.gps.lat, state.gps.lon,
                                  state.gps.accuracy);
 
-            // Compass update
+            // Compass — 0 sigma handled inside KalmanFilter (defaults 2 deg)
             kalman.updateCompass(state.compass.heading,
-                                 state.compass.noise_sigma + 1.0f);
+                                 state.compass.noise_sigma);
 
             // LoRa ToF range updates
             for (auto& n : state.lora.neighbours)
@@ -122,16 +130,19 @@ public:
         cmd.droneId   = droneId;
         cmd.packetSeq = _cmdSeq++;
 
-        if (!hasState || isLost || !_kalmanInited)
+        // Use raw GPS as fallback if Kalman not yet initialised
+        // This is the key fix: !_kalmanInited was causing early return
+        // with thr=0 even though we have valid GPS position
+        double myLat = (_kalmanInited && kalman.lat != 0.0) ? kalman.lat : state.gps.lat;
+        double myLon = (_kalmanInited && kalman.lon != 0.0) ? kalman.lon : state.gps.lon;
+        float  myHdg = state.compass.heading;   // always raw compass
+
+        if (!hasState || isLost || (myLat == 0.0 && myLon == 0.0))
         {
             cmd.throttle = 0.0f;
             cmd.steer    = 0.0f;
             return cmd;
         }
-
-        double myLat = kalman.lat;
-        double myLon = kalman.lon;
-        float  myHdg = kalman.heading;
 
         // ── Patrol: get/update target cell ────────────────────────
         if (patrol)
@@ -149,27 +160,48 @@ public:
                           state.ais, loraSwarm,
                           desiredHeading, desiredSpeed);
 
-        // ── PID heading controller ────────────────────────────────
+        // ── Heading PID ───────────────────────────────────────────
         float headingError = deltaAngle(myHdg, desiredHeading);
         float rawDError    = headingError - _lastHdgError;
         _lastHdgError      = headingError;
 
-        float alpha        = 0.1f;
-        _filteredDError    = alpha * rawDError + (1.0f - alpha) * _filteredDError;
+        // Light low-pass on derivative
+        _filteredDError = 0.1f * rawDError + 0.9f * _filteredDError;
 
-        _integralError    += headingError * 0.02f;
-        _integralError     = std::clamp(_integralError, -30.0f, 30.0f);
+        // Integral — only accumulate when error is small (avoid windup during
+        // large turns where the drone is physically spinning)
+        if (std::abs(headingError) < 20.0f)
+        {
+            _integralError += headingError * 0.02f;
+            _integralError  = std::clamp(_integralError, -15.0f, 15.0f);
+        }
+        else
+        {
+            _integralError *= 0.95f;  // bleed off integral during large turns
+        }
 
         float steer = (headingError    * SC_KP_HEADING)
                     + (_integralError  * SC_KI_HEADING)
                     + (_filteredDError * SC_KD_HEADING);
 
-        // ── PID speed controller ──────────────────────────────────
-        float speedError = desiredSpeed - state.velocity.speed_ms;
-        float throttle   = speedError * SC_KP_SPEED;
+        // ── Speed controller ──────────────────────────────────────
+        // Always maintain minimum forward speed so rudder has effect.
+        // Scale up toward full cruise as heading aligns.
+        // headingFactor: 0° error → 1.0, 180° error → MIN_SPEED_FACTOR
+        const float MIN_SPEED_FACTOR = 0.3f;   // 30% speed even while turning
+        float abErr         = std::abs(headingError);
+        float headingFactor = MIN_SPEED_FACTOR
+                            + (1.0f - MIN_SPEED_FACTOR)
+                            * (1.0f - std::min(abErr / 90.0f, 1.0f));
+        float adjustedSpeed = desiredSpeed * headingFactor;
+        float speedError    = adjustedSpeed - state.velocity.speed_ms;
+        float throttle      = speedError * SC_KP_SPEED;
 
-        cmd.throttle = std::clamp(throttle, -SC_MAX_THROTTLE, SC_MAX_THROTTLE);
-        cmd.steer    = std::clamp(steer,    -SC_MAX_STEER,    SC_MAX_STEER);
+        cmd.throttle = std::clamp(throttle, 0.0f, SC_MAX_THROTTLE);  // forward only
+        cmd.steer    = std::clamp(steer,   -SC_MAX_STEER, SC_MAX_STEER);
+        const_cast<SwarmDroneController*>(this)->lastThrottle     = cmd.throttle;
+        const_cast<SwarmDroneController*>(this)->lastSteer        = cmd.steer;
+        const_cast<SwarmDroneController*>(this)->lastDesiredSpeed = desiredSpeed;
 
         // ── LoRa broadcast (every N ticks) ────────────────────────
         if (loraSwarm.shouldBroadcastThisTick())
@@ -192,18 +224,26 @@ public:
     }
 
     // ── Status line for console ───────────────────────────────────
+    float lastThrottle = 0.0f, lastSteer = 0.0f, lastDesiredSpeed = 0.0f;
     void printStatus() const
     {
         int nb = (int)loraSwarm.allNeighbours().size();
         float cov = patrol ? patrol->coveragePercent() : 0.0f;
         std::cout << "[Drone " << droneId << "]"
-                  << "  hdg="   << (int)kalman.heading << "°"
-                  << "  spd="   << state.velocity.speed_knots << "kn"
+                  << "  hdg="   << (int)state.compass.heading << "°(raw)"
+                  << "  spd="   << state.velocity.speed_knots << "kn(" << state.velocity.speed_ms << "ms)"
                   << "  pos=("  << kalman.lat << "," << kalman.lon << ")"
                   << "  posStd=" << (int)kalman.posStdM() << "m"
+                  << "  hasTgt=" << trajectory.hasTarget()
+                  << "  patrol=" << (patrol != nullptr)
+                  << "  tgtHdg=" << (int)GridPatrol::bearingDeg(kalman.lat,kalman.lon,trajectory.targetLat(),trajectory.targetLon()) << "°"
+                  << "  tgt=("  << std::fixed << std::setprecision(4)
+                  << trajectory.targetLat() << "," << trajectory.targetLon() << ")"
                   << "  cov="   << (int)cov << "%"
                   << "  LoRa_nb=" << nb
                   << "  AIS="   << state.ais.contactCount
+                  << "  tgtSpd=" << lastDesiredSpeed
+                  << "  thr=" << lastThrottle << "  str=" << lastSteer
                   << (isLost ? "  [LOST]" : "")
                   << "\n";
     }

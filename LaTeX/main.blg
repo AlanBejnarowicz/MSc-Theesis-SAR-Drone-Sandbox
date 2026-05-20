@@ -3,44 +3,48 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: plain.bst
 Database file #1: mybibliography.bib
-You've used 14 entries,
+Warning--entry type for "Argo2024" isn't style-file defined
+--line 178 of file mybibliography.bib
+Warning--I didn't find a database entry for "ROS"
+You've used 22 entries,
             2118 wiz_defined-function locations,
-            577 strings with 6405 characters,
-and the built_in function-call counts, 3942 in all, are:
-= -- 381
-> -- 175
+            615 strings with 7390 characters,
+and the built_in function-call counts, 5628 in all, are:
+= -- 541
+> -- 231
 < -- 2
-+ -- 71
-- -- 56
-* -- 214
-:= -- 668
-add.period$ -- 46
-call.type$ -- 14
-change.case$ -- 68
++ -- 95
+- -- 72
+* -- 263
+:= -- 952
+add.period$ -- 73
+call.type$ -- 22
+change.case$ -- 99
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 147
-empty$ -- 337
-format.name$ -- 56
-if$ -- 836
+cite$ -- 22
+duplicate$ -- 208
+empty$ -- 513
+format.name$ -- 72
+if$ -- 1205
 int.to.chr$ -- 0
-int.to.str$ -- 14
-missing$ -- 6
-newline$ -- 76
-num.names$ -- 30
-pop$ -- 100
+int.to.str$ -- 22
+missing$ -- 8
+newline$ -- 119
+num.names$ -- 46
+pop$ -- 170
 preamble$ -- 1
-purify$ -- 55
+purify$ -- 79
 quote$ -- 0
-skip$ -- 112
+skip$ -- 163
 stack$ -- 0
-substring$ -- 164
-swap$ -- 32
+substring$ -- 204
+swap$ -- 40
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 54
+type$ -- 84
 warning$ -- 0
-while$ -- 38
-width$ -- 16
-write$ -- 157
+while$ -- 54
+width$ -- 24
+write$ -- 242
+(There were 2 warnings)

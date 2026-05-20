@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "notes": "Edit this file to set your mission waypoints and search zones.",
+
+  "waypoints": [
+    { "lat": 54.440, "lon": 18.910, "label": "WP1" },
+    { "lat": 54.430, "lon": 18.910, "label": "WP2" },
+    { "lat": 54.430, "lon": 18.940, "label": "WP3" },
+    { "lat": 54.440, "lon": 18.940, "label": "WP4" },
+    { "lat": 54.440, "lon": 18.910, "label": "WP1 (return)" }
+  ],
+
+  "search_zones": [
+    {
+      "name": "SEARCH_ALPHA",
+      "color": "#ffb700",
+      "boundary": [
+        { "lat": 54.482805, "lon": 18.855286 },
+        { "lat": 54.459262, "lon": 18.766708 },
+        { "lat": 54.396950, "lon": 18.825760 },
+        { "lat": 54.420129, "lon": 18.915024 },
+        { "lat": 54.476821, "lon": 18.921890 },
+        { "lat": 54.481608, "lon": 18.856659 }
+      ]
+    }
+  ]
+}

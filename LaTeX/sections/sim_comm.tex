@@ -89,10 +89,11 @@ received state packet, minimising control latency to one round-trip delay.
  
 \begin{lstlisting}[style=jsonStyle, caption={Command packet JSON schema.}, label={lst:cmd_packet}]
 {
-  "droneId":   0,
-  "packetSeq": 248,
-  "throttle":  0.80,
-  "steer":    -0.30
+  "droneId": "0",
+  "packetSeq": 1024,
+  "throttle": 0.85,
+  "steer": -0.15,
+  "loraBroadcast": "LoRa message content here"
 }
 
 \end{lstlisting}

@@ -1,17 +1,41 @@
-\section{Default drone parameters}
+\section{Default drone parameters and simulation profile}
 
-During all tests I used drones with the following parameters:
+During all the tests, drones were configured with the following parameters:
 
 
 \begin{itemize}
-    \item Mass: XXXkg
-    \item Length: 3.0 m
-    \item Maximum thrust: XXX N per motor
-    \item Battery capacity: XXXX mAh
-    \item Propeller diameter: XXX inches
-    \item Control frequency: 200 Hz
-    \item Sensor suite: IMU, GPS, magnetometer
-    \item MORE PARAMETERS TO BE ADDED
+    \item \textbf{Mass:} $100 \text{ kg}$
+    \item \textbf{Length:} $3.0 \text{ m}$
+    \item \textbf{Maximum thrust:} $300 \text{ N}$
+    \item \textbf{Maximum rudder angle:} $\pm 40^\circ$
+    \item \textbf{Rudder prop wash coefficient:} $0.05$
+    \item \textbf{Rudder lift coefficient:} $0.06$
+    \item \textbf{Hull drag coefficient:} $0.05$
+    \item \textbf{Sensor suite:} IMU (6-DOF), GPS, magnetometer, LoRa ToF, AIS receiver, AIS transponder
 \end{itemize}
 
-As a 3D mocel, I used the ONR Tumblehome, designed for the ONR Tumblehome Challenge \cite{W2025_ONRT}. The model was obtained from the W2025 website and adapted for use in simulator. 
+
+Simulation engine parameters and communication settings was set to be:
+
+\begin{itemize}
+    \item \textbf{Physics loop frequency:} $200 \text{ Hz}$
+    \item \textbf{SITL/HITL data exchange rate:} $50 \text{ Hz}$
+    \item \textbf{Drone AIS receiver range:} $15{,}000 \text{ m}$
+    \item \textbf{LoRa Spreading Factor (SF):} $10$
+    \item \textbf{LoRa TX power:} $13 \text{ dBm}$ (SX1280 hardware limit)
+    \item \textbf{Estimated LoRa range:} $434.21 \text{ m}$ (calculated using Eq.~\ref{eq:dmax})
+    \item \textbf{Estimated LoRa bitrate:} $3964 \text{ bps}$
+\end{itemize}
+
+One major important step in my simulator is adding a gaussian noise to simulated sensors output. All added noise is summarized in a list below:
+
+\begin{itemize}
+    \item \textbf{IMU accelerometer noise:} $(0.05, \, 0.05, \, 0.05) \text{ m/s}^2$
+    \item \textbf{IMU gyroscope noise:} $(0.01, \, 0.01, \, 0.01) \text{ rad/s}$
+    \item \textbf{Compass heading noise:} $1.5^\circ$
+    \item \textbf{GPS origin:} $(54.52551^\circ\text{N}, \, 18.77030^\circ\text{E})$
+    \item \textbf{GPS position noise:} $(2.5, \, 2.5) \text{ m}$
+    \item \textbf{GPS latitude linearization:} $1^\circ \approx 111{,}111 \text{ m}$
+\end{itemize}
+
+As a 3D model, I used the ONR Tumblehome, designed for the ONR Tumblehome Challenge \cite{W2025_ONRT}. The model was obtained from the W2025 website and adapted for use in simulator. 

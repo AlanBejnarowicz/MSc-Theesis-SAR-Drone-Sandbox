@@ -3,145 +3,222 @@
 \citation{YARA}
 \gtt@chartextrasize{0}{218.41187pt}
 \citation{*}
-\@writefile{toc}{\contentsline {section}{\numberline {0.1}From YARA Sim to High-Performance Swarm Environments}{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {0.2}Drone Ship Physics Model }{1}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Introduction}{1}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {0.1}{\ignorespaces Ship buoyancy model diagram.}}{2}{}\protected@file@percent }
-\newlabel{fig:ship_buoyancy_points}{{0.1}{2}{Ship buoyancy model diagram}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {0.2}{\ignorespaces Left floater possition in simulated ship. $\hat  {\mathbf  {\hat  {Z}}}$ axis (blue) is forward, $\hat  {\mathbf  {\hat  {X}}}$ axis (red) is right and $\hat  {\mathbf  {\hat  {Y}}}$ (green) is up.}}{2}{}\protected@file@percent }
-\newlabel{fig:ship_floater}{{0.2}{2}{Left floater possition in simulated ship. $\hat {\mathbf {\hat {Z}}}$ axis (blue) is forward, $\hat {\mathbf {\hat {X}}}$ axis (red) is right and $\hat {\mathbf {\hat {Y}}}$ (green) is up}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Model of Buoyancy}{3}{}\protected@file@percent }
-\newlabel{equation:submergence_equation}{{1}{3}{Model of Buoyancy}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Damping and Stability}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Global Water Resistance}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{The Keel Effect (Lateral Resistance)}{4}{}\protected@file@percent }
-\newlabel{sect:Wave-Slope-Dynamics}{{0.2}{4}{Hydrostatic Pressure Gradient and Wave-Slope Dynamics}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Hydrostatic Pressure Gradient and Wave-Slope Dynamics }{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Center of Mass / Gravity (CG) Configuration}{4}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {0.3}{\ignorespaces Keel drag curve represents water friction in function of slip angle of moving ship. Drag is low when slip angle is close to 0 deg and high when approaching 90 deg}}{5}{}\protected@file@percent }
-\newlabel{fig:keel_drag_curve}{{0.3}{5}{Keel drag curve represents water friction in function of slip angle of moving ship. Drag is low when slip angle is close to 0 deg and high when approaching 90 deg}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Propulsion Dynamics}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{The Propeller Wash Effect (Slipstream)}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Hydrodynamic Forces on the Rudder}{5}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {0.4}{\ignorespaces Rudder airfoil model.}}{6}{}\protected@file@percent }
-\newlabel{fig:rudder_airfoil}{{0.4}{6}{Rudder airfoil model}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Summary of Forces and Moments}{6}{}\protected@file@percent }
+\citation{merriam_webster_drone}
+\@writefile{toc}{\contentsline {section}{\numberline {0.1}Important Terms And Nomenclature}{1}{}\protected@file@percent }
+\citation{Argo2024}
+\citation{YARA}
+\@writefile{toc}{\contentsline {section}{\numberline {0.2}Road to High-Performance Swarm Environments for Maritime Robotics}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Argo}{2}{}\protected@file@percent }
+\citation{Unity3D}
+\citation{NvidiaPhysX}
+\citation{NvidiaIsaacSim}
+\@writefile{toc}{\contentsline {subsection}{YARA}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{What makes my project different}{3}{}\protected@file@percent }
+\citation{ROS}
+\@writefile{toc}{\contentsline {subsection}{Comparison}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.1}{\ignorespaces Comparison of maritime robotics simulation environments}}{4}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:comparison}{{0.1}{4}{Comparison of maritime robotics simulation environments}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.3}Drone Ship Physics Model }{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.1}{\ignorespaces Ship buoyancy model diagram.}}{5}{}\protected@file@percent }
+\newlabel{fig:ship_buoyancy_points}{{0.1}{5}{Ship buoyancy model diagram}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Introduction}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.2}{\ignorespaces Left floater possition in simulated ship. $\hat  {\mathbf  {\hat  {Z}}}$ axis (blue) is forward, $\hat  {\mathbf  {\hat  {X}}}$ axis (red) is right and $\hat  {\mathbf  {\hat  {Y}}}$ (green) is up.}}{6}{}\protected@file@percent }
+\newlabel{fig:ship_floater}{{0.2}{6}{Left floater possition in simulated ship. $\hat {\mathbf {\hat {Z}}}$ axis (blue) is forward, $\hat {\mathbf {\hat {X}}}$ axis (red) is right and $\hat {\mathbf {\hat {Y}}}$ (green) is up}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Model of Buoyancy}{6}{}\protected@file@percent }
+\newlabel{equation:submergence_equation}{{1}{6}{Model of Buoyancy}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Damping and Stability}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Global Water Resistance}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{The Keel Effect (Lateral Resistance)}{7}{}\protected@file@percent }
+\newlabel{sect:Wave-Slope-Dynamics}{{0.3}{7}{Hydrostatic Pressure Gradient and Wave-Slope Dynamics \label {sect:Wave-Slope-Dynamics}}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Hydrostatic Pressure Gradient and Wave-Slope Dynamics }{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.3}{\ignorespaces Keel drag curve represents water friction in function of slip angle of moving ship. Drag is low when slip angle is close to 0 deg and high when approaching 90 deg}}{8}{}\protected@file@percent }
+\newlabel{fig:keel_drag_curve}{{0.3}{8}{Keel drag curve represents water friction in function of slip angle of moving ship. Drag is low when slip angle is close to 0 deg and high when approaching 90 deg}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Center of Mass / Gravity (CG) Configuration}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Propulsion Dynamics}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{The Propeller Wash Effect (Slipstream)}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Hydrodynamic Forces on the Rudder}{9}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.4}{\ignorespaces Rudder airfoil model.}}{9}{}\protected@file@percent }
+\newlabel{fig:rudder_airfoil}{{0.4}{9}{Rudder airfoil model}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Summary of Forces and Moments}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Force Classification Matrix}{10}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.2}{\ignorespaces Summary of Forces in the Drone Ship Physics Model}}{10}{}\protected@file@percent }
+\newlabel{tab:force_summary}{{0.2}{10}{Summary of Forces in the Drone Ship Physics Model}{}{}}
 \citation{alves2003revisiting}
 \citation{alves2003revisiting}
-\@writefile{toc}{\contentsline {paragraph}{Force Classification Matrix}{7}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {0.1}{\ignorespaces Summary of Forces in the Drone Ship Physics Model}}{7}{}\protected@file@percent }
-\newlabel{tab:force_summary}{{0.1}{7}{Summary of Forces in the Drone Ship Physics Model}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.3}Wave Physics Model }{7}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {0.5}{\ignorespaces Wave spectra for different wind speeds according to Moskowitz (1964). \cite  {alves2003revisiting}}}{8}{}\protected@file@percent }
-\newlabel{fig:moskowitz_spectra}{{0.5}{8}{Wave spectra for different wind speeds according to Moskowitz (1964). \cite {alves2003revisiting}}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {0.2}{\ignorespaces Spectral Parameters for Procedural Wave Synthesis}}{8}{}\protected@file@percent }
-\newlabel{tab:wave_parameters}{{0.2}{8}{Spectral Parameters for Procedural Wave Synthesis}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {0.6}{\ignorespaces Waves simulation resoults.}}{9}{}\protected@file@percent }
-\newlabel{fig:waves_model}{{0.6}{9}{Waves simulation resoults}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Introduction to Sensor Simulation}{9}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Global Positioning System (GPS) Simulation}{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Inertial Measurement Unit (IMU) Simulation }{10}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Digital Compass (Magnetometer)}{11}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {0.4}LoRa Communication Simulation}{11}{}\protected@file@percent }
-\newlabel{sec:lora_simulation}{{0.4}{11}{LoRa Communication Simulation}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Why LoRa}{12}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{ToF ranging}{12}{}\protected@file@percent }
-\newlabel{eq:ToF}{{31}{12}{ToF ranging}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.4}Wave Physics Model }{11}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.5}{\ignorespaces Wave spectra for different wind speeds according to Moskowitz (1964). \cite  {alves2003revisiting}}}{11}{}\protected@file@percent }
+\newlabel{fig:moskowitz_spectra}{{0.5}{11}{Wave spectra for different wind speeds according to Moskowitz (1964). \cite {alves2003revisiting}}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {0.3}{\ignorespaces Spectral Parameters for Procedural Wave Synthesis}}{12}{}\protected@file@percent }
+\newlabel{tab:wave_parameters}{{0.3}{12}{Spectral Parameters for Procedural Wave Synthesis}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {0.6}{\ignorespaces Waves simulation resoults.}}{12}{}\protected@file@percent }
+\newlabel{fig:waves_model}{{0.6}{12}{Waves simulation resoults}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Introduction to Sensor Simulation}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Global Positioning System (GPS) Simulation}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Inertial Measurement Unit (IMU) Simulation }{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Digital Compass (Magnetometer)}{14}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.5}LoRa Communication Simulation}{16}{}\protected@file@percent }
+\newlabel{sec:lora_simulation}{{0.5}{16}{LoRa Communication Simulation}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Why LoRa}{16}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{ToF ranging}{16}{}\protected@file@percent }
 \citation{rappaport2002wireless}
+\newlabel{eq:ToF}{{31}{17}{ToF ranging}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Hardware Basis — Semtech SX1280}{17}{}\protected@file@percent }
+\newlabel{sec:lora_hardware}{{0.5}{17}{Hardware Basis — Semtech SX1280}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {0.4}{\ignorespaces SX1280 parameters used in the simulation}}{17}{}\protected@file@percent }
+\newlabel{tab:sx1280_params}{{0.4}{17}{SX1280 parameters used in the simulation}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Propagation Model}{17}{}\protected@file@percent }
+\newlabel{sec:lora_propagation}{{0.5}{17}{Propagation Model}{}{}}
+\newlabel{eq:rssi}{{32}{17}{Propagation Model}{}{}}
 \citation{semtech_sx1280ds}
-\@writefile{toc}{\contentsline {subsection}{Hardware Basis — Semtech SX1280}{13}{}\protected@file@percent }
-\newlabel{sec:lora_hardware}{{0.4}{13}{Hardware Basis — Semtech SX1280}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {0.3}{\ignorespaces SX1280 parameters used in the simulation}}{13}{}\protected@file@percent }
-\newlabel{tab:sx1280_params}{{0.3}{13}{SX1280 parameters used in the simulation}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Propagation Model}{13}{}\protected@file@percent }
-\newlabel{sec:lora_propagation}{{0.4}{13}{Propagation Model}{}{}}
-\newlabel{eq:rssi}{{32}{13}{Propagation Model}{}{}}
-\newlabel{eq:dmax}{{33}{13}{Propagation Model}{}{}}
 \citation{bor2016lora}
-\@writefile{toc}{\contentsline {subsection}{Packet Lifecycle and Air-Time Model}{14}{}\protected@file@percent }
-\newlabel{sec:lora_airtime}{{0.4}{14}{Packet Lifecycle and Air-Time Model}{}{}}
-\newlabel{eq:toa}{{34}{14}{Packet Lifecycle and Air-Time Model}{}{}}
-\newlabel{eq:tsym}{{35}{14}{Packet Lifecycle and Air-Time Model}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Half-Duplex Enforcement}{14}{}\protected@file@percent }
-\newlabel{sec:lora_halfduplex}{{0.4}{14}{Half-Duplex Enforcement}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Collision Model}{14}{}\protected@file@percent }
-\newlabel{sec:lora_collision}{{0.4}{14}{Collision Model}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Model Limitations}{14}{}\protected@file@percent }
-\newlabel{sec:lora_limitations}{{0.4}{14}{Model Limitations}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {0.5}Software in the Loop and Hardware in the Loop Communication Architecture}{15}{}\protected@file@percent }
-\newlabel{sec:sitl_hitl}{{0.5}{15}{Software in the Loop and Hardware in the Loop Communication Architecture}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Simulation <-> Controller Communication Protocol}{15}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Packet Structure}{15}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{State Packet (Simulator $\rightarrow $ Controller)}{15}{}\protected@file@percent }
-\newlabel{lst:state_packet}{{1}{15}{State packet JSON schema}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}State packet JSON schema.}{15}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {0.4}{\ignorespaces State packet sensor blocks.}}{16}{}\protected@file@percent }
-\newlabel{tab:sensor_blocks}{{0.4}{16}{State packet sensor blocks}{}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Command Packet (Controller $\rightarrow $ Simulator)}{16}{}\protected@file@percent }
-\newlabel{lst:cmd_packet}{{2}{16}{Command packet JSON schema}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}Command packet JSON schema.}{16}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {0.7}{\ignorespaces Software-in-the-Loop and Hardware-in-the-Loop communication architecture.}}{17}{}\protected@file@percent }
-\newlabel{fig:sitl_hitl}{{0.7}{17}{Software-in-the-Loop and Hardware-in-the-Loop communication architecture}{}{}}
-\@writefile{toc}{\contentsline {subsection}{System Block Diagram}{17}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{SITL Operation}{17}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{HITL Migration Path}{17}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {0.6}Default drone parameters}{17}{}\protected@file@percent }
+\newlabel{eq:dmax}{{33}{18}{Propagation Model}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Packet Lifecycle and Air-Time Model}{18}{}\protected@file@percent }
+\newlabel{sec:lora_airtime}{{0.5}{18}{Packet Lifecycle and Air-Time Model}{}{}}
+\newlabel{eq:toa}{{34}{18}{Packet Lifecycle and Air-Time Model}{}{}}
+\newlabel{eq:tsym}{{35}{18}{Packet Lifecycle and Air-Time Model}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Half-Duplex Enforcement}{18}{}\protected@file@percent }
+\newlabel{sec:lora_halfduplex}{{0.5}{18}{Half-Duplex Enforcement}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Collision Model}{18}{}\protected@file@percent }
+\newlabel{sec:lora_collision}{{0.5}{18}{Collision Model}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Model Limitations}{19}{}\protected@file@percent }
+\newlabel{sec:lora_limitations}{{0.5}{19}{Model Limitations}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.6}Software in the Loop and Hardware in the Loop Communication Architecture}{20}{}\protected@file@percent }
+\newlabel{sec:sitl_hitl}{{0.6}{20}{Software in the Loop and Hardware in the Loop Communication Architecture}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Simulation <-> Controller Communication Protocol}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Packet Structure}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{State Packet (Simulator $\rightarrow $ Controller)}{20}{}\protected@file@percent }
+\newlabel{lst:state_packet}{{1}{20}{State packet JSON schema}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces State packet JSON schema.}}{20}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.5}{\ignorespaces State packet sensor blocks.}}{21}{}\protected@file@percent }
+\newlabel{tab:sensor_blocks}{{0.5}{21}{State packet sensor blocks}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Command Packet (Controller $\rightarrow $ Simulator)}{21}{}\protected@file@percent }
+\newlabel{lst:cmd_packet}{{2}{21}{Command packet JSON schema}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Command packet JSON schema.}}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{System Block Diagram}{21}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{SITL Operation}{21}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.7}{\ignorespaces Software-in-the-Loop and Hardware-in-the-Loop communication architecture.}}{22}{}\protected@file@percent }
+\newlabel{fig:sitl_hitl}{{0.7}{22}{Software-in-the-Loop and Hardware-in-the-Loop communication architecture}{}{}}
+\@writefile{toc}{\contentsline {subsection}{HITL Migration Path}{22}{}\protected@file@percent }
 \citation{W2025_ONRT}
-\@writefile{toc}{\contentsline {section}{\numberline {0.7}AIS - Automatic Identification System}{18}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Transmission Mechanism}{18}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.7}Default drone parameters and simulation profile}{23}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.8}AIS - Automatic Identification System}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Transmission Mechanism}{24}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Data Transmitted}{24}{}\protected@file@percent }
+\newlabel{subsection:data_tx}{{0.8}{24}{Data Transmitted}{}{}}
 \gdef \LT@i {\LT@entry 
     {1}{40.30476pt}\LT@entry 
     {5}{134.08163pt}\LT@entry 
     {5}{58.5459pt}\LT@entry 
     {5}{215.55333pt}}
-\@writefile{lot}{\contentsline {table}{\numberline {0.5}{\ignorespaces AIS Reporting Intervals for Shipborne Mobile Equipment (ITU-R M.1371-5)}}{19}{}\protected@file@percent }
-\newlabel{tab:ais_reporting_rates}{{0.5}{19}{AIS Reporting Intervals for Shipborne Mobile Equipment (ITU-R M.1371-5)}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Data Transmitted}{19}{}\protected@file@percent }
-\newlabel{subsection:data_tx}{{0.7}{19}{Data Transmitted}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Vessel Type Classification}{19}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {0.6}{AIS Vessel Type Codes (ITU-R M.1371)}}{19}{}\protected@file@percent }
-\newlabel{tab:ais-vessel-types}{{0.6}{19}{AIS Vessel Type Codes (ITU-R M.1371)}{}{}}
-\@writefile{toc}{\contentsline {subsection}{AIS Vulnerability: GPS Integration and Spoofing}{21}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {0.8}{\ignorespaces GPS spoofing attack on a vessel, showing the compromised GPS signal.}}{21}{}\protected@file@percent }
-\newlabel{fig:spoofed_GPS}{{0.8}{21}{GPS spoofing attack on a vessel, showing the compromised GPS signal}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Synthetic and Virtual AIS Aids to Navigation (AtoNs)}{21}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {0.8}AIS data collection}{22}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{AIS Data Sources}{22}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {0.9}{\ignorespaces My homemade AIS receiver system diagram.}}{23}{}\protected@file@percent }
-\newlabel{fig:AIS_RX_system}{{0.9}{23}{My homemade AIS receiver system diagram}{}{}}
-\@writefile{toc}{\contentsline {subsection}{Antenna and range}{23}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {0.10}{\ignorespaces My AIS data visualization web interface showing nearby vessels in real-time.}}{24}{}\protected@file@percent }
-\newlabel{fig:AIS_website}{{0.10}{24}{My AIS data visualization web interface showing nearby vessels in real-time}{}{}}
-\newlabel{lst:ais_csv_export}{{3}{24}{Subsection of exported AIS telemetry for Oceania}{}{}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}Subsection of exported AIS telemetry for Oceania.}{24}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.6}{\ignorespaces AIS Reporting Intervals for Shipborne Mobile Equipment (ITU-R M.1371-5)}}{25}{}\protected@file@percent }
+\newlabel{tab:ais_reporting_rates}{{0.6}{25}{AIS Reporting Intervals for Shipborne Mobile Equipment (ITU-R M.1371-5)}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Vessel Type Classification}{25}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.7}{\ignorespaces AIS Vessel Type Codes (ITU-R M.1371)}}{25}{}\protected@file@percent }
+\newlabel{tab:ais-vessel-types}{{0.7}{25}{AIS Vessel Type Codes (ITU-R M.1371)}{}{}}
+\@writefile{toc}{\contentsline {subsection}{AIS Vulnerability: GPS Integration and Spoofing}{26}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.8}{\ignorespaces GPS spoofing attack on a vessel, showing the compromised GPS signal.}}{27}{}\protected@file@percent }
+\newlabel{fig:spoofed_GPS}{{0.8}{27}{GPS spoofing attack on a vessel, showing the compromised GPS signal}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Synthetic and Virtual AIS Aids to Navigation (AtoNs)}{27}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.9}AIS data collection}{28}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{AIS Data Sources}{28}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.9}{\ignorespaces My homemade AIS receiver system diagram.}}{28}{}\protected@file@percent }
+\newlabel{fig:AIS_RX_system}{{0.9}{28}{My homemade AIS receiver system diagram}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {0.10}{\ignorespaces My AIS data visualization web interface showing nearby vessels in real-time.}}{29}{}\protected@file@percent }
+\newlabel{fig:AIS_website}{{0.10}{29}{My AIS data visualization web interface showing nearby vessels in real-time}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Antenna and range}{30}{}\protected@file@percent }
+\newlabel{lst:ais_csv_export}{{3}{30}{Subsection of exported AIS telemetry for Oceania}{}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Subsection of exported AIS telemetry for Oceania.}}{30}{}\protected@file@percent }
 \citation{catmullrom1974}
-\@writefile{toc}{\contentsline {section}{\numberline {0.9}AIS Data Replay}{25}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Overview}{25}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Coordinate System}{25}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Trajectory Interpolation}{25}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {0.10}AIS Data Replay}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Overview}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Coordinate System}{31}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Trajectory Interpolation}{31}{}\protected@file@percent }
 \citation{W2025_ONRT}
+\@writefile{toc}{\contentsline {subsection}{GPS Spoofing Detection}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Vessel Type and Scale}{32}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Simulated AIS Broadcast}{32}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.8}{\ignorespaces AIS ship type codes, descriptions, and representative lengths used for prefab scaling.}}{33}{}\protected@file@percent }
+\newlabel{tab:ship_types}{{0.8}{33}{AIS ship type codes, descriptions, and representative lengths used for prefab scaling}{}{}}
+\citation{wiki:boids}
+\citation{wiki:adrc}
+\@writefile{toc}{\contentsline {section}{\numberline {0.11}Swarm Controller Design}{34}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Data Fusion}{34}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Course and Speed Controller}{34}{}\protected@file@percent }
+\citation{newton1687principia}
+\@writefile{lof}{\contentsline {figure}{\numberline {0.11}{\ignorespaces PID controller keeping a course of a drone on the desired course. [UAV anti collision system not enabled!]}}{35}{}\protected@file@percent }
+\newlabel{fig:PID_course_controller}{{0.11}{35}{PID controller keeping a course of a drone on the desired course. [UAV anti collision system not enabled!]}{}{}}
+\@writefile{toc}{\contentsline {subsection}{UAV Anti Collision System}{35}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.12}{\ignorespaces Collision avoidance system for a drone swarm. Star represents a drones goal possition, red arrows represent the repulsive forces from other drones in the swarm, red dashed circle represents the effective repulsion force distance.}}{37}{}\protected@file@percent }
+\newlabel{fig:collision_avoidance}{{0.12}{37}{Collision avoidance system for a drone swarm. Star represents a drones goal possition, red arrows represent the repulsive forces from other drones in the swarm, red dashed circle represents the effective repulsion force distance}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {0.13}{\ignorespaces Simulation of the collision avoidance system in action. System is especially effective when drones are in a close proximity to a waypoint. Yellow drone even have a circle manouver to avoid collison with other drones. The repulsive force is very well visible in the begining of drone path, when drones are in a close proximity to each other.}}{37}{}\protected@file@percent }
+\newlabel{fig:collision_avoidance_simulation}{{0.13}{37}{Simulation of the collision avoidance system in action. System is especially effective when drones are in a close proximity to a waypoint. Yellow drone even have a circle manouver to avoid collison with other drones. The repulsive force is very well visible in the begining of drone path, when drones are in a close proximity to each other}{}{}}
+\@writefile{toc}{\contentsline {subsection}{AIS Vessels Avoidance System}{38}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Elliptical Safety Zone (Mahalanobis Distance)}{38}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.14}{\ignorespaces Elliptical safety zone around a large vessel. Blue arrows represents UAVS, puprle arrow represents a big ship. The safety zone is stretched and shifted along the ship's heading to account for its momentum.}}{39}{}\protected@file@percent }
+\newlabel{fig:big_ship_safe_zone}{{0.14}{39}{Elliptical safety zone around a large vessel. Blue arrows represents UAVS, puprle arrow represents a big ship. The safety zone is stretched and shifted along the ship's heading to account for its momentum}{}{}}
+\newlabel{fig:big_ship_avoidance_simulation_1}{{0.15a}{40}{Initial approach: The vessel (yellow) approaches at 35\,kts. Drones are initially on a collision course. Drones immediately detect the vessel and begin evasive maneuvers to steer clear of the safety zone}{}{}}
+\newlabel{sub@fig:big_ship_avoidance_simulation_1}{{a}{40}{Initial approach: The vessel (yellow) approaches at 35\,kts. Drones are initially on a collision course. Drones immediately detect the vessel and begin evasive maneuvers to steer clear of the safety zone}{}{}}
+\newlabel{fig:big_ship_avoidance_simulation_2}{{0.15b}{40}{Continous avoidance: Yellow ship makes sharp U turn going back into drones trajectory. UAVs deviate from the ship's trajectory to minimize time in the danger zone, and tries to achieve a waypoint at a same time}{}{}}
+\newlabel{sub@fig:big_ship_avoidance_simulation_2}{{b}{40}{Continous avoidance: Yellow ship makes sharp U turn going back into drones trajectory. UAVs deviate from the ship's trajectory to minimize time in the danger zone, and tries to achieve a waypoint at a same time}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {0.15}{\ignorespaces Simulation of the AIS vessel avoidance system. The drones successfully detect and maneuver around the high-speed commercial vessel to maintain the safety buffer, while still progressing towards their waypoint. The elliptical safety zone is clearly visible as the drones adjust their paths to minimize time spent within it.}}{40}{}\protected@file@percent }
+\newlabel{fig:big_ship_avoidance_simulation}{{0.15}{40}{Simulation of the AIS vessel avoidance system. The drones successfully detect and maneuver around the high-speed commercial vessel to maintain the safety buffer, while still progressing towards their waypoint. The elliptical safety zone is clearly visible as the drones adjust their paths to minimize time spent within it}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Potential Problems}{40}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{Grid-Based Surveillance and LoRa Coordination}{41}{}\protected@file@percent }
+\newlabel{subsec:grid_surveillance}{{0.11}{41}{Grid-Based Surveillance and LoRa Coordination}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Search Zone Discretisation}{41}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.16}{\ignorespaces In this test case, $n = 300$\,m. The cell size represents a balance between the number of cells a swarm of twelve test UAVs must manage: at this resolution the SEARCH\_ALPHA zone in the Gulf of Gda\'nsk yields 698 cells.}}{41}{}\protected@file@percent }
+\newlabel{fig:surveillance_zone}{{0.16}{41}{In this test case, $n = 300$\,m. The cell size represents a balance between the number of cells a swarm of twelve test UAVs must manage: at this resolution the SEARCH\_ALPHA zone in the Gulf of Gda\'nsk yields 698 cells}{}{}}
+\newlabel{eq:cell_centres}{{51}{41}{Search Zone Discretisation}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Algorithm goal}{41}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Decentralised Cell Assignment}{42}{}\protected@file@percent }
+\newlabel{eq:cell_score}{{52}{42}{Decentralised Cell Assignment}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{LoRa Beacon Protocol}{42}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {0.9}{\ignorespaces LoRa surveillance beacon wire format (36\,bytes maximum).}}{43}{}\protected@file@percent }
+\newlabel{tab:lora_beacon}{{0.9}{43}{LoRa surveillance beacon wire format (36\,bytes maximum)}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Distributed State Fusion}{43}{}\protected@file@percent }
+\newlabel{eq:merge}{{53}{43}{Distributed State Fusion}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Coverage Metric}{43}{}\protected@file@percent }
+\newlabel{eq:coverage}{{54}{43}{Coverage Metric}{}{}}
+\@writefile{toc}{\contentsline {subsection}{Algorithm Demonstration}{44}{}\protected@file@percent }
+\newlabel{fig:swarm_grid_01}{{0.17a}{44}{Drones entered the zone from the right, then spread out to cover the area}{}{}}
+\newlabel{sub@fig:swarm_grid_01}{{a}{44}{Drones entered the zone from the right, then spread out to cover the area}{}{}}
+\newlabel{fig:swarm_grid_03}{{0.17b}{44}{Drones are trying to cover the zone as evenly as possible, while avoiding cells targeted by neighbours}{}{}}
+\newlabel{sub@fig:swarm_grid_03}{{b}{44}{Drones are trying to cover the zone as evenly as possible, while avoiding cells targeted by neighbours}{}{}}
+\newlabel{fig:swarm_grid_04}{{0.17c}{44}{Drones are evenly distributed across the zone, with some cells visited more recently than others}{}{}}
+\newlabel{sub@fig:swarm_grid_04}{{c}{44}{Drones are evenly distributed across the zone, with some cells visited more recently than others}{}{}}
+\newlabel{fig:swarm_grid_06}{{0.17d}{44}{Drones now are revisiting cells to maintain coverage}{}{}}
+\newlabel{sub@fig:swarm_grid_06}{{d}{44}{Drones now are revisiting cells to maintain coverage}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {0.17}{\ignorespaces Overall swarm behaviour, drones are trying to cover while avoiding each other and other vessels in the area. For the test I have chosen a anchorage area in the Gulf of Gda\'nsk, which is a busy shipping lane with a high density of vessels.}}{44}{}\protected@file@percent }
+\newlabel{fig:main}{{0.17}{44}{Overall swarm behaviour, drones are trying to cover while avoiding each other and other vessels in the area. For the test I have chosen a anchorage area in the Gulf of Gda\'nsk, which is a busy shipping lane with a high density of vessels}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {0.12}Simulator Benchmarking}{45}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {0.18}{\ignorespaces This is a screenshot from the simulator during a benchmark test with 12 drones and around 30 live AIS vessels. The test was run in Unity Editor on the laptop described above. The simulator was running at around 90 FPS, with CPU idling around 25\%.}}{45}{}\protected@file@percent }
+\newlabel{fig:12UAVs_Unity_benchmark}{{0.18}{45}{This is a screenshot from the simulator during a benchmark test with 12 drones and around 30 live AIS vessels. The test was run in Unity Editor on the laptop described above. The simulator was running at around 90 FPS, with CPU idling around 25\%}{}{}}
 \bibstyle{plain}
 \bibdata{mybibliography}
-\@writefile{toc}{\contentsline {subsection}{GPS Spoofing Detection}{26}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Vessel Type and Scale}{26}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{Simulated AIS Broadcast}{26}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {0.7}{\ignorespaces AIS ship type codes, descriptions, and representative lengths used for prefab scaling.}}{27}{}\protected@file@percent }
-\newlabel{tab:ship_types}{{0.7}{27}{AIS ship type codes, descriptions, and representative lengths used for prefab scaling}{}{}}
 \bibcite{aishub2025}{1}
 \bibcite{alves2003revisiting}{2}
 \bibcite{armbian_os}{3}
 \bibcite{bor2016lora}{4}
 \bibcite{catmullrom1974}{5}
 \bibcite{emtrak_b100_manual}{6}
-\bibcite{openseamap2025}{7}
-\bibcite{OpenStreetMap}{8}
-\bibcite{rappaport2002wireless}{9}
-\bibcite{semtech_sx1280ds}{10}
-\bibcite{orangepi_pc_manual}{11}
-\bibcite{YARA}{12}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{28}{}\protected@file@percent }
-\bibcite{W2025_ONRT}{13}
-\bibcite{wiki:catmullrom}{14}
-\memsetcounter{lastsheet}{32}
-\memsetcounter{lastpage}{29}
-\gdef \@abspage@last{32}
+\bibcite{merriam_webster_drone}{7}
+\bibcite{newton1687principia}{8}
+\bibcite{NvidiaIsaacSim}{9}
+\bibcite{NvidiaPhysX}{10}
+\bibcite{openseamap2025}{11}
+\bibcite{OpenStreetMap}{12}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{46}{}\protected@file@percent }
+\bibcite{rappaport2002wireless}{13}
+\bibcite{semtech_sx1280ds}{14}
+\bibcite{Argo2024}{15}
+\bibcite{orangepi_pc_manual}{16}
+\bibcite{Unity3D}{17}
+\bibcite{YARA}{18}
+\bibcite{W2025_ONRT}{19}
+\bibcite{wiki:adrc}{20}
+\bibcite{wiki:boids}{21}
+\bibcite{wiki:catmullrom}{22}
+\memsetcounter{lastsheet}{50}
+\memsetcounter{lastpage}{47}
+\gdef \@abspage@last{50}

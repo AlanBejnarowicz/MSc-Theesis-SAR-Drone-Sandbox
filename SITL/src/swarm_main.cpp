@@ -89,7 +89,9 @@ int main(int argc, char* argv[])
     }
 
     // ── Init drone agents ─────────────────────────────────────────
-    std::vector<DroneAgent> agents(DRONE_COUNT);
+    std::vector<DroneAgent> agents;
+    agents.reserve(DRONE_COUNT);   // prevent realloc/move that resets Kalman state
+    agents.resize(DRONE_COUNT);
 
     for (int i = 0; i < DRONE_COUNT; i++)
     {
