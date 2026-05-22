@@ -20,3 +20,21 @@ Simulator was always running in Unity Editor, which is not the most efficient wa
     \caption{This is a screenshot from the simulator during a benchmark test with 12 drones and around 30 live AIS vessels. The test was run in Unity Editor on the laptop described above. The simulator was running at around 90 FPS, with CPU idling around 25\%.}
     \label{fig:12UAVs_Unity_benchmark}
 \end{figure}
+
+
+
+
+
+\subsection{n-UAV's Performance Test}
+In this test I wanted to check how many drones can be simulated in real time in the Unity Editor. I have started with no drones and then I have been increasing the number of drones until I reached the limit of real time simulation (at least 30 FPS). The results are summarized in the figure below: \ref{fig:performance_test}.
+
+In the begining system was limited to 90 FPS, witch is refresh rate of laptop screen. After around 40 drones simulated at the same time, the performance started to drop. This is a most likely due to Unity Engine CPU scheduler, which is not designed to handle such a high number of objects at the same time. This could be solved by making code less universal and more optimized for specific use case, but I have decided to make it modular and easy to understand. This lets me or other users to easily modify and extend the simulator. With the current implementation, simulator can run in real time with up to 100 drones, witch is more than enough for most of the use cases. For example, if we want to test a control algorithm based on Reinforcement Learning, we can run multiple instances of the simulator in parallel, each with a different number of drones, and then we can use the data from all the instances to train our algorithm. 
+
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/UnitySimPerformance.png}
+    \caption{This figure shows the performance of the simulator in Unity Editor with different number of drones. The blue line represents the average FPS measured through 3 seconds. The simulator can run in real time with up to 100 drones, which is a really good result for a simulator running in the editor on non gaming laptop.}
+    \label{fig:performance_test}
+\end{figure}

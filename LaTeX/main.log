@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.14)  20 MAY 2026 21:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.14)  22 MAY 2026 07:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -886,16 +886,19 @@ Overfull \hbox (31.07806pt too wide) in paragraph at lines 77--78
  [] 
  []
 
-[2]) (./terms_and_important_stuff.tex [1
+[2]) (./sections/introduction.tex) [1
 
 
 
-]) (./sections/differences.tex [2
+] (./terms_and_important_stuff.tex [2
 
 
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [3]
+]) (./sections/differences.tex [3
 
-LaTeX Warning: Citation `ROS' on page 4 undefined on input line 40.
+
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [4]
+
+LaTeX Warning: Citation `ROS' on page 5 undefined on input line 40.
 
 
 Overfull \hbox (1.48055pt too wide) in paragraph at lines 40--41
@@ -903,38 +906,41 @@ Overfull \hbox (1.48055pt too wide) in paragraph at lines 40--41
  []
 
 
-Overfull \hbox (17.55008pt too wide) in paragraph at lines 50--65
+Overfull \hbox (51.94164pt too wide) in paragraph at lines 52--68
  [][] 
  []
 
-) [4] (./sections/ship_model_dynamics.tex
-<images/ship_buoyancy.png, id=72, 1413.28pt x 770.88pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [5] [6] (./sections/ship_model_dynamics.tex
+<images/ship_buoyancy.png, id=78, 1413.28pt x 770.88pt>
 File: images/ship_buoyancy.png Graphic file (type png)
 <use images/ship_buoyancy.png>
 Package pdftex.def Info: images/ship_buoyancy.png  used on input line 19.
 (pdftex.def)             Requested size: 295.20113pt x 161.01913pt.
-<images/floater.png, id=73, 858.20625pt x 618.31pt>
+<images/floater.png, id=79, 858.20625pt x 618.31pt>
 File: images/floater.png Graphic file (type png)
 <use images/floater.png>
 Package pdftex.def Info: images/floater.png  used on input line 28.
 (pdftex.def)             Requested size: 295.20113pt x 212.68506pt.
- [5
+ [7
 
 
- <./images/ship_buoyancy.png>] [6 <./images/floater.png>]
-<images/keel_drag_curve.png, id=89, 1031.855pt x 573.14125pt>
+ <./images/ship_buoyancy.png>] [8 <./images/floater.png>]
+<images/keel_drag_curve.png, id=95, 1031.855pt x 573.14125pt>
 File: images/keel_drag_curve.png Graphic file (type png)
 <use images/keel_drag_curve.png>
 Package pdftex.def Info: images/keel_drag_curve.png  used on input line 145.
 (pdftex.def)             Requested size: 295.20113pt x 163.96786pt.
- [7] [8 <./images/keel_drag_curve.png>]
-<images/airfoil_rudder.png, id=97, 726.715pt x 381.425pt>
+ [9] [10 <./images/keel_drag_curve.png>]
+<images/airfoil_rudder.png, id=104, 726.715pt x 381.425pt>
 File: images/airfoil_rudder.png Graphic file (type png)
 <use images/airfoil_rudder.png>
 Package pdftex.def Info: images/airfoil_rudder.png  used on input line 195.
 (pdftex.def)             Requested size: 295.20113pt x 154.94188pt.
- [9 <./images/airfoil_rudder.png>]) [10] (./sections/wave_model.tex
-<images/MoskowitzSpectra.png, id=106, 831.85782pt x 740.7675pt>
+ [11 <./images/airfoil_rudder.png>]) [12] (./sections/wave_model.tex
+<images/MoskowitzSpectra.png, id=112, 831.85782pt x 740.7675pt>
 File: images/MoskowitzSpectra.png Graphic file (type png)
 <use images/MoskowitzSpectra.png>
 Package pdftex.def Info: images/MoskowitzSpectra.png  used on input line 21.
@@ -943,39 +949,39 @@ Package pdftex.def Info: images/MoskowitzSpectra.png  used on input line 21.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11
+[13
 
 
  <./images/MoskowitzSpectra.png>]
-<images/waves_system2.png, id=111, 1085.05376pt x 544.0325pt>
+<images/waves_system2.png, id=117, 1085.05376pt x 544.0325pt>
 File: images/waves_system2.png Graphic file (type png)
 <use images/waves_system2.png>
 Package pdftex.def Info: images/waves_system2.png  used on input line 66.
 (pdftex.def)             Requested size: 295.20113pt x 148.0114pt.
-) [12 <./images/waves_system2.png>] (./sections/virtual_sensors.tex [13
+) [14 <./images/waves_system2.png>] (./sections/virtual_sensors.tex [15
 
 ]
 Overfull \hbox (7.25008pt too wide) in paragraph at lines 48--51
 \T1/cmr/m/n/10.95 frequency kine-matic data, repli-cat-ing a 6-axis MEMS (Micro-Electro-Mechanical
  []
 
-[14]) [15] (./sections/lora.tex [16
+[16]) [17] (./sections/lora.tex [18
 
 
-] [17]
+] [19]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 117.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [18{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]) [19] (./sections/sim_comm.tex [20
+) [20{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]) [21] (./sections/sim_comm.tex [22
 
 
 ]
-<images/SITL-HITL-diagram.png, id=150, 1580.90625pt x 754.82pt>
+<images/SITL-HITL-diagram.png, id=157, 1580.90625pt x 754.82pt>
 File: images/SITL-HITL-diagram.png Graphic file (type png)
 <use images/SITL-HITL-diagram.png>
 Package pdftex.def Info: images/SITL-HITL-diagram.png  used on input line 111.
 (pdftex.def)             Requested size: 295.20113pt x 140.94101pt.
- [21]) [22 <./images/SITL-HITL-diagram.png>] (./sections/default_drone.tex) [23
+ [23]) [24 <./images/SITL-HITL-diagram.png>] (./sections/default_drone.tex) [25
 
 
 ] (./sections/ais.tex
@@ -986,7 +992,7 @@ Overfull \hbox (18.60654pt too wide) in paragraph at lines 26--39
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[24
+[26
 
 
 ]
@@ -1014,77 +1020,77 @@ Overfull \hbox (79.48563pt too wide) in alignment at lines 76--133
  [] [] [] [] 
  []
 
-[25] [26]
-<images/AIS_GPS_SPOOF.png, id=171, 1342.01375pt x 901.3675pt>
+[27] [28]
+<images/AIS_GPS_SPOOF.png, id=178, 1342.01375pt x 901.3675pt>
 File: images/AIS_GPS_SPOOF.png Graphic file (type png)
 <use images/AIS_GPS_SPOOF.png>
 Package pdftex.def Info: images/AIS_GPS_SPOOF.png  used on input line 152.
 (pdftex.def)             Requested size: 221.40225pt x 148.70546pt.
-) [27 <./images/AIS_GPS_SPOOF.png>] (./sections/ais_RX.tex
-<images/AIS_RX_subsystems.png, id=176, 1342.01375pt x 901.3675pt>
+) [29 <./images/AIS_GPS_SPOOF.png>] (./sections/ais_RX.tex
+<images/AIS_RX_subsystems.png, id=183, 1342.01375pt x 901.3675pt>
 File: images/AIS_RX_subsystems.png Graphic file (type png)
 <use images/AIS_RX_subsystems.png>
 Package pdftex.def Info: images/AIS_RX_subsystems.png  used on input line 17.
 (pdftex.def)             Requested size: 221.40225pt x 148.70546pt.
- [28
+ [30
 
 
  <./images/AIS_RX_subsystems.png>]
-<images/AIS_website.png, id=182, 2890.8pt x 1570.86874pt>
+<images/AIS_website.png, id=188, 2890.8pt x 1570.86874pt>
 File: images/AIS_website.png Graphic file (type png)
 <use images/AIS_website.png>
 Package pdftex.def Info: images/AIS_website.png  used on input line 41.
 (pdftex.def)             Requested size: 369.0pt x 200.50484pt.
- [29 <./images/AIS_website.png>]) [30] (./sections/ais_replay.tex
+ [31 <./images/AIS_website.png>]) [32] (./sections/ais_replay.tex
 Overfull \hbox (2.47884pt too wide) in paragraph at lines 11--12
 \T1/cmr/m/n/10.95 Given an ori-gin point $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 '[]; ^^U[]\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 cor-re-spond-ing to the scene's \T1/pcr/m/n/10.95 GPS_CORD_ORIGIN
  []
 
-[31
+[33
 
 
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [32] [33] (./sections/swarm_controller.tex [34
+) [34] [35] (./sections/swarm_controller.tex [36
 
 
 ]
-<images/PID_course_controller.png, id=205, 1578.89874pt x 1431.3475pt>
+<images/PID_course_controller.png, id=211, 1578.89874pt x 1431.3475pt>
 File: images/PID_course_controller.png Graphic file (type png)
 <use images/PID_course_controller.png>
 Package pdftex.def Info: images/PID_course_controller.png  used on input line 23.
 (pdftex.def)             Requested size: 258.29887pt x 234.15282pt.
- [35 <./images/PID_course_controller.png>]
-<images/anti_collison_graph_2.png, id=210, 1318.9275pt x 1087.06125pt>
+ [37 <./images/PID_course_controller.png>]
+<images/anti_collison_graph_2.png, id=216, 1318.9275pt x 1087.06125pt>
 File: images/anti_collison_graph_2.png Graphic file (type png)
 <use images/anti_collison_graph_2.png>
 Package pdftex.def Info: images/anti_collison_graph_2.png  used on input line 91.
 (pdftex.def)             Requested size: 184.5pt x 152.05484pt.
-<images/UAV_collision_avoidance_test.png, id=211, 1554.80875pt x 1138.2525pt>
+<images/UAV_collision_avoidance_test.png, id=217, 1554.80875pt x 1138.2525pt>
 File: images/UAV_collision_avoidance_test.png Graphic file (type png)
 <use images/UAV_collision_avoidance_test.png>
 Package pdftex.def Info: images/UAV_collision_avoidance_test.png  used on input line 104.
 (pdftex.def)             Requested size: 295.20113pt x 216.1139pt.
- [36] [37 <./images/anti_collison_graph_2.png> <./images/UAV_collision_avoidance_test.png>] [38]
-<images/safety_zone2.png, id=224, 1400.23125pt x 1381.16pt>
+ [38] [39 <./images/anti_collison_graph_2.png> <./images/UAV_collision_avoidance_test.png>] [40]
+<images/safety_zone2.png, id=231, 1400.23125pt x 1381.16pt>
 File: images/safety_zone2.png Graphic file (type png)
 <use images/safety_zone2.png>
 Package pdftex.def Info: images/safety_zone2.png  used on input line 176.
 (pdftex.def)             Requested size: 239.84775pt x 236.56438pt.
-<images/ais_avoidance_test_01.png, id=225, 1312.905pt x 1362.08875pt>
+<images/ais_avoidance_test_01.png, id=232, 1312.905pt x 1362.08875pt>
 File: images/ais_avoidance_test_01.png Graphic file (type png)
 <use images/ais_avoidance_test_01.png>
 Package pdftex.def Info: images/ais_avoidance_test_01.png  used on input line 188.
 (pdftex.def)             Requested size: 177.11842pt x 183.74934pt.
-<images/ais_avoidance_test_02.png, id=226, 1312.905pt x 1362.08875pt>
+<images/ais_avoidance_test_02.png, id=233, 1312.905pt x 1362.08875pt>
 File: images/ais_avoidance_test_02.png Graphic file (type png)
 <use images/ais_avoidance_test_02.png>
 Package pdftex.def Info: images/ais_avoidance_test_02.png  used on input line 195.
 (pdftex.def)             Requested size: 177.11842pt x 183.74934pt.
- [39 <./images/safety_zone2.png>]) [40 <./images/ais_avoidance_test_01.png> <./images/ais_avoidance_test_02.png>] (./sections/grid_navigation.tex
-<images/search_zone.png, id=237, 1805.74625pt x 1040.88875pt>
+ [41 <./images/safety_zone2.png>]) [42 <./images/ais_avoidance_test_01.png> <./images/ais_avoidance_test_02.png>] (./sections/grid_navigation.tex
+<images/search_zone.png, id=244, 1805.74625pt x 1040.88875pt>
 File: images/search_zone.png Graphic file (type png)
 <use images/search_zone.png>
 Package pdftex.def Info: images/search_zone.png  used on input line 11.
@@ -1097,7 +1103,7 @@ LaTeX Warning: Command \textdegree invalid in math mode on input line 27.
 LaTeX Warning: Command \textdegree invalid in math mode on input line 27.
 
 Missing character: There is no ° in font cmr10!
-[41
+[43
 
  <./images/search_zone.png>]
 Overfull \hbox (1.64738pt too wide) in paragraph at lines 56--69
@@ -1107,23 +1113,23 @@ Overfull \hbox (1.64738pt too wide) in paragraph at lines 56--69
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[42]
-<images/swarm_grid_01.png, id=246, 1485.55pt x 1137.24875pt>
+[44]
+<images/swarm_grid_01.png, id=252, 1485.55pt x 1137.24875pt>
 File: images/swarm_grid_01.png Graphic file (type png)
 <use images/swarm_grid_01.png>
 Package pdftex.def Info: images/swarm_grid_01.png  used on input line 108.
 (pdftex.def)             Requested size: 177.11842pt x 135.57895pt.
-<images/swarm_grid_03.png, id=247, 1485.55pt x 1137.24875pt>
+<images/swarm_grid_03.png, id=253, 1485.55pt x 1137.24875pt>
 File: images/swarm_grid_03.png Graphic file (type png)
 <use images/swarm_grid_03.png>
 Package pdftex.def Info: images/swarm_grid_03.png  used on input line 115.
 (pdftex.def)             Requested size: 177.11842pt x 135.57895pt.
-<images/swarm_grid_04.png, id=248, 1485.55pt x 1137.24875pt>
+<images/swarm_grid_04.png, id=254, 1485.55pt x 1137.24875pt>
 File: images/swarm_grid_04.png Graphic file (type png)
 <use images/swarm_grid_04.png>
 Package pdftex.def Info: images/swarm_grid_04.png  used on input line 125.
 (pdftex.def)             Requested size: 177.11842pt x 135.57895pt.
-<images/swarm_grid_06.png, id=249, 1485.55pt x 1137.24875pt>
+<images/swarm_grid_06.png, id=255, 1485.55pt x 1137.24875pt>
 File: images/swarm_grid_06.png Graphic file (type png)
 <use images/swarm_grid_06.png>
 Package pdftex.def Info: images/swarm_grid_06.png  used on input line 132.
@@ -1132,16 +1138,22 @@ Package pdftex.def Info: images/swarm_grid_06.png  used on input line 132.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [43] [44 <./images/swarm_grid_01.png> <./images/swarm_grid_03.png> <./images/swarm_grid_04.png> <./images/swarm_grid_06.png>] (./sections/benchmark.tex
-<images/12UAVs_test.png, id=260, 604.2575pt x 314.17375pt>
+) [45] [46 <./images/swarm_grid_01.png> <./images/swarm_grid_03.png> <./images/swarm_grid_04.png> <./images/swarm_grid_06.png>] (./sections/benchmark.tex
+<images/12UAVs_test.png, id=267, 604.2575pt x 314.17375pt>
 File: images/12UAVs_test.png Graphic file (type png)
 <use images/12UAVs_test.png>
 Package pdftex.def Info: images/12UAVs_test.png  used on input line 19.
 (pdftex.def)             Requested size: 221.40225pt x 115.1111pt.
-) [45
+ [47
 
 
- <./images/12UAVs_test.png>] (./main.bbl
+ <./images/12UAVs_test.png>]
+<images/UnitySimPerformance.png, id=272, 1606.0pt x 981.6675pt>
+File: images/UnitySimPerformance.png Graphic file (type png)
+<use images/UnitySimPerformance.png>
+Package pdftex.def Info: images/UnitySimPerformance.png  used on input line 37.
+(pdftex.def)             Requested size: 295.20113pt x 180.43727pt.
+) [48 <./images/UnitySimPerformance.png>] (./main.bbl
 bibitemlist
 
 Underfull \hbox (badness 1701) in paragraph at lines 14--18
@@ -1163,7 +1175,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--66
 []\T1/cmr/m/n/10.95 OpenStreetMap con-trib-u-tors.  Planet dump re-trieved from
  []
 
-[46
+[49
 
 
 ]
@@ -1171,7 +1183,7 @@ Underfull \hbox (badness 2809) in paragraph at lines 105--108
 []\T1/cmr/m/n/10.95 Wikipedia con-trib-u-tors.  Ac-tive dis-tur-bance re-jec-tion con-trol ---
  []
 
-) [47] (./main.aux)
+) [50] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1182,18 +1194,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 24819 strings out of 474222
- 480055 string characters out of 5748733
+ 24834 strings out of 474222
+ 480517 string characters out of 5748733
  2043975 words of memory out of 5000000
- 46592 multiletter control sequences out of 15000+600000
+ 46604 multiletter control sequences out of 15000+600000
  586117 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,101p,1119b,1793s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,101p,1240b,1793s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc2074.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (50 pages, 6885305 bytes).
+Output written on main.pdf (53 pages, 7163665 bytes).
 PDF statistics:
- 415 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
+ 425 PDF objects out of 1000 (max. 8388607)
+ 236 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 229 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 234 words of extra memory for PDF output out of 10000 (max. 10000000)
 

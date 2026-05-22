@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1779306558.04 "main.aux" "main.bbl" "main" 1779306569.21706 0
+["bibtex main"] 1779429427.30126 "main.aux" "main.bbl" "main" 1779429431.10268 0
   "./mybibliography.bib" 1779257759.71843 6846 c8d616e24663579a56ab92a8d1d70ebd ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1779306568.93703 24254 e04210463a1f80fa52eb37c59bc53ba8 "pdflatex"
+  "main.aux" 1779429430.82624 25310 bd703e9ed2b155ca4376e9a2d255153f "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1779306563.47993 "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/LaTeX/main.tex" "main.pdf" "main" 1779306569.21726 0
+["pdflatex"] 1779429427.38165 "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/LaTeX/main.tex" "main.pdf" "main" 1779429431.10294 0
   "/etc/texmf/web2c/texmf.cnf" 1768409915.00667 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/LaTeX/main.tex" 1779306446.37715 1949 0e73ac1f8840fb2a020cf7583243b06b ""
+  "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/LaTeX/main.tex" 1779429400.41581 1995 ffee5d6e2556846c53a2c01658b99a85 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrb8r.tfm" 1136768653 1292 3059476c50a24578715759f22652f3d0 ""
@@ -253,6 +253,7 @@
   "images/PID_course_controller.png" 1778788737.22461 188731 dede1704eb992d3e1d8801f98e604cc9 ""
   "images/SITL-HITL-diagram.png" 1776895869.63438 54236 745adb00455e655b969eb1b1c798554d ""
   "images/UAV_collision_avoidance_test.png" 1778607633.87436 257310 36ae80c70c11f47e9b0cf84a8b03d4a4 ""
+  "images/UnitySimPerformance.png" 1779370210.04489 312140 6702a063f13a3f776c94602d42cbba82 ""
   "images/airfoil_rudder.png" 1774378375.76981 16882 fb56cac93ec5a1188e8a14bf53bca403 ""
   "images/ais_avoidance_test_01.png" 1778619990.0094 264779 1c8ea7e7889879904a7ee157ced9ed85 ""
   "images/ais_avoidance_test_02.png" 1778620383.42431 333209 1c965f3d00c2b98d5324f1a1ae59452e ""
@@ -269,18 +270,19 @@
   "images/swarm_grid_06.png" 1779263225.30302 257822 0f284223b8db0ce6be3e8cf965e3fb9c ""
   "images/waves_system2.png" 1774378375.77781 210647 75f6b267d358c17676a579a6f26ed8b8 ""
   "listings.tex" 1779221773.41801 2714 6918bbf615ec3f402d0f15b334f2e5a5 ""
-  "main.aux" 1779306568.93703 24254 e04210463a1f80fa52eb37c59bc53ba8 "pdflatex"
-  "main.bbl" 1779306558.23405 4573 60ecb304f7d40d9d1e413222c19ca950 "bibtex main"
-  "main.tex" 1779306446.37715 1949 0e73ac1f8840fb2a020cf7583243b06b ""
+  "main.aux" 1779429430.82624 25310 bd703e9ed2b155ca4376e9a2d255153f "pdflatex"
+  "main.bbl" 1779429427.37433 4573 60ecb304f7d40d9d1e413222c19ca950 "bibtex main"
+  "main.tex" 1779429400.41581 1995 ffee5d6e2556846c53a2c01658b99a85 ""
   "sdu_logo.pdf" 1768409582.87762 15371 296585031190ef85d5fd8f568c162e4c ""
   "sections/ais.tex" 1778445745.50568 8664 23fa9d971f28be18cc150cb90518fc9c ""
   "sections/ais_RX.tex" 1777191329.63046 5221 573457a23a47c7ed167066391283ecf4 ""
   "sections/ais_replay.tex" 1778445745.50668 5447 77e045f5d7daabb3f71c262af78dd52b ""
-  "sections/benchmark.tex" 1779306092.67179 1149 217a08fad4fb19ad83adf5983b179b87 ""
+  "sections/benchmark.tex" 1779372151.01007 2943 4e4805eab8a24a3ac5b5761a001ae848 ""
   "sections/default_drone.tex" 1778870227.07372 2016 8ee7fdd99636fe95e0edc13678d0ea86 ""
-  "sections/differences.tex" 1779221564.31413 7779 32d3e01fd1880fa9be871a85cd8ae0de ""
+  "sections/differences.tex" 1779307204.47556 8800 11aca1963b750837716012a42b29f3a6 ""
   "sections/gantt.tex" 1772549366.64153 1910 d28dbf5e30ffbd3f5994c3e44d825e9d ""
   "sections/grid_navigation.tex" 1779263244.06485 9698 f92364409e2fa00a87324c92af2a3f88 ""
+  "sections/introduction.tex" 1779429419.03962 49 d71b11b869fb0101da5f23adef91733e ""
   "sections/lora.tex" 1778445745.50668 8943 77fc14a49ac31f632fe365566fe1f7ad ""
   "sections/ship_model_dynamics.tex" 1778692014.68813 11649 052e82ff491d3a16b411bd44872b3995 ""
   "sections/sim_comm.tex" 1778656238.72804 5813 62dd90113e0f1902ad96d59e2a7e706f ""
