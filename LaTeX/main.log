@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.14)  22 MAY 2026 07:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.1.14)  29 MAY 2026 00:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -789,14 +789,21 @@ File: upzd.fd 2001/06/04 font definitions for U/pzd.
 LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
-)) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count390
+\float@exts=\toks46
+\float@box=\box79
+\@float@everytoks=\toks47
+\@floatcapt=\box80
+) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
-\ttl@box=\box79
+\ttl@box=\box81
 \beforetitleunit=\skip197
 \aftertitleunit=\skip198
 \ttl@plus=\dimen318
 \ttl@minus=\dimen319
-\ttl@toksa=\toks46
+\ttl@toksa=\toks48
 \titlewidth=\dimen320
 \titlewidthlast=\dimen321
 \titlewidthfirst=\dimen322
@@ -817,41 +824,42 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (./listings.tex) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count390
+\scratchcounter=\count391
 \scratchdimen=\dimen327
-\scratchbox=\box80
-\nofMPsegments=\count391
-\nofMParguments=\count392
-\everyMPshowfont=\toks47
-\MPscratchCnt=\count393
+\scratchbox=\box82
+\nofMPsegments=\count392
+\nofMParguments=\count393
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count394
 \MPscratchDim=\dimen328
-\MPnumerator=\count394
-\makeMPintoPDFobject=\count395
-\everyMPtoPDFconversion=\toks48
+\MPnumerator=\count395
+\makeMPintoPDFobject=\count396
+\everyMPtoPDFconversion=\toks50
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count396
+\c@lstlisting=\count397
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (./frontpage.tex
 LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
@@ -886,19 +894,34 @@ Overfull \hbox (31.07806pt too wide) in paragraph at lines 77--78
  [] 
  []
 
-[2]) (./sections/introduction.tex) [1
+[2]) (./terms_and_important_stuff.tex [1
 
 
 
-] (./terms_and_important_stuff.tex [2
+]) (./sections/introduction.tex
+Overfull \hbox (6.66966pt too wide) in paragraph at lines 27--32
+[]\T1/cmr/m/n/10.95 Manned he-li-copter, while faster, are con-strained by crew en-durance, weather,
+ []
+
+[2
 
 
-]) (./sections/differences.tex [3
+] [3] [4]
+Overfull \hbox (12.5439pt too wide) in paragraph at lines 128--131
+[]\T1/cmr/m/n/10.95 Can a de-cen-tralised grid-based search
+ []
 
 
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [4]
+LaTeX Warning: Reference `sec:conclusion' on page 5 undefined on input line 135.
 
-LaTeX Warning: Citation `ROS' on page 5 undefined on input line 40.
+) [5
+
+] (./sections/differences.tex [6
+
+
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [7]
+
+LaTeX Warning: Citation `ROS' on page 8 undefined on input line 40.
 
 
 Overfull \hbox (1.48055pt too wide) in paragraph at lines 40--41
@@ -913,34 +936,34 @@ Overfull \hbox (51.94164pt too wide) in paragraph at lines 52--68
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [5] [6] (./sections/ship_model_dynamics.tex
-<images/ship_buoyancy.png, id=78, 1413.28pt x 770.88pt>
+) [8] [9] (./sections/ship_model_dynamics.tex
+<images/ship_buoyancy.png, id=88, 1413.28pt x 770.88pt>
 File: images/ship_buoyancy.png Graphic file (type png)
 <use images/ship_buoyancy.png>
 Package pdftex.def Info: images/ship_buoyancy.png  used on input line 19.
 (pdftex.def)             Requested size: 295.20113pt x 161.01913pt.
-<images/floater.png, id=79, 858.20625pt x 618.31pt>
+<images/floater.png, id=89, 858.20625pt x 618.31pt>
 File: images/floater.png Graphic file (type png)
 <use images/floater.png>
 Package pdftex.def Info: images/floater.png  used on input line 28.
 (pdftex.def)             Requested size: 295.20113pt x 212.68506pt.
- [7
+ [10
 
 
- <./images/ship_buoyancy.png>] [8 <./images/floater.png>]
-<images/keel_drag_curve.png, id=95, 1031.855pt x 573.14125pt>
+ <./images/ship_buoyancy.png>] [11 <./images/floater.png>]
+<images/keel_drag_curve.png, id=106, 1031.855pt x 573.14125pt>
 File: images/keel_drag_curve.png Graphic file (type png)
 <use images/keel_drag_curve.png>
 Package pdftex.def Info: images/keel_drag_curve.png  used on input line 145.
 (pdftex.def)             Requested size: 295.20113pt x 163.96786pt.
- [9] [10 <./images/keel_drag_curve.png>]
-<images/airfoil_rudder.png, id=104, 726.715pt x 381.425pt>
+ [12] [13 <./images/keel_drag_curve.png>]
+<images/airfoil_rudder.png, id=114, 726.715pt x 381.425pt>
 File: images/airfoil_rudder.png Graphic file (type png)
 <use images/airfoil_rudder.png>
 Package pdftex.def Info: images/airfoil_rudder.png  used on input line 195.
 (pdftex.def)             Requested size: 295.20113pt x 154.94188pt.
- [11 <./images/airfoil_rudder.png>]) [12] (./sections/wave_model.tex
-<images/MoskowitzSpectra.png, id=112, 831.85782pt x 740.7675pt>
+ [14 <./images/airfoil_rudder.png>]) [15] (./sections/wave_model.tex
+<images/MoskowitzSpectra.png, id=122, 831.85782pt x 740.7675pt>
 File: images/MoskowitzSpectra.png Graphic file (type png)
 <use images/MoskowitzSpectra.png>
 Package pdftex.def Info: images/MoskowitzSpectra.png  used on input line 21.
@@ -949,39 +972,39 @@ Package pdftex.def Info: images/MoskowitzSpectra.png  used on input line 21.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13
+[16
 
 
  <./images/MoskowitzSpectra.png>]
-<images/waves_system2.png, id=117, 1085.05376pt x 544.0325pt>
+<images/waves_system2.png, id=128, 1085.05376pt x 544.0325pt>
 File: images/waves_system2.png Graphic file (type png)
 <use images/waves_system2.png>
 Package pdftex.def Info: images/waves_system2.png  used on input line 66.
 (pdftex.def)             Requested size: 295.20113pt x 148.0114pt.
-) [14 <./images/waves_system2.png>] (./sections/virtual_sensors.tex [15
+) [17 <./images/waves_system2.png>] (./sections/virtual_sensors.tex [18
 
 ]
 Overfull \hbox (7.25008pt too wide) in paragraph at lines 48--51
 \T1/cmr/m/n/10.95 frequency kine-matic data, repli-cat-ing a 6-axis MEMS (Micro-Electro-Mechanical
  []
 
-[16]) [17] (./sections/lora.tex [18
+[19]) [20] (./sections/lora.tex [21
 
 
-] [19]
+] [22]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 117.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) [20{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]) [21] (./sections/sim_comm.tex [22
+) [23{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}]) [24] (./sections/sim_comm.tex [25
 
 
 ]
-<images/SITL-HITL-diagram.png, id=157, 1580.90625pt x 754.82pt>
+<images/SITL-HITL-diagram.png, id=167, 1580.90625pt x 754.82pt>
 File: images/SITL-HITL-diagram.png Graphic file (type png)
 <use images/SITL-HITL-diagram.png>
 Package pdftex.def Info: images/SITL-HITL-diagram.png  used on input line 111.
 (pdftex.def)             Requested size: 295.20113pt x 140.94101pt.
- [23]) [24 <./images/SITL-HITL-diagram.png>] (./sections/default_drone.tex) [25
+ [26]) [27 <./images/SITL-HITL-diagram.png>] (./sections/default_drone.tex) [28
 
 
 ] (./sections/ais.tex
@@ -992,105 +1015,135 @@ Overfull \hbox (18.60654pt too wide) in paragraph at lines 26--39
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[26
+[29
 
 
 ]
-Overfull \hbox (79.48563pt too wide) in alignment at lines 60--66
+Overfull \hbox (36.08296pt too wide) in alignment at lines 60--66
  [] [] [] [] 
  []
 
 
-Overfull \hbox (79.48563pt too wide) in alignment at lines 66--71
+Overfull \hbox (36.08296pt too wide) in alignment at lines 66--71
  [] [] [] [] 
  []
 
 
-Overfull \hbox (79.48563pt too wide) in alignment at lines 71--74
+Overfull \hbox (36.08296pt too wide) in alignment at lines 71--74
  [] [] [] [] 
  []
 
 
-Overfull \hbox (79.48563pt too wide) in alignment at lines 74--76
+Overfull \hbox (36.08296pt too wide) in alignment at lines 74--76
  [] [] [] [] 
  []
 
 
-Overfull \hbox (79.48563pt too wide) in alignment at lines 76--133
+Overfull \hbox (36.08296pt too wide) in alignment at lines 76--133
  [] [] [] [] 
  []
 
-[27] [28]
-<images/AIS_GPS_SPOOF.png, id=178, 1342.01375pt x 901.3675pt>
+[30] [31]
+<images/AIS_GPS_SPOOF.png, id=188, 1342.01375pt x 901.3675pt>
 File: images/AIS_GPS_SPOOF.png Graphic file (type png)
 <use images/AIS_GPS_SPOOF.png>
 Package pdftex.def Info: images/AIS_GPS_SPOOF.png  used on input line 152.
 (pdftex.def)             Requested size: 221.40225pt x 148.70546pt.
-) [29 <./images/AIS_GPS_SPOOF.png>] (./sections/ais_RX.tex
-<images/AIS_RX_subsystems.png, id=183, 1342.01375pt x 901.3675pt>
+) [32 <./images/AIS_GPS_SPOOF.png>] (./sections/ais_RX.tex
+<images/AIS_RX_subsystems.png, id=193, 1342.01375pt x 901.3675pt>
 File: images/AIS_RX_subsystems.png Graphic file (type png)
 <use images/AIS_RX_subsystems.png>
 Package pdftex.def Info: images/AIS_RX_subsystems.png  used on input line 17.
 (pdftex.def)             Requested size: 221.40225pt x 148.70546pt.
- [30
+ [33
 
 
  <./images/AIS_RX_subsystems.png>]
-<images/AIS_website.png, id=188, 2890.8pt x 1570.86874pt>
+<images/AIS_website.png, id=198, 2890.8pt x 1570.86874pt>
 File: images/AIS_website.png Graphic file (type png)
 <use images/AIS_website.png>
 Package pdftex.def Info: images/AIS_website.png  used on input line 41.
 (pdftex.def)             Requested size: 369.0pt x 200.50484pt.
- [31 <./images/AIS_website.png>]) [32] (./sections/ais_replay.tex
+ [34 <./images/AIS_website.png>]) [35] (./sections/ais_replay.tex
 Overfull \hbox (2.47884pt too wide) in paragraph at lines 11--12
 \T1/cmr/m/n/10.95 Given an ori-gin point $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 '[]; ^^U[]\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 cor-re-spond-ing to the scene's \T1/pcr/m/n/10.95 GPS_CORD_ORIGIN
  []
 
-[33
+[36
 
 
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [34] [35] (./sections/swarm_controller.tex [36
+) [37] [38] (./sections/swarm_controller.tex [39
 
 
 ]
-<images/PID_course_controller.png, id=211, 1578.89874pt x 1431.3475pt>
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 35.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 35.
+
+Missing character: There is no ° in font cmr10!
+[40]
+Overfull \hbox (10.6133pt too wide) in paragraph at lines 126--130
+\T1/cmr/m/n/10.95 This up-date di-rectly cor-rects the ve-loc-ity states and, through the cross-covariance
+ []
+
+<images/ekf_validation_plot_normal.png, id=225, 1144.275pt x 686.565pt>
+File: images/ekf_validation_plot_normal.png Graphic file (type png)
+<use images/ekf_validation_plot_normal.png>
+Package pdftex.def Info: images/ekf_validation_plot_normal.png  used on input line 140.
+(pdftex.def)             Requested size: 332.09775pt x 199.25589pt.
+[41]
+<images/ekf_validation_spoof_plot.png, id=229, 1144.275pt x 686.565pt>
+File: images/ekf_validation_spoof_plot.png Graphic file (type png)
+<use images/ekf_validation_spoof_plot.png>
+Package pdftex.def Info: images/ekf_validation_spoof_plot.png  used on input line 152.
+(pdftex.def)             Requested size: 332.09775pt x 199.25589pt.
+ [42 <./images/ekf_validation_plot_normal.png>]
+<images/ekf_validation_half_swarm_spoofed_plot.png, id=235, 1144.275pt x 686.565pt>
+File: images/ekf_validation_half_swarm_spoofed_plot.png Graphic file (type png)
+<use images/ekf_validation_half_swarm_spoofed_plot.png>
+Package pdftex.def Info: images/ekf_validation_half_swarm_spoofed_plot.png  used on input line 163.
+(pdftex.def)             Requested size: 332.09775pt x 199.25589pt.
+ [43 <./images/ekf_validation_spoof_plot.png>]
+<images/PID_course_controller.png, id=240, 1578.89874pt x 1431.3475pt>
 File: images/PID_course_controller.png Graphic file (type png)
 <use images/PID_course_controller.png>
-Package pdftex.def Info: images/PID_course_controller.png  used on input line 23.
+Package pdftex.def Info: images/PID_course_controller.png  used on input line 182.
 (pdftex.def)             Requested size: 258.29887pt x 234.15282pt.
- [37 <./images/PID_course_controller.png>]
-<images/anti_collison_graph_2.png, id=216, 1318.9275pt x 1087.06125pt>
+ [44 <./images/ekf_validation_half_swarm_spoofed_plot.png>] [45 <./images/PID_course_controller.png>]
+<images/anti_collison_graph_2.png, id=250, 1318.9275pt x 1087.06125pt>
 File: images/anti_collison_graph_2.png Graphic file (type png)
 <use images/anti_collison_graph_2.png>
-Package pdftex.def Info: images/anti_collison_graph_2.png  used on input line 91.
+Package pdftex.def Info: images/anti_collison_graph_2.png  used on input line 250.
 (pdftex.def)             Requested size: 184.5pt x 152.05484pt.
-<images/UAV_collision_avoidance_test.png, id=217, 1554.80875pt x 1138.2525pt>
+<images/UAV_collision_avoidance_test.png, id=251, 1554.80875pt x 1138.2525pt>
 File: images/UAV_collision_avoidance_test.png Graphic file (type png)
 <use images/UAV_collision_avoidance_test.png>
-Package pdftex.def Info: images/UAV_collision_avoidance_test.png  used on input line 104.
+Package pdftex.def Info: images/UAV_collision_avoidance_test.png  used on input line 263.
 (pdftex.def)             Requested size: 295.20113pt x 216.1139pt.
- [38] [39 <./images/anti_collison_graph_2.png> <./images/UAV_collision_avoidance_test.png>] [40]
-<images/safety_zone2.png, id=231, 1400.23125pt x 1381.16pt>
+ [46] [47 <./images/anti_collison_graph_2.png> <./images/UAV_collision_avoidance_test.png>] [48]
+<images/safety_zone2.png, id=264, 1400.23125pt x 1381.16pt>
 File: images/safety_zone2.png Graphic file (type png)
 <use images/safety_zone2.png>
-Package pdftex.def Info: images/safety_zone2.png  used on input line 176.
+Package pdftex.def Info: images/safety_zone2.png  used on input line 335.
 (pdftex.def)             Requested size: 239.84775pt x 236.56438pt.
-<images/ais_avoidance_test_01.png, id=232, 1312.905pt x 1362.08875pt>
+<images/ais_avoidance_test_01.png, id=265, 1312.905pt x 1362.08875pt>
 File: images/ais_avoidance_test_01.png Graphic file (type png)
 <use images/ais_avoidance_test_01.png>
-Package pdftex.def Info: images/ais_avoidance_test_01.png  used on input line 188.
+Package pdftex.def Info: images/ais_avoidance_test_01.png  used on input line 347.
 (pdftex.def)             Requested size: 177.11842pt x 183.74934pt.
-<images/ais_avoidance_test_02.png, id=233, 1312.905pt x 1362.08875pt>
+<images/ais_avoidance_test_02.png, id=266, 1312.905pt x 1362.08875pt>
 File: images/ais_avoidance_test_02.png Graphic file (type png)
 <use images/ais_avoidance_test_02.png>
-Package pdftex.def Info: images/ais_avoidance_test_02.png  used on input line 195.
+Package pdftex.def Info: images/ais_avoidance_test_02.png  used on input line 354.
 (pdftex.def)             Requested size: 177.11842pt x 183.74934pt.
- [41 <./images/safety_zone2.png>]) [42 <./images/ais_avoidance_test_01.png> <./images/ais_avoidance_test_02.png>] (./sections/grid_navigation.tex
-<images/search_zone.png, id=244, 1805.74625pt x 1040.88875pt>
+) [49 <./images/safety_zone2.png>] [50 <./images/ais_avoidance_test_01.png> <./images/ais_avoidance_test_02.png>] (./sections/grid_navigation.tex
+<images/search_zone.png, id=276, 1805.74625pt x 1040.88875pt>
 File: images/search_zone.png Graphic file (type png)
 <use images/search_zone.png>
 Package pdftex.def Info: images/search_zone.png  used on input line 11.
@@ -1103,7 +1156,7 @@ LaTeX Warning: Command \textdegree invalid in math mode on input line 27.
 LaTeX Warning: Command \textdegree invalid in math mode on input line 27.
 
 Missing character: There is no ° in font cmr10!
-[43
+[51
 
  <./images/search_zone.png>]
 Overfull \hbox (1.64738pt too wide) in paragraph at lines 56--69
@@ -1113,23 +1166,23 @@ Overfull \hbox (1.64738pt too wide) in paragraph at lines 56--69
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[44]
-<images/swarm_grid_01.png, id=252, 1485.55pt x 1137.24875pt>
+[52]
+<images/swarm_grid_01.png, id=285, 1485.55pt x 1137.24875pt>
 File: images/swarm_grid_01.png Graphic file (type png)
 <use images/swarm_grid_01.png>
 Package pdftex.def Info: images/swarm_grid_01.png  used on input line 108.
 (pdftex.def)             Requested size: 177.11842pt x 135.57895pt.
-<images/swarm_grid_03.png, id=253, 1485.55pt x 1137.24875pt>
+<images/swarm_grid_03.png, id=286, 1485.55pt x 1137.24875pt>
 File: images/swarm_grid_03.png Graphic file (type png)
 <use images/swarm_grid_03.png>
 Package pdftex.def Info: images/swarm_grid_03.png  used on input line 115.
 (pdftex.def)             Requested size: 177.11842pt x 135.57895pt.
-<images/swarm_grid_04.png, id=254, 1485.55pt x 1137.24875pt>
+<images/swarm_grid_04.png, id=287, 1485.55pt x 1137.24875pt>
 File: images/swarm_grid_04.png Graphic file (type png)
 <use images/swarm_grid_04.png>
 Package pdftex.def Info: images/swarm_grid_04.png  used on input line 125.
 (pdftex.def)             Requested size: 177.11842pt x 135.57895pt.
-<images/swarm_grid_06.png, id=255, 1485.55pt x 1137.24875pt>
+<images/swarm_grid_06.png, id=288, 1485.55pt x 1137.24875pt>
 File: images/swarm_grid_06.png Graphic file (type png)
 <use images/swarm_grid_06.png>
 Package pdftex.def Info: images/swarm_grid_06.png  used on input line 132.
@@ -1138,22 +1191,73 @@ Package pdftex.def Info: images/swarm_grid_06.png  used on input line 132.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [45] [46 <./images/swarm_grid_01.png> <./images/swarm_grid_03.png> <./images/swarm_grid_04.png> <./images/swarm_grid_06.png>] (./sections/benchmark.tex
-<images/12UAVs_test.png, id=267, 604.2575pt x 314.17375pt>
+) [53] [54 <./images/swarm_grid_01.png> <./images/swarm_grid_03.png> <./images/swarm_grid_04.png> <./images/swarm_grid_06.png>] (./sections/swarm_validation.tex
+<images/validation_zone.png, id=299, 1707.37875pt x 1171.37625pt>
+File: images/validation_zone.png Graphic file (type png)
+<use images/validation_zone.png>
+Package pdftex.def Info: images/validation_zone.png  used on input line 11.
+(pdftex.def)             Requested size: 332.09775pt x 227.83655pt.
+ [55
+
+
+ <./images/validation_zone.png>]
+<images/18UAVs_coverage.png, id=304, 2305.61375pt x 1576.89125pt>
+File: images/18UAVs_coverage.png Graphic file (type png)
+<use images/18UAVs_coverage.png>
+Package pdftex.def Info: images/18UAVs_coverage.png  used on input line 22.
+(pdftex.def)             Requested size: 332.09775pt x 227.11548pt.
+<images/18UAVs_grid_coverage.png, id=305, 1610.015pt x 1139.25626pt>
+File: images/18UAVs_grid_coverage.png Graphic file (type png)
+<use images/18UAVs_grid_coverage.png>
+Package pdftex.def Info: images/18UAVs_grid_coverage.png  used on input line 35.
+(pdftex.def)             Requested size: 332.09775pt x 234.99188pt.
+ [56 <./images/18UAVs_coverage.png>]
+<images/18UAVs_inter_drones.png, id=310, 1515.6625pt x 1068.99374pt>
+File: images/18UAVs_inter_drones.png Graphic file (type png)
+<use images/18UAVs_inter_drones.png>
+Package pdftex.def Info: images/18UAVs_inter_drones.png  used on input line 48.
+(pdftex.def)             Requested size: 332.09775pt x 234.21696pt.
+ [57 <./images/18UAVs_grid_coverage.png>]
+<images/9UAVs_coverage.png, id=315, 1610.015pt x 1139.25626pt>
+File: images/9UAVs_coverage.png Graphic file (type png)
+<use images/9UAVs_coverage.png>
+Package pdftex.def Info: images/9UAVs_coverage.png  used on input line 62.
+(pdftex.def)             Requested size: 332.09775pt x 234.99188pt.
+ [58 <./images/18UAVs_inter_drones.png>]
+<images/9UAVs_grid.png, id=321, 1650.165pt x 1140.26pt>
+File: images/9UAVs_grid.png Graphic file (type png)
+<use images/9UAVs_grid.png>
+Package pdftex.def Info: images/9UAVs_grid.png  used on input line 70.
+(pdftex.def)             Requested size: 332.09775pt x 229.47467pt.
+<images/9UAVs_inter_v2.png, id=322, 928.46875pt x 655.44875pt>
+File: images/9UAVs_inter_v2.png Graphic file (type png)
+<use images/9UAVs_inter_v2.png>
+Package pdftex.def Info: images/9UAVs_inter_v2.png  used on input line 78.
+(pdftex.def)             Requested size: 332.09775pt x 234.44116pt.
+) [59 <./images/9UAVs_coverage.png> <./images/9UAVs_grid.png>] [60 <./images/9UAVs_inter_v2.png>] (./sections/benchmark.tex
+<images/12UAVs_test.png, id=332, 604.2575pt x 314.17375pt>
 File: images/12UAVs_test.png Graphic file (type png)
 <use images/12UAVs_test.png>
 Package pdftex.def Info: images/12UAVs_test.png  used on input line 19.
 (pdftex.def)             Requested size: 221.40225pt x 115.1111pt.
- [47
+ [61
 
 
  <./images/12UAVs_test.png>]
-<images/UnitySimPerformance.png, id=272, 1606.0pt x 981.6675pt>
+<images/UnitySimPerformance.png, id=337, 1606.0pt x 981.6675pt>
 File: images/UnitySimPerformance.png Graphic file (type png)
 <use images/UnitySimPerformance.png>
 Package pdftex.def Info: images/UnitySimPerformance.png  used on input line 37.
 (pdftex.def)             Requested size: 295.20113pt x 180.43727pt.
-) [48 <./images/UnitySimPerformance.png>] (./main.bbl
+) [62 <./images/UnitySimPerformance.png>] (./sections/conclusion.tex [63
+
+
+]
+Overfull \hbox (2.9144pt too wide) in paragraph at lines 60--71
+\T1/cmr/m/n/10.95 A de-cen-tralised grid-based search al-go-rithm, co-or-di-nated ex-clu-sively over LoRa,
+ []
+
+[64]) [65] [66] (./main.bbl
 bibitemlist
 
 Underfull \hbox (badness 1701) in paragraph at lines 14--18
@@ -1165,25 +1269,75 @@ Underfull \hbox (badness 3690) in paragraph at lines 14--18
 \T1/cmr/m/n/10.95 based dis-tri-bu-tion for arm/risc-v/amd64 sin-gle board com-put-ers.
  []
 
+[67
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--56
+
+]
+Underfull \hbox (badness 2189) in paragraph at lines 60--64
+[]\T1/cmr/m/n/10.95 European Com-mis-sion, CORDIS.  Robotic Shearo-graphic In-spec-
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 60--64
+\T1/cmr/m/n/10.95 tor Project Re-sults in Brief.  Tech-ni-cal re-port, Eu-ro-pean Com-
+ []
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 60--64
+\T1/cmr/m/n/10.95 mis-sion, CORDIS, Au-gust 2019.  H2020 Project Grant Agree-
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 60--64
+\T1/cmr/m/n/10.95 ment No. 700986. Co-or-di-nated by WRS Ma-rine In-spec-tions and
+ []
+
+
+Underfull \hbox (badness 1910) in paragraph at lines 60--64
+\T1/cmr/m/n/10.95 Ser-vices BV, Nether-lands. To-tal cost: EUR 2,750,193; EU con-
+ []
+
+
+Underfull \hbox (badness 7099) in paragraph at lines 60--64
+\T1/cmr/m/n/10.95 tri-bu-tion: EUR 2,317,940. DOI: https://doi.org/10.3030/700986.
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 72--76
+[]\T1/cmr/m/n/10.95 International Mar-itime Or-ga-ni-za-tion and In-ter-na-tional Civil Avi-a-
+ []
+
+
+Underfull \hbox (badness 3724) in paragraph at lines 72--76
+\T1/cmr/m/n/10.95 tion Or-ga-ni-za-tion.  \T1/cmr/m/it/10.95 IAMSAR Man-ual: In-ter-na-tional Aero-nau-ti-
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 72--76
+\T1/cmr/m/it/10.95 cal and Mar-itime Search and Res-cue Man-ual\T1/cmr/m/n/10.95 .  Lon-don, 4th edi-
+ []
+
+
+Underfull \hbox (badness 2689) in paragraph at lines 72--76
+\T1/cmr/m/n/10.95 Vol-ume II: Mis-sion Co-ordination; Vol-ume III: Mo-bile Fa-cil-i-ties.
+ []
+
+[68]
+Underfull \hbox (badness 10000) in paragraph at lines 112--116
 []\T1/cmr/m/n/10.95 NVIDIA Cor-po-ra-tion.  NVIDIA PhysX sdk.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--66
+Underfull \hbox (badness 10000) in paragraph at lines 123--126
 []\T1/cmr/m/n/10.95 OpenStreetMap con-trib-u-tors.  Planet dump re-trieved from
  []
 
-[49
 
-
-]
-Underfull \hbox (badness 2809) in paragraph at lines 105--108
+Underfull \hbox (badness 2809) in paragraph at lines 165--168
 []\T1/cmr/m/n/10.95 Wikipedia con-trib-u-tors.  Ac-tive dis-tur-bance re-jec-tion con-trol ---
  []
 
-) [50] (./main.aux)
+[69]) [70] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1194,18 +1348,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 24834 strings out of 474222
- 480517 string characters out of 5748733
+ 24995 strings out of 474222
+ 484884 string characters out of 5748733
  2043975 words of memory out of 5000000
- 46604 multiletter control sequences out of 15000+600000
- 586117 words of font info for 102 fonts, out of 8000000 for 9000
+ 46754 multiletter control sequences out of 15000+600000
+ 586818 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,101p,1240b,1793s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc2074.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (53 pages, 7163665 bytes).
+ 99i,12n,101p,1450b,1793s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc2074.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on main.pdf (73 pages, 9829478 bytes).
 PDF statistics:
- 425 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
+ 515 PDF objects out of 1000 (max. 8388607)
+ 284 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 234 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 284 words of extra memory for PDF output out of 10000 (max. 10000000)
 

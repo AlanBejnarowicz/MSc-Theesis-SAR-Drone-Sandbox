@@ -12,6 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
   "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/zones/anchorage_zone.json"
   "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/zones/search_beta.json"
+  "/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/zones/validation_zone.json"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake"
@@ -46,6 +47,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "zones/anchorage_zone.json"
   "zones/search_beta.json"
+  "zones/validation_zone.json"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

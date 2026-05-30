@@ -6,7 +6,7 @@
 // ================================================================
 
 // ── Fleet ────────────────────────────────────────────────────────
-#define DRONE_COUNT         12           // Number of drones to manage
+#define DRONE_COUNT         9           // Number of drones to manage
 
 // ── Network (SITL) ───────────────────────────────────────────────
 #define UNITY_HOST          "127.0.0.1"
@@ -19,7 +19,7 @@
 
 
 //#define MISSION_FILE        "zones/search_beta.json"  // Default mission file
-#define MISSION_FILE        "zones/anchorage_zone.json"  // Default mission file
+#define MISSION_FILE        "zones/validation_zone.json"  // Default mission file
 
 
 // ── Patrol grid ──────────────────────────────────────────────────

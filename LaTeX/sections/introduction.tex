@@ -1,3 +1,136 @@
 \section{Introduction}
 \label{sec:introduction}
 
+Monitoring of the maritime environment and its associated infrastructure 
+represents one of the most demanding and rapidly growing challenges in 
+modern robotics. The ocean covers more than 70\% 
+of the Earth's surface and hosts a vast array of critical activities, 
+each requiring continuous observation and rapid response capability. 
+Search and Rescue (SAR) operations must locate survivors within a narrow 
+survival window that shrinks dramatically with water temperature and sea 
+state \cite{iamsar2022}. Subsea pipeline networks spanning thousands of 
+kilometres must be regularly inspected for leaks and structural fatigue 
+to prevent environmental catastrophe. Offshore 
+oil and gas platforms require around-the-clock perimeter monitoring for 
+both safety and security purposes \cite{eu_blue_economy_infra2026}. Wind farm 
+arrays, increasingly deployed far from shore, demand periodic structural 
+inspection of turbine foundations in conditions that are often hostile to 
+human operators \cite{winspector2019}.
+
+Crewed surface vessels are expensive to procure, costly to operate, and require skilled personnel who must be exposed to dangers of the sea, especially in harsh weather conditions. A single offshore 
+patrol vessel can cost several million euros per year to operate, yet 
+its coverage at any given moment is limited to the vicinity of a single 
+hull.
+
+For example, single ship type of Search and Rescue Vessel 1605 FRP produced by Damen Shipyards, which is a common type of vessel used for SAR operations, has a price of around 2 million euros \cite{damen_sar1605}, depending on the configuration. Operating costs for such a vessel can easily exceed 500,000 euros per year when accounting for crew salaries, fuel, maintenance, insurance and crew training.
+
+Manned helicopter, while faster, are 
+constrained by crew endurance, weather, and the finite number of 
+aircraft available at any regional rescue coordination centre. In time-
+critical scenarios such as a person in the water, these constraints can 
+prove fatal.
+
+Autonomous Unmanned Surface Vehicles offer a fundamentally 
+different operational model. A swarm of small, inexpensive USVs can be 
+pre-positioned across a region of interest, like (big harbours, 
+anchorage areas or marine work areas), and 
+operated continuously without risk to human life. Because 
+each vehicle in the swarm covers an independent portion of the search or 
+inspection area simultaneously, total coverage time scales inversely 
+with swarm size a property no single crewed platform can replicate. 
+The cost per vehicle is orders of magnitude lower than that of a crewed 
+vessel, enabling disposable or semi-disposable deployment strategies 
+that would be economically unthinkable with conventional assets. For 
+applications such as SAR, pipeline survey, platform perimeter patrol, 
+and wind farm inspection, USV swarms therefore represent not merely an 
+incremental improvement but a qualitative shift in what is operationally 
+possible.
+
+
+\subsection{Military, Critical Infrastructure and Sea Biosphere Monitoring}
+
+The strategic importance of maritime infrastructure monitoring was 
+brought into sharp focus in September 2022, when the Nord Stream 1 and 
+Nord Stream 2 natural gas pipelines were destroyed in the Baltic Sea 
+\cite{nordstream_website}. The incident severed 
+approximately 1,200 kilometres of pipeline carrying up to 55 billion 
+cubic metres of gas annually and caused one of the largest single 
+methane release events ever recorded \cite{mohrmann2025nordstream}. 
+Critically, the damage went undetected for hours despite the pipelines 
+passing through one of the most heavily monitored bodies of water in 
+the world. The event exposed a fundamental vulnerability: existing 
+maritime surveillance infrastructure is ill-suited to detecting 
+deliberate or accidental damage to subsea assets in a timely manner. 
+Nord Stream was not an isolated case. The Baltic Sea alone hosts 
+dozens of active submarine power cables and fibre-optic communication 
+links connecting the national grids and internet backbones of Finland, 
+Estonia, Latvia, Lithuania, Sweden, Denmark, Germany, and Poland 
+\cite{balticcable}. In October 2023, the Balticconnector gas pipeline 
+and a telecommunications cable between Finland and Estonia were severed, 
+again under circumstances that were not immediately detected by any 
+automated monitoring system \cite{cinea_balticconnector}. These incidents demonstrate that subsea critical infrastructure represents a need for continous monitoring. The economic and geopolitical consequences of such disruptions are profound, with ripple effects.
+
+\vspace{1cm}
+
+Beyond physical infrastructure, the maritime environment itself demands 
+continuous observation. Ocean ecosystems are under sustained pressure 
+from climate change, pollution, and over-exploitation.
+Harmful algal blooms can develop within days 
+and devastate aquaculture industries covering hundreds of square 
+kilometres before they are detected by satellite or sporadic crewed 
+survey. 
+Illegal, Unreported, and Unregulated (IUU) 
+fishing represents a further dimension of the problem. The Food and 
+Agriculture Organisation of the United Nations estimates that IUU 
+fishing accounts for up to 26 million tonnes of catch per year, 
+representing as much as 15\% of total global marine capture 
+\cite{ec_iuu_fishing2024}. Tracking fishing vessels across exclusive economic 
+zones spanning hundreds of thousands of square kilometres exceeds the 
+practical capacity of coast guard fleets in most nations, and vessels 
+engaged in illegal activity frequently disable or spoof their AIS 
+transponders to avoid detection \cite{marinetraffic_ais_spoofing}. Persistent, 
+wide-area surveillance by autonomous ships capable of 
+passively logging AIS traffic, detecting vessels that have gone dark, 
+and collecting in-situ environmental samples offers a great 
+response to both challenges simultaneously.
+
+\vspace{1cm}
+
+\subsection{Summary}
+UAVs of course cannot replace crewed vessels and helicopters in all scenarios. But it can complement them in many, and in some cases it can enable entirely new operational concepts that were previously infeasible. For example, a swarm of USVs could be deployed to continuously monitor a busy harbour for security threats, providing real-time data to a central command centre and allowing crewed patrol boats to focus on response rather than routine surveillance. In offshore wind farms, USVs could perform regular inspections of turbine foundations, reducing the need for human divers and increasing the frequency of inspections. In SAR operations, USVs could be rapidly deployed to search large areas of open water, providing critical information to rescue teams and potentially saving lives. 
+
+
+
+
+\section{Research Questions}
+\label{sec:research_questions}
+
+This thesis is motivated by the absence of a simulation platform that 
+simultaneously addresses marine dynamics, swarm-scale performance, 
+realistic communication constraints, and a direct path to physical 
+hardware deployment. The following research questions guide the design, 
+implementation, and evaluation of the system presented in this work:
+
+\begin{description}
+
+    \item[\textbf{RQ1} --- \textit{Simulator Fidelity and Scalability.}]
+    Can a Unity3D-based simulation environment realistically model the 
+    marine dynamics, virtual sensor characteristics, and LoRa radio 
+    communication constraints relevant to autonomous USV swarms, while 
+    maintaining real-time performance on commodity hardware?
+
+    \item[\textbf{RQ2} --- \textit{Sensor Fusion Resilience.}]
+    Can an EKF-based localisation system maintain acceptable positioning 
+    accuracy for swarm coordination when individual drone GPS signals are 
+    degraded or actively spoofed?
+
+    \item[\textbf{RQ3} --- \textit{Swarm Search Performance.}]
+    Can a decentralised grid-based search algorithm, coordinated 
+    exclusively over LoRa, achieve complete area coverage of a realistic 
+    maritime search zone within an operationally meaningful timeframe?
+
+\end{description}
+
+Each research question is revisited in the Conclusion 
+(Section~\ref{sec:conclusion}), where the results of the experiments 
+and benchmarks are used to provide a direct answer.

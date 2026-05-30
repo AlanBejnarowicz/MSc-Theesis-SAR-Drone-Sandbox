@@ -5,6 +5,8 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
   /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/AISAvoidance.h \
   /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/CollisionAvoidance.h \
   /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/DroneAgent.h \
+  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/EKFLogger.h \
+  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/GridLogger.h \
   /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/HeadingPID.h \
   /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/KalmanNav.h \
   /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/MissionLoader.h \
@@ -563,8 +565,6 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
-/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
 
 /usr/include/x86_64-linux-gnu/bits/environments.h:
@@ -647,7 +647,9 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /usr/include/c++/13/tr1/riemann_zeta.tcc:
 
-/usr/include/c++/13/bits/locale_facets_nonio.tcc:
+/usr/include/c++/13/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/13/tr1/poly_hermite.tcc:
 
 /usr/include/c++/13/bits/locale_facets.tcc:
 
@@ -698,12 +700,6 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 /usr/include/x86_64-linux-gnu/bits/stdio.h:
 
 /usr/include/c++/13/bits/forward_list.h:
-
-/usr/include/x86_64-linux-gnu/bits/socket_type.h:
-
-/usr/include/c++/13/bits/localefwd.h:
-
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/json.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
@@ -819,21 +815,11 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/KalmanNav.h:
 
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
+/usr/include/c++/13/bits/cxxabi_forced.h:
 
-/usr/include/wchar.h:
+/usr/include/c++/13/bits/codecvt.h:
 
-/usr/include/c++/13/bits/shared_ptr_base.h:
-
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/input/parser.hpp:
-
-/usr/include/c++/13/algorithm:
-
-/usr/include/c++/13/bits/concept_check.h:
-
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/DroneAgent.h:
-
-/usr/include/c++/13/ext/type_traits.h:
+/usr/include/c++/13/bits/stl_tree.h:
 
 /usr/include/c++/13/bits/stl_algo.h:
 
@@ -865,7 +851,11 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /usr/include/c++/13/bits/atomic_lockfree_defines.h:
 
-/usr/include/c++/13/bits/cxxabi_forced.h:
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/json.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+
+/usr/include/c++/13/bits/localefwd.h:
 
 /usr/include/asm-generic/sockios.h:
 
@@ -879,19 +869,45 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/iterators/internal_iterator.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/sockaddr.h:
+/usr/include/c++/13/bits/predefined_ops.h:
 
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/input/position_t.hpp:
+/usr/include/c++/13/iosfwd:
 
-/usr/include/c++/13/chrono:
+/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
+
+/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/adl_serializer.hpp:
 
 /usr/include/c++/13/backward/binders.h:
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/src/main.cpp:
 
-/usr/include/c++/13/bits/codecvt.h:
+/usr/include/c++/13/algorithm:
 
-/usr/include/c++/13/bits/stl_tree.h:
+/usr/include/c++/13/bits/concept_check.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/DroneAgent.h:
+
+/usr/include/c++/13/ext/type_traits.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
+
+/usr/include/wchar.h:
+
+/usr/include/c++/13/bits/shared_ptr_base.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/input/parser.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/ordered_map.hpp:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/string_utils.hpp:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/output/output_adapters.hpp:
+
+/usr/include/c++/13/ios:
 
 /usr/include/c++/13/bits/basic_ios.tcc:
 
@@ -906,8 +922,6 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 /usr/include/c++/13/debug/debug.h:
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/SurveillanceGrid.h:
-
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/HeadingPID.h:
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/input/input_adapters.hpp:
 
@@ -933,6 +947,12 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /usr/include/c++/13/bits/stl_iterator_base_types.h:
 
+/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/GridLogger.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/HeadingPID.h:
+
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/input/json_sax.hpp:
 
 /usr/include/c++/13/bits/basic_string.h:
@@ -942,8 +962,6 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/iterators/primitive_iterator.hpp:
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/config.h:
-
-/usr/include/c++/13/tr1/poly_laguerre.tcc:
 
 /usr/include/features-time64.h:
 
@@ -965,21 +983,19 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/json_fwd.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+/usr/include/x86_64-linux-gnu/bits/sockaddr.h:
 
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/ordered_map.hpp:
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/input/position_t.hpp:
 
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/string_utils.hpp:
-
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/output/output_adapters.hpp:
-
-/usr/include/c++/13/ios:
+/usr/include/c++/13/chrono:
 
 /usr/include/x86_64-linux-gnu/bits/wchar2-decl.h:
 
 /usr/include/c++/13/bits/erase_if.h:
 
 /usr/include/c++/13/bits/shared_ptr_atomic.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/EKFLogger.h:
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/iterators/iteration_proxy.hpp:
 
@@ -1029,15 +1045,7 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/detail/string_concat.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/cpu-set.h:
-
-/usr/include/x86_64-linux-gnu/asm/posix_types_64.h:
-
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/adl_serializer.hpp:
-
-/usr/include/c++/13/bits/predefined_ops.h:
-
-/usr/include/c++/13/iosfwd:
+/usr/include/c++/13/bits/locale_facets_nonio.tcc:
 
 /usr/include/c++/13/bits/this_thread_sleep.h:
 
@@ -1051,9 +1059,9 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 
 /usr/include/c++/13/forward_list:
 
-/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/CollisionAvoidance.h:
-
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/WaypointNav.h:
+
+/home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/CollisionAvoidance.h:
 
 /usr/include/c++/13/bits/ostream.tcc:
 
@@ -1178,8 +1186,6 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: /home/alan-bejnarowicz/MSc-Thees
 /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
 /usr/include/c++/13/cassert:
-
-/usr/include/c++/13/tr1/poly_hermite.tcc:
 
 /usr/include/c++/13/cerrno:
 

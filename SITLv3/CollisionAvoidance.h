@@ -27,12 +27,12 @@ class CollisionAvoidance
 {
 public:
     // ── Tuning ────────────────────────────────────────────────────
-    static constexpr float CUTOFF_M     = 200.f;  // force drops to 0 beyond this
-    static constexpr float K            = 80000.f; // repulsion strength
+    static constexpr float CUTOFF_M     = 500.f;  // force drops to 0 beyond this
+    static constexpr float K            = 250000.f; // repulsion strength
                                                    // K / CUTOFF_M² = 2 deg nudge
                                                    // K / 10m²      = 800 deg (hard push)
     static constexpr float MAX_NUDGE_DEG= 90.f;   // cap on heading correction
-    static constexpr float SPEED_SCALE  = 0.3f;   // how much speed reduces when pushed
+    static constexpr float SPEED_SCALE  = 0.25f;   // how much speed reduces when pushed
 
     // ── Apply repulsion from all other drones to one agent ────────
     // Call once per agent per tick, after receiveAndTick().

@@ -19,12 +19,27 @@
 #include <iostream>
 #include <numeric>
 
+#include "EKFLogger.h"
+#include "GridLogger.h"
+
+
+
 class SwarmController
 {
 public:
+
+    EKFLogger ekfLogger;
+
+    GridLogger logger;          // call logger.open() in main or here
+    float      elapsedS = 0.f; // mission elapsed seconds
+
+
     void init(std::vector<DroneAgent>& agents, const MissionLoader& mission)
     {
         std::cout << "[Swarm] init — " << agents.size() << " drones\n";
+
+        //ekfLogger.open("ekf_validation.csv");
+
 
         // Use first zone boundary as surveillance area
         std::vector<Waypoint> boundary;
@@ -44,8 +59,8 @@ public:
             agent.initGrid(boundary);
             agent.headingPID.Kp          = 0.008f;
             agent.headingPID.Kd          = 0.003f;
-            agent.headingPID.cruiseSpeed = 5.0f;
-            agent.headingPID.minSpeedFactor = 0.25f;
+            agent.headingPID.cruiseSpeed = 10.0f;
+            agent.headingPID.minSpeedFactor = 0.35f;
             agent.speedP.Kp              = 0.4f;
         }
 
@@ -55,21 +70,49 @@ public:
 
     void tick(std::vector<DroneAgent>& agents, float dt)
     {
-        (void)dt;
-
-        // Reset avoidance accumulators before each tick
+       (void)dt;
+ 
+        // ── Step 1: reset avoidance fields ───────────────────────
         for (auto& agent : agents) {
             agent.avoidNudgeDeg    = 0.f;
             agent.avoidSpeedFactor = 1.f;
         }
-
-        // Base processing: Kalman + grid nav + LoRa + AIS
-        for (auto& agent : agents)
-            agent.receiveAndTick();
-
-        // Drone-drone molecular repulsion (adds to avoidNudgeDeg)
+ 
+        // ── Step 2: compute drone-drone avoidance BEFORE commands ─
+        // Reads kalman positions from previous tick (accurate enough).
+        // Must run before receiveAndTick() so fields are set when
+        // DroneAgent::tick() builds and sends the command this tick.
         for (auto& agent : agents)
             CollisionAvoidance::apply(agent, agents);
+ 
+        // ── Step 3: receive packets, Kalman, grid nav, send ───────
+        for (auto& agent : agents)
+            agent.receiveAndTick();
+ 
+        // ── Log coverage snapshot (wall-clock timed internally) ───
+        logger.snapshot(agents);
+
+
+        // if (agents[0].receiveAndTick() > 0)  // receiveAndTick() returns packet count
+        // {
+
+        //     auto& a = agents[0];
+        //     ekfLogger.log(
+        //         a.state.timestamp,
+        //         a.state.pos_x,    a.state.pos_z,
+        //         a.state.gps.lat,  a.state.gps.lon,  a.state.gps.accuracy,
+        //         a.kalman.lat,          a.kalman.lon,
+        //         a.kalman.stdLat,       a.kalman.stdLon,
+        //         a.kalman.vx,           a.kalman.vz,
+        //         a.state.velocity.speed_ms,
+        //         a.state.compass.heading
+        //     );
+
+        // }
+
+
+
+
 
         // ── Add your extra swarm logic here ──────────────────────
     }

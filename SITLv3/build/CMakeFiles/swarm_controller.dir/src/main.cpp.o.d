@@ -353,4 +353,6 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o: \
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/json_parser.h \
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/include/json.hpp \
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/SwarmController.h \
- /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/CollisionAvoidance.h
+ /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/CollisionAvoidance.h \
+ /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/EKFLogger.h \
+ /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/GridLogger.h

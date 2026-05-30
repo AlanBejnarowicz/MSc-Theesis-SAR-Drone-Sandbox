@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
     if (!mission.load(missionFile))
     {
         std::cerr << "[WARN] No mission file loaded — drones will hover.\n"
-                  << "       Usage: ./swarm_controller " << MISSION_FILE << "\n\n";
+                  << "       Usage: ./swarm_controller/" << MISSION_FILE <<"\n\n";
     }
 
     // ── Init agents ───────────────────────────────────────────────
@@ -64,6 +64,8 @@ int main(int argc, char* argv[])
     auto       lastStatus   = std::chrono::steady_clock::now();
     const auto statusEvery  = std::chrono::seconds(5);
     float      dt           = 1.f / CONTROL_LOOP_HZ;
+
+    swarm.logger.open("grid_coverage.csv", "grid_cells.csv");
 
     std::cout << "\nRunning at " << CONTROL_LOOP_HZ << " Hz — Ctrl+C to stop\n\n";
 

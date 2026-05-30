@@ -6,6 +6,8 @@ CMakeFiles/swarm_controller.dir/src/main.cpp.o
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/AISAvoidance.h
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/CollisionAvoidance.h
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/DroneAgent.h
+ /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/EKFLogger.h
+ /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/GridLogger.h
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/HeadingPID.h
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/KalmanNav.h
  /home/alan-bejnarowicz/MSc-Theesis-SAR-Drone-Sandbox/SITLv3/MissionLoader.h

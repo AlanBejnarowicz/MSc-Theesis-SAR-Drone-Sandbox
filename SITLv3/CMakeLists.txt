@@ -33,5 +33,10 @@ configure_file(
     ${CMAKE_SOURCE_DIR}/zones/search_beta.json
     ${CMAKE_BINARY_DIR}/zones/search_beta.json COPYONLY)
 
+
+    configure_file(
+    ${CMAKE_SOURCE_DIR}/zones/validation_zone.json
+    ${CMAKE_BINARY_DIR}/zones/validation_zone.json COPYONLY)
+
 message(STATUS "Build type : ${CMAKE_BUILD_TYPE}")
 

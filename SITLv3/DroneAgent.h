@@ -182,7 +182,8 @@ public:
                   << "  spd=" << state.velocity.speed_knots << "kn"
                   << "  cell=" << tgt
                   << "  cov=" << (int)cov << "%"
-                  << "  maxAge=" << (int)(maxAge/60) << "min"
+                  << "  maxAge="
+                  << (maxAge > 1e5f ? "---" : std::to_string((int)(maxAge/60)) + "min")
                   << (isLost ? "  [LOST]" : "")
                   << "\n";
     }

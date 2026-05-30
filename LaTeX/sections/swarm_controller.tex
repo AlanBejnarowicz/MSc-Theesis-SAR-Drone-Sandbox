@@ -1,16 +1,175 @@
 \section{Swarm Controller Design}
 
-As a sample swarm controller design I had choosen to implement a standard determinist swarm controller. That type of controller is following a given set of rules witch are always predicable in a term of behaviour and trajectory of a drone. Good exaple of such a controller, one of the first ever described, is a Boids algorithm created by Craig Reynolds in 1986~\cite{wiki:boids}. The main idea of this algorithm is to create a swarm behaviour based on three simple rules: separation, alignment and cohesion. Separation rule is responsible for avoiding collisions between drones, alignment rule is responsible for keeping the same direction of movement as the other drones in the swarm and cohesion rule is responsible for keeping the swarm together.
- This is opossite of controller based on a neural network or genetic algorithm where set of rules is beeing created in a training process. Nevertheless neural network controller or any other different kind could be tested in this simulator as well. 
+As a sample swarm controller design I had choosen to implement a standard determinist swarm controller. That type of controller is following a given set of rules which are always predicable in a term of behaviour and trajectory of a drone. Good exaple of such a controller, one of the first ever described, is a Boids algorithm created by Craig Reynolds in 1986~\cite{wiki:boids}. The main idea of this algorithm is to create a swarm behaviour based on three simple rules: separation, alignment and cohesion. Separation rule is responsible for avoiding collisions between drones, alignment rule is responsible for keeping the same direction of movement as the other drones in the swarm and cohesion rule is responsible for keeping the swarm together.
+ This is opossite of controller based on a neural network or genetic algorithm where set of rules is being created in a training process. Nevertheless neural network controller or any other different kind could be tested in this simulator as well. 
 
 
 
 
- \subsection{Data Fusion}
-    In order to create a swarm controller that is able to control multiple drones at the same time, it is necessary to have a precise localization of drones in both global frame and local, drones, frame. For that purpose I have used Extended Kalman Filter (EKF) to fuse data from GPS, IMU, compass and LoRa ToF. EKF is a non-linear version of Kalman Filter that is able to estimate the state of a system based on a set of measurements and a model of the system. In this case, the state of the system is the position  of the drone. 
+ \subsection{Data Fusion, KF and Localization}
+    In order to create a swarm controller that is able to control multiple drones at the same time, it is necessary to have a precise localization of drones in both global frame and local, drones, frame. For that purpose I have used Kalman Filter (KF) to fuse data from GPS, IMU, compass and LoRa ToF. 
 
-    One major achivement of this system is that even if one of the drones in the swarm is not able to receive GPS signal, it is still able to localize itself based on the data from other drones in the swarm. This is possible thanks to the fact that each drone is equipped with a LoRa ToF sensor that is able to measure the distance to other drones in the swarm. By fusing data it is possible to create a precise localization of each drone in the swarm even if one of them is not able to receive GPS signal. Or a GPS signal is beeing jammed or spoofed.
+    One major achievement of this system is that even if one of the drones in the swarm is not able to receive GPS signal, it is still able to localize itself based on the data from other drones in the swarm. This is possible thanks to the fact that each drone is equipped with a LoRa ToF sensor that is able to measure the distance to other drones in the swarm. By fusing data it is possible to create a precise localization of each drone in the swarm even if one of them is not able to receive GPS signal. Or a GPS signal is being jammed or spoofed.
 
+
+
+    \subsection{KF State Space and Filter Design}
+
+    The Kalman Filter implemented for this project operates on a
+    four-dimensional state vector consisting of geographic position and
+    horizontal velocity:
+
+    \begin{equation}
+        \mathbf{x} = \begin{bmatrix} \phi \\ \lambda \\ v_x \\ v_z \end{bmatrix}
+    \end{equation}
+
+    where $\phi$ is latitude (degrees), $\lambda$ is longitude (degrees),
+    $v_x$ is east velocity (m/s), and $v_z$ is north velocity (m/s).
+    To avoid numerical ill-conditioning from mixing angular and metric units,
+    all covariance matrices are maintained internally in metres, with
+    conversion applied only at the input/output boundary using the
+    WGS84-derived constants:
+
+    \begin{equation}
+        k_{lat} = 111{,}111 \ \text{m/deg}, \qquad
+        k_{lon} = 64{,}528 \ \text{m/deg} \quad (\text{at } 54°\text{N, Baltic Sea})
+    \end{equation}
+
+    \subsubsection{Process Model}
+
+    The state transition is driven by a constant-velocity model augmented
+    with optional IMU acceleration input. When IMU data is available,
+    body-frame accelerations $(a_x^b, a_z^b)$ are first rotated into the
+    world frame using the current compass heading $\psi$:
+
+    \begin{equation}
+        \begin{bmatrix} a_x^w \\ a_z^w \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \cos\psi & -\sin\psi \\
+            \sin\psi &  \cos\psi
+        \end{bmatrix}
+        \begin{bmatrix} a_x^b \\ a_z^b \end{bmatrix}
+    \end{equation}
+
+    To prevent unbounded IMU drift in the absence of GPS corrections,
+    an exponential velocity decay with a 3-second time constant is applied:
+
+    \begin{equation}
+        \alpha = e^{-\Delta t / 3}
+    \end{equation}
+
+    The discrete-time state prediction is then:
+
+    \begin{equation}
+        v_x^- = \alpha \, v_x + a_x^w \, \Delta t, \qquad
+        v_z^- = \alpha \, v_z + a_z^w \, \Delta t
+    \end{equation}
+
+    \begin{equation}
+        \phi^-  = \phi  + \frac{v_z^- \, \Delta t}{k_{lat}}, \qquad
+        \lambda^- = \lambda + \frac{v_x^- \, \Delta t}{k_{lon}}
+    \end{equation}
+
+    The covariance prediction follows $\mathbf{P}^- = \mathbf{F}\mathbf{P}\mathbf{F}^\top + \mathbf{Q}$,
+    where the linearised state transition matrix $\mathbf{F}$ captures the
+    position--velocity coupling ($\delta\phi / \delta v_z = \Delta t$) and
+    the velocity decay ($\delta v / \delta v = \alpha$). The process noise
+    matrix $\mathbf{Q}$ is diagonal:
+
+    \begin{equation}
+        \mathbf{Q} = \operatorname{diag}(Q_{pos},\ Q_{pos},\ Q_{vel},\ Q_{vel})
+    \end{equation}
+
+    with $Q_{pos} = 0.5\ \text{m}^2/\text{tick}$ and
+    $Q_{vel} = 0.5\ \text{(m/s)}^2/\text{tick}$, tuned empirically to
+    balance GPS trust against IMU responsiveness.
+
+    \subsubsection{Measurement Models}
+
+    Three independent measurement updates are applied sequentially using
+    scalar Kalman updates, which avoids matrix inversion and is numerically
+    robust for embedded deployment.
+
+    \paragraph{GPS Update.}
+    The GPS measurement model is:
+    \begin{equation}
+        \mathbf{H}_{GPS} = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{bmatrix}
+    \end{equation}
+
+    The measurement noise variance is derived from the reported GPS accuracy:
+    \begin{equation}
+        R_{GPS} =
+        \begin{cases}
+            \sigma_{GPS}^2 & \text{if } \sigma_{GPS} > 0.5\ \text{m} \\
+            25\ \text{m}^2 & \text{otherwise (conservative default)}
+        \end{cases}
+    \end{equation}
+
+    Innovations are computed in metres to maintain numerical consistency:
+    \begin{equation}
+        \tilde{y}_{lat} = (\phi_{GPS} - \phi^-) \cdot k_{lat}, \qquad
+        \tilde{y}_{lon} = (\lambda_{GPS} - \lambda^-) \cdot k_{lon}
+    \end{equation}
+
+    Kalman gains and state updates are then applied independently for each
+    axis, with the position--velocity cross-covariance terms propagating
+    the correction into the velocity states.
+
+    \paragraph{Speed and Heading Update.}
+    When a compass heading $\psi$ and speed $s$ are available, the
+    velocity measurement is:
+    \begin{equation}
+        v_x^{meas} = s \sin\psi, \qquad v_z^{meas} = s \cos\psi
+    \end{equation}
+
+    with measurement noise $R_v = 0.25\ \text{(m/s)}^2$ (corresponding to
+    $\sigma = 0.5\ \text{m/s}$). This update directly corrects the velocity
+    states and, through the cross-covariance terms, also refines the
+    position estimate.
+
+
+
+\subsection{KF tests and validation}
+
+    To validate the KF implementation, I have created a multiple tests in the simulator. First test was to check if the KF is able to estimate the position of the drone based on the data from GPS, IMU, compass and LoRa ToF. That position is compared to the true position of the drone in the simulator, and a GPS position from simulator. The results of the test are shown on the figure \ref{fig:KF_test_normal}. Each test was run for 5 minutes of simulation time.
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/ekf_validation_plot_normal.png}
+        \caption{KF test results for normal operation. GPS RMSE is around 1.8 meters, while KF RMSE is around 1.08 meters. RED dots represent GPS position, BLUE dots represent KF position.}
+        \label{fig:KF_test_normal}
+    \end{figure}
+
+
+
+    Second test was ment to check if the KF is able to estimate the position of the drone even if tested drone GPS signal is being spoofed. In this test, the GPS signal of the tested drone was being spoofed with a random noise with a standard deviation of 70 meters. The results of the test are shown on the figure \ref{fig:KF_test_gps_spoofing}. As we can see, even if the GPS signal is being spoofed, KF is still able to estimate the position of the drone with a good accuracy, with RMSE around 19 meters. 
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/ekf_validation_spoof_plot.png}
+        \caption{KF test results for GPS spoofing. RED dots represent GPS position, BLUE dots represent KF position.}
+        \label{fig:KF_test_gps_spoofing}
+    \end{figure}
+
+
+
+    Third test was ment to check if the KF is able to estimate the position of the drone even if half of the drones in the swarm are being spoofed. Again GPS was being spoofed with a random noise with a standard deviation of 70 meters. The results of the test are shown on the figure \ref{fig:KF_test_half_gps_spoofing}. As we can see, even if half of the drones in the swarm are being spoofed, KF is still able to estimate the position of the tested drone with a good accuracy, with RMSE around 1.6 meters, that is still better than the GPS alone, but not as good as in the normal operation.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/ekf_validation_half_swarm_spoofed_plot.png}
+        \caption{KF test results for half of the drones in the swarm being spoofed. RED dots represent GPS position, BLUE dots represent KF position.}
+        \label{fig:KF_test_half_gps_spoofing}
+    \end{figure}
+
+
+
+\subsubsection{KF Validation Conclusion}
+
+    Based on the results of the tests, I can conclude that the KF implementation is able to estimate the position of the drone with a good accuracy, even if one of the drones in the swarm is not able to receive GPS signal or if GPS signal is being spoofed. The KF is able to fuse data from multiple sensors and create a precise localization of drone in the swarm. In a future work it is possible to improve KF implementation by adding more sensors, such as camera or radar, to further improve the accuracy of the localization. Nevertheless, the current implementation is sufficient for the purpose of this project and is able to provide a good localization of drones in the swarm.
 
 \subsection{Course and Speed Controller}
 
@@ -89,7 +248,7 @@ Theoretical way of operation is shown on the figure \ref{fig:collision_avoidance
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{images/anti_collison_graph_2.png}
-    \caption{Collision avoidance system for a drone swarm. Star represents a drones goal possition, red arrows represent the repulsive forces from other drones in the swarm, red dashed circle represents the effective repulsion force distance.}
+    \caption{Collision avoidance system for a drone swarm. Star represents a drones goal position, red arrows represent the repulsive forces from other drones in the swarm, red dashed circle represents the effective repulsion force distance.}
     \label{fig:collision_avoidance}
 \end{figure}
 
@@ -112,7 +271,7 @@ On a figure \ref{fig:PID_course_controller} anti collision system is not active,
 
 \subsection{AIS Vessels Avoidance System}
 
-    The second part of the anti collison system is avoiding collisons with other vessels in the area, witch are transmitting AIS signals. For that purpose I have implemented a simple system that is able to keep the drones away from the vessels in the area. The system is based on the same principle as the one for avoiding collisons between drones. The only difference is a reppeling force is not equal in all directions, but the shape of the force field is eliptical. This is because the drones are more likely to crash to big ship while beeing on its course rather than beeing on its side. 
+    The second part of the anti collison system is avoiding collisons with other vessels in the area, which are transmitting AIS signals. For that purpose I have implemented a simple system that is able to keep the drones away from the vessels in the area. The system is based on the same principle as the one for avoiding collisons between drones. The only difference is a reppeling force is not equal in all directions, but the shape of the force field is eliptical. This is because the drones are more likely to crash to big ship while being on its course rather than being on its side. 
 
 
 
@@ -206,5 +365,5 @@ The final control output is determined by the severity of the intrusion. In the 
 
 \vspace{1cm}
 \subsubsection{Potential Problems}
-    The major problem of this system is assumption that all vessels in the area are transmitting AIS signals. In reality, there are many vessels that are not, either because they are not required to do so or because they are intentionally trying to avoid detection. Other issue is a possition of the vessel is taken from onboard GPS, which can be easily spoofed or jammed. In that case, the system will not be able to detect the vessel and avoid collison with it. That is why it is important to have a backup system that is able to detect vessels in the area even if they are not transmitting AIS signals. One possible solution is to use radar or camera to detect vessels in the area and avoid collison with them. That is out of the scope of this project, but it is something that could be implemented in the future.
+    The major problem of this system is assumption that all vessels in the area are transmitting AIS signals. In reality, there are many vessels that are not, either because they are not required to do so or because they are intentionally trying to avoid detection. Other issue is a position of the vessel is taken from onboard GPS, which can be easily spoofed or jammed. In that case, the system will not be able to detect the vessel and avoid collison with it. That is why it is important to have a backup system that is able to detect vessels in the area even if they are not transmitting AIS signals. One possible solution is to use radar or camera to detect vessels in the area and avoid collison with them. That is out of the scope of this project, but it is something that could be implemented in the future.
 

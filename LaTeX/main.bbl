@@ -16,6 +16,12 @@ J.~Henrique G.~M. Alves, Michael~L. Banner, and Ian~R. Young.
 \newblock https://www.armbian.com/, 2026.
 \newblock Accessed: 2026-04-26.
 
+\bibitem{balticcable}
+{Baltic Cable AB}.
+\newblock {Baltic Cable: HVDC Submarine Power Interconnector Between Sweden and Germany}.
+\newblock Corporate website, 2024.
+\newblock Accessed: 2026-05-22. Operator of the 250\,km, 600\,MW HVDC submarine power cable linking Klagshamn (Sweden) to Lübeck-Herrenwyk (Germany), commissioned 1994.
+
 \bibitem{bor2016lora}
 Martin Bor, Utz Roedig, Thiemo Voigt, and Juan~M. Alonso.
 \newblock Do {LoRa} low-power wide-area networks scale?
@@ -26,21 +32,75 @@ Edwin Catmull and Raphael Rom.
 \newblock A class of local interpolating splines.
 \newblock In Robert~E. Barnhill and Richard~F. Riesenfeld, editors, {\em Computer Aided Geometric Design}, pages 317--326. Academic Press, 1974.
 
+\bibitem{damen_sar1605}
+{Damen Shipyards Group}.
+\newblock {Search and Rescue Vessel 1605 FRP}.
+\newblock Damen Shipyards Group product page, 2025.
+\newblock Accessed: 2026-05-22. Key figures: LOA 15.7\,m, beam 4.8\,m, draught 0.8\,m, max speed 33\,kn, range 210\,nm, crew up to 2, survivors 12--30, propulsion 2\,$\times$\,waterjet, hull FRP, Bureau Veritas classification.
+
 \bibitem{emtrak_b100_manual}
 {em-trak Marine Electronics}.
 \newblock {\em B100 Class A AIS Transceiver User Manual}.
 \newblock SRT Marine Systems plc, Bath, UK, 2024.
 \newblock Available via em-trak Product Support portal.
 
+\bibitem{cinea_balticconnector}
+{European Climate, Infrastructure and Environment Executive Agency (CINEA)}.
+\newblock {Balticconnector: Featured Project}.
+\newblock Technical report, CINEA, European Commission, 2020.
+\newblock CEF Project Reference 8.1.1-0040-FIEE-S-M-14. EU contribution: EUR~5{,}326{,}210. 152\,km bi-directional gas pipeline (77\,km offshore) between Finland and Estonia; commercial operation from 1~January 2020. Severed October 2023. Accessed: 2026-05-22.
+
+\bibitem{ec_iuu_fishing2024}
+{European Commission}.
+\newblock {Questions and Answers on Illegal, Unreported and Unregulated ({IUU}) Fishing}.
+\newblock Press corner, European Commission, 2024.
+\newblock Accessed: 2026-05-22.
+
+\bibitem{winspector2019}
+{European Commission, CORDIS}.
+\newblock {Robotic Shearographic Inspection of Wind Turbine Blades for Early Fault Detection: WInspector Project Results in Brief}.
+\newblock Technical report, European Commission, CORDIS, August 2019.
+\newblock H2020 Project Grant Agreement No.~700986. Coordinated by WRS Marine Inspections and Services BV, Netherlands. Total cost: EUR~2{,}750{,}193; EU contribution: EUR~2{,}317{,}940. DOI: https://doi.org/10.3030/700986. https://cordis.europa.eu/article/id/397844.
+
+\bibitem{eu_blue_economy_infra2026}
+{European Commission, Joint Research Centre}.
+\newblock {EU Blue Economy Observatory: Infrastructure and Robotics Sector Overview}.
+\newblock Technical report, European Commission, May 2026.
+\newblock Updated 21~May 2026. Accessed: 2026-05-22.
+
+\bibitem{iamsar2022}
+{International Maritime Organization} and {International Civil Aviation Organization}.
+\newblock {\em {IAMSAR Manual: International Aeronautical and Maritime Search and Rescue Manual}}.
+\newblock London, 4th edition, 2022.
+\newblock 3 volumes. Volume~I: Organisation and Management; Volume~II: Mission Co-ordination; Volume~III: Mobile Facilities. https://www.imo.org/en/ourwork/safety/pages/iamsarmanual.aspx.
+
+\bibitem{marinetraffic_ais_spoofing}
+{MarineTraffic}.
+\newblock {AIS Spoofing in the Maritime Industry: A Growing Risk}.
+\newblock MarineTraffic Maritime News, Risk \& Compliance, 2026.
+\newblock Accessed: 2026-05-22. Page returned HTTP~403 during automated retrieval; verify URL manually before final submission.
+
 \bibitem{merriam_webster_drone}
 {Merriam-Webster}.
 \newblock Drone --- {M}erriam-{W}ebster.com dictionary.
 \newblock [Online; accessed 15-May-2026].
 
+\bibitem{mohrmann2025nordstream}
+Martin Mohrmann, Louise~C. Biddle, Gregor Rehder, Henry~C. Bittig, and Bastien~Y. Queste.
+\newblock {Nord Stream methane leaks spread across 14\% of Baltic waters}.
+\newblock {\em Nature Communications}, 16(1):281, January 2025.
+\newblock Open access. Reports 443--486\,kt of methane released in September 2022; dissolved fraction of 9.5--14.7\,kt affected 14\% of Baltic Sea surface area and 23~Marine Protected Areas.
+
 \bibitem{newton1687principia}
 Isaac Newton.
 \newblock {\em Philosophiae Naturalis Principia Mathematica}.
 \newblock Joseph Streater, 1687.
+
+\bibitem{nordstream_website}
+{Nord Stream AG}.
+\newblock {Nord Stream: Delivering Energy to Europe}.
+\newblock Corporate website, 2022.
+\newblock Accessed: 2026-05-22. Operator of the Nord Stream~1 and Nord Stream~2 natural gas pipeline systems beneath the Baltic Sea, connecting Vyborg (Russia) to Lubmin (Germany).
 
 \bibitem{NvidiaIsaacSim}
 {NVIDIA Corporation}.

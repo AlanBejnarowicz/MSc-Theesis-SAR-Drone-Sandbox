@@ -207,35 +207,50 @@ private:
     int currentTargetId_ = -1;
 
     // ── Cell selection ────────────────────────────────────────────
-    // Score = staleness(cell)
-    //       - CONTENTION_PENALTY  if already targeted by a neighbour
-    //       - distance_penalty    prefer closer cells (tie-break)
+    // Score = staleness + startup_offset
+    //       - CONTENTION_PENALTY  if targeted or claimed by another drone
+    //       - distance_penalty    prefer closer cells
+    //
+    // Startup spreading: when all cells are never-visited, every drone
+    // would score identically and pile onto the same cell.
+    // Replace the identical 1e6 sentinel with a deterministic per-drone
+    // hash so each drone gets a unique priority ordering from tick 1.
     int pickBestCell(double myLat, double myLon)
     {
         int   best      = -1;
         float bestScore = -std::numeric_limits<float>::max();
 
+        bool allFresh = true;
+        for (auto& c : cells_)
+            if (c.lastVisitMs > 0) { allFresh = false; break; }
+
         for (auto& c : cells_)
         {
-            // Skip cells claimed by us already (shouldn't happen, but safe)
             if (c.claimedBy == ownDroneId) continue;
 
-            float stale = staleness(c.id);
+            float stale;
+            if (allFresh) {
+                // Per-drone deterministic hash: unique ordering per drone
+                unsigned int h = (unsigned int)(c.id * 2654435761u)
+                               ^ (unsigned int)(ownDroneId * 40503u);
+                stale = (float)(h & 0xFFFF);
+            } else {
+                stale = staleness(c.id);
+            }
 
-            // Contention penalty: cell is already targeted by a neighbour
-            float penalty = (c.targetedBy >= 0 && c.targetedBy != ownDroneId)
-                            ? CONTENTION_PENALTY : 0.f;
+            // Penalise cells already taken by another drone
+            float penalty = 0.f;
+            if (c.claimedBy  >= 0 && c.claimedBy  != ownDroneId)
+                penalty += CONTENTION_PENALTY;
+            if (c.targetedBy >= 0 && c.targetedBy != ownDroneId)
+                penalty += CONTENTION_PENALTY;
 
-            // Distance cost: normalised by max plausible distance (~5km)
-            float dist  = distM(myLat, myLon, c.centreLat, c.centreLon);
-            float distPenalty = dist / 5000.f * 60.f;  // max 60s equivalent
+            float dist        = distM(myLat, myLon, c.centreLat, c.centreLon);
+            float distPenalty = dist / 5000.f * 60.f;
 
             float score = stale - penalty - distPenalty;
 
-            if (score > bestScore) {
-                bestScore = score;
-                best      = c.id;
-            }
+            if (score > bestScore) { bestScore = score; best = c.id; }
         }
         return best;
     }

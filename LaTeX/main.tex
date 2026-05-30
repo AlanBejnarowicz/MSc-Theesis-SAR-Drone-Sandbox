@@ -20,6 +20,9 @@
 
 \usepackage{pifont}
 
+\usepackage{float}  
+
+
 
 \usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
@@ -58,10 +61,11 @@
 % Example citation to avoid bibliography error
 \nocite{*}
 
-\input{sections/introduction.tex}
-\clearpage
 
 \input{terms_and_important_stuff.tex}
+\clearpage
+
+\input{sections/introduction.tex}
 \clearpage
 
 \input{sections/differences.tex}
@@ -98,10 +102,18 @@
 \input{sections/grid_navigation.tex}
 \clearpage
 
+\input{sections/swarm_validation.tex}
+\clearpage
+
 \input{sections/benchmark.tex}
 \clearpage
 
-%\appendix
+
+\input{sections/conclusion.tex}
+\clearpage
+
+
+\appendix
 
 % Appendix chapter in 'chap-appendix.tex'
 %\input{chap-appendix}

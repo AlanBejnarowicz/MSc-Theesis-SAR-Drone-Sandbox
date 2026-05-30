@@ -1,0 +1,141 @@
+\section{Conclusion}
+
+This thesis set out to design, implement, and validate a high-performance
+simulation sandbox for developing and testing decentralised control algorithms
+for autonomous marine drone swarms. The work was motivated by the absence
+of any existing platform that simultaneously addresses realistic marine
+dynamics, swarm-scale performance, physics-based communication constraints,
+and a direct path to physical hardware deployment. Major contribution of this project
+is the deep mathematical foundation underlying the simulator. Every simulated system and component is described by a precise mathematical model. In other projects the models of sensors, actuators etc, were usualy igonored. In this project, the mathematical models of the drone ship physics, wave dynamics, LoRa radio propagation, and AIS signal characteristics were derived from first principles.
+
+The simulator was validated through a series of experiments designed to answer three core research questions, which are revisited in the following sections. The results confirm that the platform meets its design goals and provides a practical tool for developing and testing swarm control algorithms under realistic conditions.
+
+
+\subsection*{RQ1 — Simulator Fidelity and Scalability}
+
+The Unity3D-based simulator successfully models the key physical phenomena
+relevant to autonomous USV operations. The drone ship physics model
+combines a multi-point buoyancy system, wave-slope dynamics derived from a
+Pierson–Moskowitz spectral wave model, a keel-drag curve, propeller slipstream
+effects, and a full hydrodynamic rudder model. Virtual sensor outputs — GPS,
+IMU, magnetometer, AIS transponder and receiver, LoRa and time-of-flight
+ranging — are augmented with hardware-realistic noise models, ensuring that
+control algorithms are tested against the same signal degradation they would
+encounter at sea.
+
+Scalability benchmarks, conducted on a mid-range laptop with integrated
+graphics (AMD Ryzen\texttrademark~5 7530U, Radeon\texttrademark~Graphics),
+demonstrated that the simulator sustains real-time performance at 60~FPS with
+up to 71 simulated vessels, and remains above the minimum acceptable
+threshold of 30~FPS with up to 103 vessels running concurrently inside the
+Unity Editor. A compiled standalone build is expected to push this limit
+further. The communication architecture, based on lightweight UDP/JSON
+packets and a dedicated port pair per drone agent, introduces negligible
+overhead and allows an arbitrary number of independent controller instances to
+operate concurrently without port conflicts. Transitioning from
+Software-in-the-Loop to Hardware-in-the-Loop requires modifications to only
+two configuration files, confirming that the platform provides a practical path
+to physical deployment.
+
+\subsection*{RQ2 — Sensor Fusion Resilience}
+
+A Kalman Filter fusing GPS, IMU, compass heading, and LoRa time-of-flight
+ranging was implemented and validated under three conditions. Under normal
+operation the filter reduced position RMSE from approximately 1.8~m (GPS
+alone) to 1.08~m. When the GPS signal of the tested drone was spoofed with
+Gaussian noise of standard deviation 70~m, the filter maintained an RMSE of
+approximately 19~m — a more than threefold improvement over the corrupted
+GPS reading. In the most challenging scenario, with half the swarm
+simultaneously spoofed, the filter achieved an RMSE of approximately
+1.6~m by leveraging LoRa inter-drone ranging from the unaffected neighbours,
+which is still below the accuracy of the raw GPS in normal conditions.
+
+These results confirm that the EKF-based localisation system provides
+acceptable positioning accuracy for swarm coordination even under active GPS
+spoofing, and that the cooperative nature of the swarm provides a natural
+resilience mechanism that a single-vehicle system cannot replicate.
+
+\subsection*{RQ3 — Swarm Search Performance}
+
+A decentralised grid-based search algorithm, coordinated exclusively over
+LoRa, was validated in a realistic maritime scenario: a $3\,\text{km} \times
+3\,\text{km}$ anchorage zone in the Gulf of Gdańsk, discretised into
+$300\,\text{m} \times 300\,\text{m}$ cells, with five vessels moving according
+to replayed real AIS traffic. A swarm of 18 drones achieved 100\,\% area
+coverage in approximately 45 minutes. A reduced swarm of 9 drones completed
+the same task in approximately 53 minutes — only 8 minutes longer — which
+suggests that at this scale the collision avoidance overhead and cell density
+are the binding constraints rather than drone count alone. In both cases no
+inter-drone collisions were recorded, and all AIS vessel avoidance manoeuvres
+were executed successfully without disrupting overall coverage progress.
+
+The decentralised cell-assignment scoring function, which combines staleness,
+a contention penalty propagated via LoRa beacons, and a distance
+tie-breaker, proved effective at coordinating the swarm without any central
+controller. The LoRa beacon protocol, encoded in at most 36~bytes per
+transmission, remained within the duty-cycle limits of the Semtech SX1280 at
+the spreading factors typical of maritime deployments.
+
+\subsection*{Summary of Contributions}
+
+The primary contributions of this work are:
+
+\begin{enumerate}
+    \item A Unity3D simulation environment for marine USV
+    swarms, capable of real-time simulation of over 100 vessels on commodity
+    hardware, with no dependency on ROS or a specific operating system.
+
+    \item A physics model that captures the essential hydrodynamics of a
+    small surface vessel, including buoyancy, wave-slope dynamics, keel
+    resistance, and rudder lift and drag, implemented efficiently enough to
+    run at 200~Hz inside the physics integration loop.
+
+    \item A hardware-realistic LoRa radio propagation model, including
+    free-space path loss, additive noise, half-duplex enforcement, collision
+    modelling, and time-of-flight ranging.
+
+    \item An AIS data replay pipeline that ingests CSV-formatted real-world
+    AIS recordings, reconstructs smooth vessel trajectories, and injects replayed traffic into the simulator's internal AIS network so that it is indistinguishable from actively simulated vessels.
+
+    \item A personal AIS receiver station based on the EM-TRAK B100 and an
+    Orange Pi PC, which produced the real-world dataset used for the
+    validation experiments.
+
+    \item A Kalman Filter localisation system that fuses GPS, IMU, compass,
+    and LoRa inter-drone range measurements, demonstrated to maintain
+    sub-2\,m RMSE under normal conditions and to resist GPS spoofing
+    attacks by cooperative ranging.
+
+    \item A decentralised swarm controller comprising a PID course-and-speed
+    regulator, swarm anti-collision avoidance system, AIS vessel avoidance system,
+    and a staleness-driven grid coverage algorithm coordinated over LoRa.
+\end{enumerate}
+
+\subsection*{Limitations and Future Work}
+
+Several limitations remain. The LoRa propagation model assumes a spatially
+uniform path-loss exponent and does not account for Doppler shift, multipath
+from dynamic wave surfaces, or interference from co-located 2.4~GHz systems
+such as Wi-Fi. Also signal in real life could be blocked bt big ship.
+The wave model, while spectrally motivated, uses a small fixed
+set of harmonics and does not yet couple wind field dynamics to wave growth.
+The drone physics model does not incorporate a hull-shape-dependent added
+mass tensor, which would be necessary for accurate simulation of fast
+manoeuvres. The swarm controller relies entirely on AIS for third-party vessel
+detection; vessels that are dark or whose AIS is spoofed are invisible to the
+avoidance system.
+
+Future work should address these limitations and extend the platform in
+several directions. The most immediate next step is a Hardware-in-the-Loop
+validation using the physical Argo-style hardware described in Section~0.4, to
+confirm that the SITL-to-HITL migration path works as designed under real
+network latency and microcontroller constraints. On the algorithmic side, the
+deterministic swarm controller could be replaced or augmented by a
+neural-network or genetic-algorithm policy trained using the multi-instance
+parallelism that the simulator already supports. Adding a radar or camera
+sensor model would remove the dependency on AIS for obstacle detection,
+significantly improving safety in cluttered or adversarial environments.
+Finally, extending the AIS data collection station to produce longer and
+geographically richer datasets would enable more demanding validation
+scenarios and facilitate the study of swarm performance as a function of
+traffic density.

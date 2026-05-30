@@ -177,6 +177,7 @@ private:
         if (t == "PilotVessel")     return  20.f;
         if (t == "SearchAndRescue") return  25.f;
         if (t == "AtoN")            return   5.f;
+        if (t == "Unknown")         return  150.f;
         return 60.f;
     }
 

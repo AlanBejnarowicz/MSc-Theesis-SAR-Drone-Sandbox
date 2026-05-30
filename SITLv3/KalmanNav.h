@@ -24,8 +24,8 @@
 #include <algorithm>
 
 // Baltic Sea ~54°N  (update if operating elsewhere)
-static constexpr double KN_MPL     = 111320.0;   // metres per degree lat
-static constexpr double KN_MPL_LON = 63990.0;    // metres per degree lon
+static constexpr double KN_MPL     = 111111.0;   // metres per degree lat
+static constexpr double KN_MPL_LON = 64528.0;    // metres per degree lon
 
 class KalmanNav
 {
