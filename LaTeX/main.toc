@@ -1,0 +1,91 @@
+\contentsline {section}{Links}{iii}{}%
+\contentsline {chapter}{Contents}{iii}{}%
+\contentsline {section}{\numberline {0.1}Important Terms And Nomenclature}{1}{}%
+\contentsline {section}{\numberline {0.2}Introduction}{2}{}%
+\contentsline {subsection}{Military, Critical Infrastructure and Sea Biosphere Monitoring}{3}{}%
+\contentsline {subsection}{Summary}{4}{}%
+\contentsline {section}{\numberline {0.3}Research Questions}{5}{}%
+\contentsline {section}{\numberline {0.4}Road to High-Performance Swarm Environments for Maritime Robotics}{6}{}%
+\contentsline {subsection}{Argo}{6}{}%
+\contentsline {subsection}{YARA}{7}{}%
+\contentsline {subsection}{What makes my project different}{7}{}%
+\contentsline {subsection}{Comparison}{8}{}%
+\contentsline {section}{\numberline {0.5}Drone Ship Physics Model }{10}{}%
+\contentsline {subsection}{Introduction}{10}{}%
+\contentsline {subsubsection}{Model of Buoyancy}{11}{}%
+\contentsline {subsubsection}{Damping and Stability}{11}{}%
+\contentsline {subsubsection}{Global Water Resistance}{12}{}%
+\contentsline {subsubsection}{The Keel Effect (Lateral Resistance)}{12}{}%
+\contentsline {subsubsection}{Hydrostatic Pressure Gradient and Wave-Slope Dynamics }{12}{}%
+\contentsline {subsubsection}{Center of Mass / Gravity (CG) Configuration}{13}{}%
+\contentsline {subsection}{Propulsion Dynamics}{13}{}%
+\contentsline {subsubsection}{The Propeller Wash Effect (Slipstream)}{13}{}%
+\contentsline {subsubsection}{Hydrodynamic Forces on the Rudder}{14}{}%
+\contentsline {subsection}{Summary of Forces and Moments}{15}{}%
+\contentsline {paragraph}{Force Classification Matrix}{15}{}%
+\contentsline {section}{\numberline {0.6}Wave Physics Model }{16}{}%
+\contentsline {subsection}{Introduction to Sensor Simulation}{18}{}%
+\contentsline {subsection}{Global Positioning System (GPS) Simulation}{18}{}%
+\contentsline {subsubsection}{Inertial Measurement Unit (IMU) Simulation }{19}{}%
+\contentsline {subsubsection}{Digital Compass (Magnetometer)}{19}{}%
+\contentsline {section}{\numberline {0.7}LoRa Communication Simulation}{21}{}%
+\contentsline {subsection}{Why LoRa}{21}{}%
+\contentsline {subsection}{ToF ranging}{21}{}%
+\contentsline {subsection}{Hardware Basis — Semtech SX1280}{22}{}%
+\contentsline {subsection}{Propagation Model}{22}{}%
+\contentsline {subsection}{Packet Lifecycle and Air-Time Model}{23}{}%
+\contentsline {subsection}{Half-Duplex Enforcement}{23}{}%
+\contentsline {subsection}{Collision Model}{23}{}%
+\contentsline {subsection}{Model Limitations}{24}{}%
+\contentsline {section}{\numberline {0.8}Software in the Loop and Hardware in the Loop Communication Architecture}{25}{}%
+\contentsline {subsection}{Simulation <-> Controller Communication Protocol}{25}{}%
+\contentsline {subsection}{Packet Structure}{25}{}%
+\contentsline {subsubsection}{State Packet (Simulator $\rightarrow $ Controller)}{25}{}%
+\contentsline {subsubsection}{Command Packet (Controller $\rightarrow $ Simulator)}{26}{}%
+\contentsline {subsection}{System Block Diagram}{26}{}%
+\contentsline {subsection}{SITL Operation}{26}{}%
+\contentsline {subsection}{HITL Migration Path}{27}{}%
+\contentsline {section}{\numberline {0.9}Default drone parameters and simulation profile}{28}{}%
+\contentsline {section}{\numberline {0.10}AIS - Automatic Identification System}{29}{}%
+\contentsline {subsection}{Transmission Mechanism}{29}{}%
+\contentsline {subsection}{Data Transmitted}{29}{}%
+\contentsline {subsection}{Vessel Type Classification}{30}{}%
+\contentsline {subsection}{AIS Vulnerability: GPS Integration and Spoofing}{31}{}%
+\contentsline {subsection}{Synthetic and Virtual AIS Aids to Navigation (AtoNs)}{32}{}%
+\contentsline {section}{\numberline {0.11}AIS data collection}{33}{}%
+\contentsline {subsection}{AIS Data Sources}{33}{}%
+\contentsline {subsection}{Antenna and range}{35}{}%
+\contentsline {section}{\numberline {0.12}AIS Data Replay}{36}{}%
+\contentsline {subsection}{Overview}{36}{}%
+\contentsline {subsection}{Coordinate System}{36}{}%
+\contentsline {subsection}{Trajectory Interpolation}{36}{}%
+\contentsline {subsection}{GPS Spoofing Detection}{37}{}%
+\contentsline {subsection}{Vessel Type and Scale}{37}{}%
+\contentsline {subsection}{Simulated AIS Broadcast}{37}{}%
+\contentsline {section}{\numberline {0.13}Swarm Controller Design}{39}{}%
+\contentsline {subsection}{Data Fusion, KF and Localization}{39}{}%
+\contentsline {subsection}{KF State Space and Filter Design}{39}{}%
+\contentsline {subsubsection}{Process Model}{40}{}%
+\contentsline {subsubsection}{Measurement Models}{40}{}%
+\contentsline {paragraph}{GPS Update.}{41}{}%
+\contentsline {paragraph}{Speed and Heading Update.}{41}{}%
+\contentsline {subsection}{KF tests and validation}{41}{}%
+\contentsline {subsubsection}{KF Validation Conclusion}{44}{}%
+\contentsline {subsection}{Course and Speed Controller}{44}{}%
+\contentsline {subsection}{UAV Anti Collision System}{45}{}%
+\contentsline {subsection}{AIS Vessels Avoidance System}{46}{}%
+\contentsline {subsubsection}{Elliptical Safety Zone (Mahalanobis Distance)}{48}{}%
+\contentsline {subsubsection}{Potential Problems}{49}{}%
+\contentsline {subsection}{Grid-Based Surveillance and LoRa Coordination}{51}{}%
+\contentsline {subsubsection}{Search Zone Discretisation}{51}{}%
+\contentsline {subsubsection}{Algorithm goal}{51}{}%
+\contentsline {subsubsection}{Decentralised Cell Assignment}{52}{}%
+\contentsline {subsubsection}{LoRa Beacon Protocol}{52}{}%
+\contentsline {subsubsection}{Distributed State Fusion}{53}{}%
+\contentsline {subsubsection}{Coverage Metric}{53}{}%
+\contentsline {subsection}{Algorithm Demonstration}{54}{}%
+\contentsline {section}{\numberline {0.14}Swarm Algorithm Validation}{55}{}%
+\contentsline {section}{\numberline {0.15}Simulator Benchmarking}{61}{}%
+\contentsline {subsection}{n-UAV's Performance Test}{61}{}%
+\contentsline {section}{\numberline {0.16}Conclusion}{63}{}%
+\contentsline {chapter}{Bibliography}{67}{}%
