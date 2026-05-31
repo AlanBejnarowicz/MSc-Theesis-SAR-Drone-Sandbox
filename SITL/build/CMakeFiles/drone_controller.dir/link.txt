@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/drone_controller.dir/src/main.cpp.o CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o -o drone_controller 

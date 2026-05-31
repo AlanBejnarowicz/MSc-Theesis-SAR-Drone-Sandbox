@@ -1,4 +1,0 @@
-# ninja log v5
-2	2162	1777563342402201370	CMakeFiles/drone_controller.dir/src/main.cpp.o	6b7eeea8048e8d1d
-2162	2244	1777563342487559687	drone_controller	db33ef5775b8b8ce
-2	386	1777563340631377433	CMakeFiles/drone_controller.dir/controllers/DroneController.cpp.o	3c50a314154b96c7
